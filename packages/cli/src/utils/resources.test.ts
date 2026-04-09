@@ -55,10 +55,4 @@ describe("resources", () => {
 		expect(p).toContain("skills");
 		expect(p.startsWith("/")).toBe(true);
 	});
-
-	it("theme returns correct path", () => {
-		const p = resources.theme("dark");
-		expect(p).toContain("themes/dark.json");
-		expect(p.startsWith("/")).toBe(true);
-	});
 });

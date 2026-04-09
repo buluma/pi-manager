@@ -309,15 +309,3 @@ export function writeSkills(agentDir: string, _config: OhPConfig) {
 		/* skills dir not found, skip */
 	}
 }
-
-/** Copy the selected theme to the agent directory. */
-export function writeTheme(agentDir: string, config: OhPConfig) {
-	const themeDir = join(agentDir, "themes");
-	ensureDir(themeDir);
-	const themeSrc = resources.theme(config.theme);
-	try {
-		copyFileSync(themeSrc, join(themeDir, `${config.theme}.json`));
-	} catch {
-		/* built-in theme */
-	}
-}

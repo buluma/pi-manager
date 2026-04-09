@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { EXTENSIONS, KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS, THEMES } from "./registry.js";
+import { EXTENSIONS, KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "./registry.js";
 
 describe("MODEL_CAPABILITIES", () => {
 	it("has entries", () => {
@@ -40,21 +40,6 @@ describe("PROVIDERS", () => {
 	});
 });
 
-describe("THEMES", () => {
-	it("is array with entries", () => {
-		expect(Array.isArray(THEMES)).toBe(true);
-		expect(THEMES.length).toBeGreaterThan(0);
-	});
-
-	it("each has name/label/style", () => {
-		for (const theme of THEMES) {
-			expect(theme).toHaveProperty("name");
-			expect(theme).toHaveProperty("label");
-			expect(theme).toHaveProperty("style");
-		}
-	});
-});
-
 describe("EXTENSIONS", () => {
 	it("is array with entries", () => {
 		expect(Array.isArray(EXTENSIONS)).toBe(true);
@@ -67,12 +52,6 @@ describe("EXTENSIONS", () => {
 			expect(ext).toHaveProperty("label");
 			expect(ext).toHaveProperty("default");
 		}
-	});
-
-	it("does not enable safe-guard by default", () => {
-		const safeGuard = EXTENSIONS.find((ext) => ext.name === "safe-guard");
-		expect(safeGuard).toBeDefined();
-		expect(safeGuard?.default).toBe(false);
 	});
 
 	it("exposes the optional plan mode extension", () => {

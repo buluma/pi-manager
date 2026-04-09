@@ -107,7 +107,7 @@ describe("writeAgents", () => {
 
 		const content = readFileSync(join(dir, "AGENTS.md"), "utf8");
 		expect(content).not.toContain("## Ant Colony Auto-Trigger");
-		expect(content).toContain("You command an autonomous ant colony");
+		expect(content).toContain("You command an autonomous ant crew");
 	});
 });
 

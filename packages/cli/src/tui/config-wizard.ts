@@ -7,7 +7,6 @@ import { selectAgents } from "./agents-select.js";
 import { selectExtensions } from "./extension-select.js";
 import { selectKeybindings } from "./keybinding-select.js";
 import { type ProviderSetupResult, setupProviders } from "./provider-setup.js";
-import { selectTheme } from "./theme-select.js";
 
 export type WizardBaseConfig = Pick<
 	OhPConfig,
@@ -101,7 +100,6 @@ export async function runConfigWizard(env: EnvInfo, initial: WizardBaseConfig): 
 			continue;
 		}
 		if (step === "appearance") {
-			state.theme = await selectTheme(state.theme);
 			state.keybindings = await selectKeybindings(state.keybindings);
 			nextStep = "features";
 			continue;

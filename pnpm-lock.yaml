@@ -302,13 +302,13 @@ importers:
   packages/web-server:
     dependencies:
       '@hono/node-server':
-specifier: '>=1.19.13'
+        specifier: '>=1.19.13'
         version: 1.19.13(hono@4.12.12)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
         version: 0.56.1(ws@8.19.0)(zod@3.25.76)
       hono:
-specifier: '>=4.12.12'
+        specifier: '>=4.12.12'
         version: 4.12.12
       ws:
         specifier: ^8.18.0
@@ -1382,7 +1382,6 @@ packages:
   basic-ftp@5.2.1:
     resolution: {integrity: sha512-0yaL8JdxTknKDILitVpfYfV2Ob6yb3udX/hK97M7I3jOeznBNxQPtVvTUtnhUkyHlxFWyr5Lvknmgzoc7jf+1Q==}
     engines: {node: '>=10.0.0'}
-    deprecated: Security vulnerability fixed in 5.2.1, please upgrade
 
   bignumber.js@9.3.1:
     resolution: {integrity: sha512-Ko0uX15oIUS7wJ3Rb30Fs6SkVbLmPBAKdlm7q9+ak9bbIeFf0MwuBsQV6z7+X768/cHsfg+WlysDWJcmthjsjQ==}

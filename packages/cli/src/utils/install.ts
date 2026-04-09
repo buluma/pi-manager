@@ -10,7 +10,6 @@ import {
 	writePrompts,
 	writeProviderEnv,
 	writeSkills,
-	writeTheme,
 } from "./writers.js";
 
 const MANAGED_CONFIG_ENTRIES = [
@@ -99,7 +98,6 @@ export function applyConfig(config: OhPConfig) {
 	writeExtensions(agentDir, config);
 	writePrompts(agentDir, config);
 	writeSkills(agentDir, config);
-	writeTheme(agentDir, config);
 }
 
 /**
