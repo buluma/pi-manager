@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.4.6/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
 	"assist": {
 		"actions": {
 			"source": {
@@ -12,8 +12,8 @@
 			"packages/core/src/**/*.ts",
 			"packages/cli/src/**/*.ts",
 			"packages/extensions/extensions/**/*.ts",
-			"packages/ant-colony/extensions/**/*.ts",
-			"packages/ant-colony/tests/**/*.ts",
+			"packages/crews/extensions/**/*.ts",
+			"packages/crews/tests/**/*.ts",
 			"packages/subagents/tests/**/*.ts",
 			"packages/plan/tests/**/*.ts",
 			"packages/shared-qna/tests/**/*.ts",
@@ -218,7 +218,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/packages/extensions/extensions/**/*.ts", "**/packages/ant-colony/extensions/**/*.ts"],
+			"includes": ["**/packages/extensions/extensions/**/*.ts", "**/packages/crews/extensions/**/*.ts"],
 			"linter": {
 				"rules": {
 					"suspicious": {

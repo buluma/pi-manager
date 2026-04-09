@@ -1,5 +1,5 @@
-import * as p from "@clack/prompts";
 import { t } from "@buluma/pi-man-core";
+import * as p from "@clack/prompts";
 
 /**
  * Presents an interactive prompt for the user to select an agent template

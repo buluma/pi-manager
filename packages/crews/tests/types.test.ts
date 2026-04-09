@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type {
-	AntCaste,
-	PromoteFinalizeGateDecision,
-	PromoteFinalizeGateInput,
-} from "../extensions/crews/types.js";
+import type { AntCaste, PromoteFinalizeGateDecision, PromoteFinalizeGateInput } from "../extensions/crews/types.js";
 import { DEFAULT_ANT_CONFIGS } from "../extensions/crews/types.js";
 
 describe("promote/finalize gate types", () => {

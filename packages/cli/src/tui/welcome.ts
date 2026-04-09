@@ -1,5 +1,5 @@
-import * as p from "@clack/prompts";
 import { t } from "@buluma/pi-man-core";
+import * as p from "@clack/prompts";
 import chalk from "chalk";
 import type { EnvInfo } from "../utils/detect.js";
 

@@ -1,5 +1,5 @@
-import * as p from "@clack/prompts";
 import { t } from "@buluma/pi-man-core";
+import * as p from "@clack/prompts";
 
 /**
  * Prompts the user to select a keybinding scheme (default, Vim, or Emacs).

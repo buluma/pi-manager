@@ -1,7 +1,7 @@
 /**
 <!-- {=ohPiCoreAgentPathsOverview} -->
 
-`@buluma/pi-man-core` exposes a small set of path helpers for packages that need to resolve the pi
+`@ifi/pi-man-core` exposes a small set of path helpers for packages that need to resolve the pi
 agent directory, extension config locations, and shared workspace-scoped storage paths without
 hardcoding `~/.pi/agent` throughout the codebase.
 
