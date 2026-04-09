@@ -19,12 +19,11 @@ const IS_WINDOWS = process.platform === "win32";
 const PACKAGES = [
 	"@buluma/pi-man-extensions",
 	"@buluma/pi-man-crews",
-	"@ifi/pi-extension-subagents",
-	"@ifi/pi-plan",
-	"@ifi/pi-spec",
+	"@buluma/pi-man-subagents",
+	"@buluma/pi-man-plan",
+	"@buluma/pi-man-spec",
 	"@buluma/pi-man-prompts",
 	"@buluma/pi-man-skills",
-	"@buluma/pi-man-agents",
 ];
 
 const GIT_BASE = "https://github.com/buluma/pi-man.git";
