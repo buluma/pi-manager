@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.4.5 (2026-04-09)
+
+### Features
+
+- add git install support to pi-man installer
+- feat: add an experimental Cursor OAuth provider package for pi
+
+#### - Add the experimental `@ifi/pi-provider-ollama` package so pi can discover local Ollama models, log in to Ollama Cloud via `/login ollama-cloud`, and expose both local and cloud models in `/model`.
+
+- Add unified `/ollama` commands for refreshing local + cloud model catalogs and inspecting discovered model metadata.
+- Extend usage tracking with best-effort Ollama local/cloud status so `/usage` and `usage_report` include Ollama session visibility and any rate-limit headers Ollama exposes.
+
+### Fixes
+
+- remove unused MDT providers after docs simplification
+- remove themes support, update tests for new naming
+- update verify-pi-compat script with new package names
+- update CI workflow with new package names (@ifi/pi-man-core, pi-man binary)
+- update package-classes.mjs with new package names
+- update knope.toml for new package structure
+- biome import sorting and update biome schema to 2.4.10
+- update pi-man installer package list to @buluma/pi-man-* naming
+- - Clarify the git-workflow skill to disable both `GIT_EDITOR` and `GIT_SEQUENCE_EDITOR` (plus `core.editor`/`sequence.editor` overrides) so agent-run Git commands avoid interactive editors in rebase and merge flows.
+
 ## 0.4.4 (2026-04-02)
 
 ### Features

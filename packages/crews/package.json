@@ -1,6 +1,6 @@
 {
   "name": "@buluma/pi-man-crews",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Autonomous multi-agent crew extension for pi — adaptive concurrency, task dispatch.",
   "type": "module",
   "keywords": [

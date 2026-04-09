@@ -1,6 +1,6 @@
 {
   "name": "@buluma/pi-man-extensions",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Core pi extensions: git-guard, auto-session, custom-footer, and more.",
   "keywords": [
     "pi-package"
