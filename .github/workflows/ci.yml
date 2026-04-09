@@ -249,7 +249,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build core (required for CLI type resolution)
-        run: pnpm --filter @ifi/oh-pi-core build
+        run: pnpm --filter @ifi/pi-man-core build
 
       - name: Type check with tsgo
         run: pnpm typecheck
@@ -273,7 +273,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build core (required for CLI test resolution)
-        run: pnpm --filter @ifi/oh-pi-core build
+        run: pnpm --filter @ifi/pi-man-core build
 
       - name: Run tests
         run: pnpm test
@@ -326,7 +326,7 @@ jobs:
         run: |
           test -f packages/core/dist/index.js || (echo "core dist/index.js missing" && exit 1)
           test -f packages/cli/dist/index.js || (echo "cli dist/index.js missing" && exit 1)
-          test -f packages/cli/dist/bin/oh-pi.js || (echo "cli dist/bin/oh-pi.js missing" && exit 1)
+          test -f packages/cli/dist/bin/pi-man.js || (echo "cli dist/bin/pi-man.js missing" && exit 1)
           test -f packages/web-client/dist/index.js || (echo "web-client dist/index.js missing" && exit 1)
           test -f packages/web-server/dist/index.js || (echo "web-server dist/index.js missing" && exit 1)
 
