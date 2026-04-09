@@ -1,7 +1,7 @@
 /**
 <!-- {=CrewsSharedStorageOverview} -->
 
-Ant-colony stores runtime state outside the repository by default under the shared pi agent
+Ant-crew stores runtime state outside the repository by default under the shared pi agent
 directory, mirroring the workspace path so each repo gets its own isolated storage root.
 Project-local `.crews/` storage remains available as an explicit opt-in for legacy workflows.
 
@@ -142,8 +142,8 @@ export function shouldManageProjectGitignore(options?: ColonyStorageOptions): bo
 /**
 <!-- {=CrewsMigrateLegacyProjectColoniesDocs} -->
 
-Best-effort migration for legacy project-local colony state. When shared mode is active, existing
-`.crews/{colony-id}/` directories are copied into the shared store so resumable colonies keep
+Best-effort migration for legacy project-local crew state. When shared mode is active, existing
+`.crews/{crew-id}/` directories are copied into the shared store so resumable colonies keep
 working without leaving runtime state in the repo.
 
 <!-- {/CrewsMigrateLegacyProjectColoniesDocs} -->

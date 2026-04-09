@@ -118,22 +118,6 @@ provided.
 
 <!-- {/CrewsResolveStorageOptionsDocs} -->
 
-<!-- {@CrewsGetCrewStateParentDirDocs} -->
-
-Resolve the parent directory for persisted crew state. Shared mode stores state under the
-workspace-mirrored shared root in `colonies/`, while project mode keeps using the legacy local
-`.crews/` directory.
-
-<!-- {/CrewsGetCrewStateParentDirDocs} -->
-
-<!-- {@CrewsGetCrewWorktreeParentDirDocs} -->
-
-Resolve the parent directory for isolated crew worktrees. Shared mode keeps them under the
-workspace-mirrored shared root in `worktrees/`, while project mode places them under the legacy
-project-local `.crews/worktrees/` path.
-
-<!-- {/CrewsGetCrewWorktreeParentDirDocs} -->
-
 <!-- {@CrewsMigrateLegacyProjectColoniesDocs} -->
 
 Best-effort migration for legacy project-local crew state. When shared mode is active, existing
@@ -141,14 +125,6 @@ Best-effort migration for legacy project-local crew state. When shared mode is a
 working without leaving runtime state in the repo.
 
 <!-- {/CrewsMigrateLegacyProjectColoniesDocs} -->
-
-<!-- {@CrewsPrepareCrewWorkspaceDocs} -->
-
-Prepare the execution workspace for a crew run. When worktree isolation is enabled and git
-supports it, the crew gets a fresh isolated worktree on an `crews/...` branch; otherwise it
-falls back to the shared working directory and records the reason.
-
-<!-- {/CrewsPrepareCrewWorkspaceDocs} -->
 
 <!-- {@subagentsProjectAgentStorageOverview} -->
 
@@ -235,39 +211,6 @@ checks. Tasks run only while pi is active and idle, and scheduler state is persi
 storage using a workspace-mirrored path.
 
 <!-- {/extensionsSchedulerOverview} -->
-
-<!-- {@repoMdtUsageRuleDocs} -->
-
-Use MDT through `pnpm mdt ...`, not a globally installed `mdt` binary. This keeps documentation
-reuse commands pinned to the repo's declared `@ifi/mdt` version and makes local runs, CI, and agent
-instructions consistent.
-
-<!-- {/repoMdtUsageRuleDocs} -->
-
-<!-- {@repoMdtCommandsDocs} -->
-
-```bash
-pnpm mdt list
-pnpm mdt update
-pnpm mdt check
-```
-
-Convenience wrappers remain available too:
-
-```bash
-pnpm docs:list
-pnpm docs:update
-pnpm docs:check
-```
-
-<!-- {/repoMdtCommandsDocs} -->
-
-<!-- {@repoMdtCiDocs} -->
-
-CI runs `pnpm mdt check` so provider and consumer blocks stay in sync with the repo-pinned MDT
-version.
-
-<!-- {/repoMdtCiDocs} -->
 
 <!-- {@extensionsUsageTrackerOverview} -->
 
