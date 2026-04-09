@@ -53,56 +53,32 @@ importers:
 
   packages/agents: {}
 
-  packages/ant-colony:
-    dependencies:
-      '@ifi/oh-pi-core':
-        specifier: workspace:*
-        version: link:../core
-      '@mariozechner/pi-agent-core':
-        specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
-      '@mariozechner/pi-ai':
-        specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
-      '@mariozechner/pi-coding-agent':
-        specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
-      '@mariozechner/pi-tui':
-        specifier: '>=0.56.1'
-        version: 0.56.1
-      '@sinclair/typebox':
-        specifier: '*'
-        version: 0.34.48
-
   packages/cli:
     dependencies:
       '@clack/prompts':
         specifier: ^1.1.0
         version: 1.1.0
-      '@ifi/oh-pi-agents':
-        specifier: workspace:*
-        version: link:../agents
-      '@ifi/oh-pi-ant-colony':
-        specifier: workspace:*
-        version: link:../ant-colony
-      '@ifi/oh-pi-core':
-        specifier: workspace:*
-        version: link:../core
-      '@ifi/oh-pi-extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@ifi/oh-pi-prompts':
-        specifier: workspace:*
-        version: link:../prompts
-      '@ifi/oh-pi-skills':
-        specifier: workspace:*
-        version: link:../skills
-      '@ifi/oh-pi-themes':
-        specifier: workspace:*
-        version: link:../themes
       '@ifi/pi-extension-subagents':
         specifier: workspace:*
         version: link:../subagents
+      '@ifi/pi-man-agents':
+        specifier: workspace:*
+        version: link:../agents
+      '@ifi/pi-man-core':
+        specifier: workspace:*
+        version: link:../core
+      '@ifi/pi-man-crews':
+        specifier: workspace:*
+        version: link:../crews
+      '@ifi/pi-man-extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@ifi/pi-man-prompts':
+        specifier: workspace:*
+        version: link:../prompts
+      '@ifi/pi-man-skills':
+        specifier: workspace:*
+        version: link:../skills
       '@ifi/pi-plan':
         specifier: workspace:*
         version: link:../plan
@@ -124,6 +100,27 @@ importers:
       chalk:
         specifier: ^5.4.0
         version: 5.6.2
+
+  packages/crews:
+    dependencies:
+      '@ifi/pi-man-core':
+        specifier: workspace:*
+        version: link:../core
+      '@mariozechner/pi-agent-core':
+        specifier: '>=0.56.1'
+        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+      '@mariozechner/pi-ai':
+        specifier: '>=0.56.1'
+        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+      '@mariozechner/pi-coding-agent':
+        specifier: '>=0.56.1'
+        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+      '@mariozechner/pi-tui':
+        specifier: '>=0.56.1'
+        version: 0.56.1
+      '@sinclair/typebox':
+        specifier: '*'
+        version: 0.34.48
 
   packages/cursor:
     dependencies:
@@ -167,36 +164,6 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1
 
-  packages/oh-pi:
-    dependencies:
-      '@ifi/oh-pi-agents':
-        specifier: workspace:*
-        version: link:../agents
-      '@ifi/oh-pi-ant-colony':
-        specifier: workspace:*
-        version: link:../ant-colony
-      '@ifi/oh-pi-extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@ifi/oh-pi-prompts':
-        specifier: workspace:*
-        version: link:../prompts
-      '@ifi/oh-pi-skills':
-        specifier: workspace:*
-        version: link:../skills
-      '@ifi/oh-pi-themes':
-        specifier: workspace:*
-        version: link:../themes
-      '@ifi/pi-extension-subagents':
-        specifier: workspace:*
-        version: link:../subagents
-      '@ifi/pi-plan':
-        specifier: workspace:*
-        version: link:../plan
-      '@ifi/pi-spec':
-        specifier: workspace:*
-        version: link:../spec
-
   packages/ollama:
     dependencies:
       '@mariozechner/pi-agent-core':
@@ -214,6 +181,33 @@ importers:
       '@sinclair/typebox':
         specifier: '*'
         version: 0.34.48
+
+  packages/pi-man:
+    dependencies:
+      '@ifi/pi-extension-subagents':
+        specifier: workspace:*
+        version: link:../subagents
+      '@ifi/pi-man-agents':
+        specifier: workspace:*
+        version: link:../agents
+      '@ifi/pi-man-crews':
+        specifier: workspace:*
+        version: link:../crews
+      '@ifi/pi-man-extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@ifi/pi-man-prompts':
+        specifier: workspace:*
+        version: link:../prompts
+      '@ifi/pi-man-skills':
+        specifier: workspace:*
+        version: link:../skills
+      '@ifi/pi-plan':
+        specifier: workspace:*
+        version: link:../plan
+      '@ifi/pi-spec':
+        specifier: workspace:*
+        version: link:../spec
 
   packages/plan:
     dependencies:
@@ -269,7 +263,7 @@ importers:
 
   packages/subagents:
     dependencies:
-      '@ifi/oh-pi-core':
+      '@ifi/pi-man-core':
         specifier: workspace:*
         version: link:../core
       '@mariozechner/pi-agent-core':
@@ -287,8 +281,6 @@ importers:
       '@sinclair/typebox':
         specifier: '*'
         version: 0.34.48
-
-  packages/themes: {}
 
   packages/web-client: {}
 
@@ -1387,6 +1379,7 @@ packages:
   basic-ftp@5.2.0:
     resolution: {integrity: sha512-VoMINM2rqJwJgfdHq6RiUudKt2BV+FY5ZFezP/ypmwayk68+NzzAQy4XXLlqsGD4MCzq3DrmNFD/uUmBJuGoXw==}
     engines: {node: '>=10.0.0'}
+    deprecated: Security vulnerability fixed in 5.2.1, please upgrade
 
   bignumber.js@9.3.1:
     resolution: {integrity: sha512-Ko0uX15oIUS7wJ3Rb30Fs6SkVbLmPBAKdlm7q9+ak9bbIeFf0MwuBsQV6z7+X768/cHsfg+WlysDWJcmthjsjQ==}
