@@ -1,37 +1,50 @@
 # @ifi/pi-man
 
-> Dev-tool focused setup for pi-coding-agent — extensions, prompts, skills, and ant-colony swarm.
+> Dev-tool focused setup for pi-coding-agent — extensions, prompts, skills, and crews.
 
 ## Install
+
+### From npm (recommended)
 
 ```bash
 npx @ifi/pi-man
 ```
 
-This registers all pi-man packages with pi in one command. Each package is installed separately so pi
-can load extensions with proper module resolution.
-
-### Options
+### From git (latest main)
 
 ```bash
-npx @ifi/pi-man                      # install latest versions (global)
-npx @ifi/pi-man --version 0.2.13     # pin to a specific version
-npx @ifi/pi-man --local              # install to project .pi/settings.json
-npx @ifi/pi-man --remove             # uninstall all pi-man packages from pi
+npx @ifi/pi-man --git
 ```
+
+### From git (specific tag/branch)
+
+```bash
+npx @ifi/pi-man --git --ref v0.2.0
+```
+
+## Options
+
+| Command | Description |
+|---------|-------------|
+| `npx @ifi/pi-man` | Install latest from npm (global) |
+| `npx @ifi/pi-man --git` | Install from git main branch (global) |
+| `npx @ifi/pi-man --git --ref v0.2.0` | Install from git tag/branch |
+| `npx @ifi/pi-man --version 0.2.0` | Install specific npm version |
+| `npx @ifi/pi-man --local` | Install to project `.pi/settings.json` |
+| `npx @ifi/pi-man --remove` | Uninstall all packages |
 
 ## Packages
 
-| Package                       | Contents                                                                                    |
-| ----------------------------- | ------------------------------------------------------------------------------------------- |
-| `@ifi/pi-man-extensions`      | git-guard, auto-session, custom-footer, compact-header, auto-update, bg-process, watchdog |
-| `@ifi/pi-man-ant-colony`      | Multi-agent swarm extension (`/colony`, colony commands)                                     |
-| `@ifi/pi-extension-subagents` | Subagent orchestration extension (`subagent`, `subagent_status`, `/run`, `/chain`, `/parallel`) |
-| `@ifi/pi-plan`                | Planning mode extension (`/plan`, `Alt+P`, `task_agents`, `set_plan`)                       |
-| `@ifi/pi-spec`                | Native spec-driven workflow package with `/spec` and local `.specify/` scaffolding          |
-| `@ifi/pi-man-prompts`          | review, fix, explain, refactor, test, commit, pr, and more                                  |
-| `@ifi/pi-man-skills`          | web-search, debug-helper, git-workflow, rust-workspace-bootstrap, and more                  |
-| `@ifi/pi-man-agents`          | AGENTS.md templates for common roles                                                        |
+| Package | Contents |
+|---------|----------|
+| `@ifi/pi-man-extensions` | git-guard, auto-session, custom-footer, compact-header, auto-update, bg-process, watchdog |
+| `@ifi/pi-man-crews` | Multi-agent crew extension (`/crew`, status commands) |
+| `@ifi/pi-extension-subagents` | Subagent orchestration (`/run`, `/chain`, `/parallel`) |
+| `@ifi/pi-plan` | Planning mode (`/plan`, `Alt+P`) |
+| `@ifi/pi-spec` | Spec-driven workflow (`/spec`) |
+| `@ifi/pi-man-prompts` | review, fix, explain, test, commit, pr, etc. |
+| `@ifi/pi-man-skills` | web-search, debug-helper, git-workflow, etc. |
+| `@ifi/pi-man-agents` | AGENTS.md templates |
 
 ## Getting Started
 

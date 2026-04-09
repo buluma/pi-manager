@@ -4,8 +4,9 @@
  * pi-man installer — registers all pi-man sub-packages with pi.
  *
  * Usage:
- *   npx @ifi/pi-man              # install latest versions
- *   npx @ifi/pi-man --version 0.2.13  # install a specific version
+ *   npx @ifi/pi-man              # install latest from npm
+ *   npx @ifi/pi-man --git        # install from git (main branch)
+ *   npx @ifi/pi-man --git --ref v0.2.0  # install from git (specific tag/branch)
  *   npx @ifi/pi-man --local      # install to project .pi/settings.json
  *   npx @ifi/pi-man --remove     # uninstall all pi-man packages from pi
  */
@@ -26,12 +27,17 @@ const PACKAGES = [
 	"@ifi/pi-man-agents",
 ];
 
+const GIT_BASE = "https://github.com/buluma/pi-man.git";
+const GIT_PREFIX = "https://github.com/buluma/pi-man.git#";
+
 function parseArgs(argv) {
 	const args = argv.slice(2);
 	let version = null;
 	let local = false;
 	let remove = false;
 	let help = false;
+	let useGit = false;
+	let gitRef = null;
 
 	for (let i = 0; i < args.length; i++) {
 		const arg = args[i];
@@ -39,6 +45,14 @@ function parseArgs(argv) {
 			version = args[++i] ?? null;
 			if (!version) {
 				console.error("Error: --version requires a value");
+				process.exit(1);
+			}
+		} else if (arg === "--git" || arg === "-g") {
+			useGit = true;
+		} else if (arg === "--ref") {
+			gitRef = args[++i] ?? null;
+			if (!gitRef) {
+				console.error("Error: --ref requires a value");
 				process.exit(1);
 			}
 		} else if (arg === "--local" || arg === "-l") {
@@ -53,7 +67,7 @@ function parseArgs(argv) {
 		}
 	}
 
-	return { version, local, remove, help };
+	return { version, local, remove, help, useGit, gitRef };
 }
 
 function printHelp() {
@@ -61,13 +75,16 @@ function printHelp() {
 pi-man — install all pi-man packages into pi
 
 Usage:
-  npx @ifi/pi-man                    Install latest versions (global)
-  npx @ifi/pi-man --version 0.2.11   Install a specific version
+  npx @ifi/pi-man                    Install latest versions from npm (global)
+  npx @ifi/pi-man --git              Install from git main branch (global)
+  npx @ifi/pi-man --git --ref v0.2.0 Install from git tag/branch (global)
   npx @ifi/pi-man --local            Install to project (.pi/settings.json)
   npx @ifi/pi-man --remove           Uninstall all pi-man packages from pi
 
 Options:
-  -v, --version <ver>   Pin all packages to a specific version
+  -g, --git          Install from git instead of npm
+      --ref <ref>    Git ref (tag/branch) when using --git
+  -v, --version <ver>   Pin npm packages to a specific version
   -l, --local           Install project-locally instead of globally
   -r, --remove          Remove all pi-man packages from pi
   -h, --help            Show this help
@@ -116,6 +133,12 @@ function run(pi, command, args, { label }) {
 	return true;
 }
 
+function getGitSource(pkg) {
+	const subpath = pkg.replace("@ifi/", "packages/");
+	const ref = gitRef ? `:${gitRef}` : ":main";
+	return `${GIT_PREFIX}${ref}/${subpath}`;
+}
+
 const opts = parseArgs(process.argv);
 
 if (opts.help) {
@@ -123,10 +146,12 @@ if (opts.help) {
 	process.exit(0);
 }
 
-const pi = findPi();
-const localFlag = opts.local ? ["-l"] : [];
+const { local, remove, useGit, gitRef } = opts;
 
-if (opts.remove) {
+const pi = findPi();
+const localFlag = local ? ["-l"] : [];
+
+if (remove) {
 	console.log("\n🐜 Removing pi-man packages from pi...\n");
 	let failures = 0;
 	for (const pkg of PACKAGES) {
@@ -137,10 +162,31 @@ if (opts.remove) {
 	process.exit(failures > 0 ? 1 : 0);
 }
 
-const suffix = opts.version ? `@${opts.version}` : "";
-const scope = opts.local ? "project" : "global";
+const scope = local ? "project" : "global";
 
-console.log(`\n🐜 Installing pi-man packages into pi (${scope})...\n`);
+if (useGit) {
+	const refText = gitRef ? ` (ref: ${gitRef})` : " (main branch)";
+	console.log(`\n🐜 Installing pi-man packages from git into pi (${scope})${refText}...\n`);
+
+	let failures = 0;
+	for (const pkg of PACKAGES) {
+		const source = getGitSource(pkg);
+		const ok = run(pi, "install", [source, ...localFlag], { label: pkg });
+		if (!ok) failures++;
+	}
+
+	if (failures === 0) {
+		console.log("\n✅ All pi-man packages installed from git. Restart pi to load them.");
+	} else {
+		console.log(`\n⚠️  ${failures} package(s) failed to install. Check the errors above.`);
+	}
+	process.exit(failures > 0 ? 1 : 0);
+}
+
+const { version } = opts;
+const suffix = version ? `@${version}` : "";
+
+console.log(`\n🐜 Installing pi-man packages from npm into pi (${scope})...\n`);
 
 let failures = 0;
 for (const pkg of PACKAGES) {

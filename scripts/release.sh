@@ -61,7 +61,7 @@ if [[ -z "$DRY_RUN" ]]; then
   echo ""
   echo "✅ Release complete!"
   echo "   Version: $(knope get-version)"
-  echo "   Check: https://github.com/ifiokjr/oh-pi/releases"
+  echo "   Check: https://github.com/bulu,a/pi-man/releases"
 else
   echo ""
   echo "✅ Dry run complete — no changes made."
