@@ -2,12 +2,12 @@
 default: patch
 ---
 
-Improve error reporting and robustness for ant colony and subagent swarms.
+Improve error reporting and robustness for ant crew and subagent swarms.
 
-**Ant Colony:**
-- Fix nest lock file crash (`ENOENT`) when colony storage directory is cleaned up mid-run — the lock now recreates the directory instead of crashing
+**Ant Crew:**
+- Fix nest lock file crash (`ENOENT`) when crew storage directory is cleaned up mid-run — the lock now recreates the directory instead of crashing
 - Expand error messages from 80–120 chars to 200–500+ chars across queen, spawner, index, and ui
-- Include full stack traces in colony crash reports and task failure records
+- Include full stack traces in crew crash reports and task failure records
 - Surface task failures via `emitSignal` so they appear in the TUI instead of being silently swallowed
 - Include validation issues and scout intelligence in plan recovery failure messages
 - Budget-exceeded messages now report how many tasks completed before the limit

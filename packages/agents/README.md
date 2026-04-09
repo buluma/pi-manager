@@ -7,7 +7,7 @@ This package contains reusable agent profile templates such as:
 - `fullstack-developer`
 - `security-researcher`
 - `data-ai-engineer`
-- `colony-operator`
+- `crew-operator`
 
 ## What this package is for
 

@@ -6,7 +6,7 @@
 
 **Une seule commande pour booster [pi-coding-agent](https://github.com/badlogic/pi-mono).**
 
-Comme oh-my-zsh pour pi — mais avec une colonie de fourmis autonome.
+Comme oh-my-zsh pour pi — mais avec une équipe de fourmis autonome.
 
 [![npm](https://img.shields.io/npm/v/oh-pi)](https://www.npmjs.com/package/oh-pi)
 [![license](https://img.shields.io/npm/l/oh-pi)](./LICENSE)
@@ -39,15 +39,15 @@ Déjà configuré ? oh-pi détecte les fichiers existants et propose une **sauve
 
 pi-coding-agent est puissant par défaut, mais la configuration manuelle (fournisseurs, thèmes,
 extensions, skills, prompts) prend du temps. oh-pi compresse cette phase en moins d'une minute —
-puis ajoute la colonie pour les tâches complexes.
+puis ajoute la équipe pour les tâches complexes.
 
 - [`docs/DEMO-SCRIPT.md`](./docs/DEMO-SCRIPT.md) — démo rapide en 2 minutes
 - [`ROADMAP.md`](./ROADMAP.md) — positionnement, jalons, métriques
 - [`DECISIONS.md`](./DECISIONS.md) — décisions produit et compromis techniques
 
-## Quand ne pas utiliser la colonie
+## Quand ne pas utiliser la équipe
 
-Utilisez le flux pi classique (sans colonie) si la tâche est petite, très exploratoire, ou nécessite
+Utilisez le flux pi classique (sans équipe) si la tâche est petite, très exploratoire, ou nécessite
 un pilotage humain continu.
 
 ## Ce que vous obtenez
@@ -58,7 +58,7 @@ un pilotage humain continu.
 ├── settings.json        Modèle, thème, niveau de réflexion
 ├── keybindings.json     Raccourcis Vim/Emacs (optionnel)
 ├── AGENTS.md            Directives IA par rôle
-├── extensions/          8 extensions (7 par défaut + colonie)
+├── extensions/          8 extensions (7 par défaut + équipe)
 │   ├── safe-guard       Confirmation des commandes dangereuses + protection des chemins
 │   ├── git-guard        Points de contrôle stash auto + alerte dépôt sale
 │   ├── auto-session     Nommage de session depuis le premier message
@@ -66,7 +66,7 @@ un pilotage humain continu.
 │   ├── compact-header   Informations de démarrage simplifiées
 │   ├── auto-update      Vérification des mises à jour au lancement
 │   ├── bg-process       ⏳ **Bg Process** — Mise en arrière-plan automatique des commandes longues (serveurs dev, etc.)
-│   └── ant-colony/      🐜 Essaim multi-agents autonome (optionnel)
+│   └── crews/      🐜 Essaim multi-agents autonome (optionnel)
 ├── prompts/             10 modèles (/review /fix /commit /test ...)
 ├── skills/              11 compétences (outils + design UI + workflows)
 └── themes/              6 thèmes personnalisés
@@ -84,9 +84,9 @@ un pilotage humain continu.
 
 |                | Inclut                                   |
 | -------------- | ---------------------------------------- |
-| 🟢 **Complet** | Extensions recommandées + colonie + bg-process (`safe-guard` reste optionnel) |
+| 🟢 **Complet** | Extensions recommandées + équipe + bg-process (`safe-guard` reste optionnel) |
 | 🔵 **Propre**  | Aucune extension                         |
-| 🟣 **Colonie** | Colonie uniquement                       |
+| 🟣 **Équipe** | Équipe uniquement                       |
 
 ### Fournisseurs
 
@@ -95,7 +95,7 @@ Anthropic · OpenAI · Google Gemini · Groq · OpenRouter · xAI · Mistral ·
 
 Détection automatique des clés API depuis les variables d'environnement.
 
-## 🐜 Colonie de fourmis
+## 🐜 Équipe de fourmis
 
 La fonctionnalité phare. Un essaim multi-agents modelé sur l'écologie réelle des fourmis —
 profondément intégré au SDK pi.
@@ -117,7 +117,7 @@ Chaque fourmi est une `AgentSession` in-process (SDK pi), pas un sous-processus 
 
 ```
 pi (processus principal)
-  └─ ant_colony tool
+  └─ ant_crew tool
        └─ queen.ts → runColony()
             └─ spawnAnt() → createAgentSession()
                  ├─ session.subscribe() → flux de tokens en temps réel
@@ -125,21 +125,21 @@ pi (processus principal)
                  └─ Auth et registre de modèles partagés
 ```
 
-**Mode interactif :** La colonie tourne en arrière-plan — vous continuez à discuter. Un widget en
+**Mode interactif :** La équipe tourne en arrière-plan — vous continuez à discuter. Un widget en
 temps réel affiche la progression, et les résultats sont auto-injectés à la fin.
 
-**Mode print (`pi -p`) :** La colonie tourne de manière synchrone, bloque jusqu'à la fin.
+**Mode print (`pi -p`) :** La équipe tourne de manière synchrone, bloque jusqu'à la fin.
 
 ### Pourquoi des fourmis ?
 
-Les vraies colonies de fourmis résolvent des problèmes complexes sans contrôle central. Chaque
-fourmi suit des règles simples, communique par **pistes de phéromones**, et la colonie
+Les vraies équipes de fourmis résolvent des problèmes complexes sans contrôle central. Chaque
+fourmi suit des règles simples, communique par **pistes de phéromones**, et la équipe
 s'auto-organise. oh-pi reproduit directement ce modèle :
 
 | Fourmis réelles                      | oh-pi                                                     |
 | ------------------------------------ | --------------------------------------------------------- |
 | L'éclaireuse trouve la nourriture    | L'éclaireuse scanne le code, identifie les cibles         |
-| Piste de phéromones                  | `.ant-colony/pheromone.jsonl` — découvertes partagées     |
+| Piste de phéromones                  | `.crews/pheromone.jsonl` — découvertes partagées     |
 | L'ouvrière transporte la nourriture  | L'ouvrière exécute la tâche sur les fichiers assignés     |
 | Le soldat garde le nid               | Le soldat révise les changements, demande des corrections |
 | Plus de nourriture → plus de fourmis | Plus de tâches → concurrence plus élevée (auto-adaptée)   |
@@ -147,23 +147,23 @@ s'auto-organise. oh-pi reproduit directement ce modèle :
 
 ### UI en temps réel
 
-En mode interactif, la colonie affiche la progression en direct :
+En mode interactif, la équipe affiche la progression en direct :
 
 - **Barre de statut** — footer compact avec métriques réelles : tâches terminées, fourmis actives,
   appels d'outils, tokens de sortie, coût, durée
 - **Ctrl+Shift+A** — panneau de détails en overlay avec liste des tâches, flux des fourmis actives
-  et journal de la colonie
+  et journal de la équipe
 - **Notification** — résumé à la fin
 
-Utilisez `/colony-stop` pour arrêter une colonie en cours.
+Utilisez `/crew-stop` pour arrêter une équipe en cours.
 
 ### Protocole de signaux
 
-La colonie communique via des signaux structurés, pour éviter toute supposition côté modèle :
+La équipe communique via des signaux structurés, pour éviter toute supposition côté modèle :
 
 | Signal                            | Signification                                    |
 | --------------------------------- | ------------------------------------------------ |
-| `COLONY_SIGNAL:LAUNCHED`          | Colonie démarrée en arrière-plan                 |
+| `COLONY_SIGNAL:LAUNCHED`          | Équipe démarrée en arrière-plan                 |
 | `COLONY_SIGNAL:SCOUTING`          | Vague d'éclaireuses en exploration/planification |
 | `COLONY_SIGNAL:PLANNING_RECOVERY` | Boucle de récupération du plan en cours          |
 | `COLONY_SIGNAL:WORKING`           | Exécution des tâches par les ouvrières           |
@@ -181,7 +181,7 @@ Chaque fourmi a un budget strict de tours pour éviter les exécutions incontrô
 
 ### Sélection des modèles
 
-La colonie détecte automatiquement les modèles disponibles et laisse le LLM choisir le meilleur par
+La équipe détecte automatiquement les modèles disponibles et laisse le LLM choisir le meilleur par
 rôle :
 
 | Rôle       | Stratégie                                  | Exemple                           |
@@ -194,21 +194,21 @@ Omettez les modèles pour utiliser le modèle de session actuel pour chaque four
 
 ### Rapport de coûts
 
-La colonie suit le coût par fourmi et le total, rapporté dans le résumé final. **Le coût
+La équipe suit le coût par fourmi et le total, rapporté dans le résumé final. **Le coût
 n'interrompt jamais l'exécution** — les limites de tours et le contrôle de concurrence gèrent les
 ressources.
 
 ### Déclenchement automatique
 
-Le LLM décide quand déployer la colonie. Vous n'avez pas à y penser :
+Le LLM décide quand déployer la équipe. Vous n'avez pas à y penser :
 
-- **≥3 fichiers** à modifier → colonie
-- **Flux parallèles** possibles → colonie
-- **Un seul fichier** → exécution directe (pas de surcharge colonie)
+- **≥3 fichiers** à modifier → équipe
+- **Flux parallèles** possibles → équipe
+- **Un seul fichier** → exécution directe (pas de surcharge équipe)
 
 ### Concurrence adaptative
 
-La colonie trouve automatiquement le parallélisme optimal pour votre machine :
+La équipe trouve automatiquement le parallélisme optimal pour votre machine :
 
 ```
 Démarrage à froid  →  ceil(max/2) fourmis (démarrage rapide)
@@ -271,7 +271,7 @@ pi charge la compétence liquid-glass → applique les tokens --lg-, effets de v
 | `quick-setup`  | Détecter le type de projet, générer la config .pi/   |
 | `debug-helper` | Analyse d'erreurs, interprétation de logs, profilage |
 | `git-workflow` | Branches, commits, PRs, résolution de conflits       |
-| `ant-colony`   | Commandes et stratégies de gestion de colonie        |
+| `crews`   | Commandes et stratégies de gestion de équipe        |
 
 ## Thèmes
 
@@ -307,7 +307,7 @@ pi charge la compétence liquid-glass → applique les tokens --lg-, effets de v
 | Développeur full-stack  | Frontend + backend + BDD          |
 | Chercheur en sécurité   | Pentest & audit                   |
 | Ingénieur Data & IA     | MLOps & pipelines                 |
-| 🐜 Opérateur de colonie | Orchestration multi-agents        |
+| 🐜 Opérateur de équipe | Orchestration multi-agents        |
 
 ## Aussi un paquet Pi
 

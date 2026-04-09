@@ -1,17 +1,17 @@
-# 🐜 Oh-Pi Colony Biomimicry Architecture — Deep Analysis Report
+# 🐜 Oh-Pi Crew Biomimicry Architecture — Deep Analysis Report
 
 > Generated: 2026-02-16 14:14 GMT+8 (revised, verified line-by-line against source) Written from
-> scout intelligence | ant-colony worker output
+> scout intelligence | ant-crew worker output
 
 ---
 
 ## Table of Contents
 
 1. [Project Architecture Overview](#1-project-architecture-overview)
-2. [Colony Biomimicry Mapping](#2-colony-biomimicry-mapping)
+2. [Crew Biomimicry Mapping](#2-crew-biomimicry-mapping)
 3. [Simple Rules → Emergent Intelligence: Feasibility Assessment](#3-simple-rules--emergent-intelligence-feasibility-assessment)
 4. [Specific Improvement Suggestions](#4-specific-improvement-suggestions)
-5. [Risk Points & Non-Colony Parts to Preserve](#5-risk-points--non-colony-parts-to-preserve)
+5. [Risk Points & Non-Crew Parts to Preserve](#5-risk-points--non-crew-parts-to-preserve)
 
 ---
 
@@ -22,7 +22,7 @@
 | Layer                  | Modules         | Key Files                                                        | Total Lines |
 | ---------------------- | --------------- | ---------------------------------------------------------------- | ----------- |
 | `src/` core            | 16              | bin(1) + index + types + i18n + utils(3) + tui(9)                | ~1,731      |
-| `ant-colony` extension | 7 (incl. index) | types + nest + queen + spawner + concurrency + deps + index      | ~2,373      |
+| `ant-crew` extension | 7 (incl. index) | types + nest + queen + spawner + concurrency + deps + index      | ~2,373      |
 | `pi-package` resources | 40              | extensions(9) + agents(5) + prompts(10) + skills(10) + themes(6) | —           |
 
 ### 1.2 Data Flow
@@ -35,18 +35,18 @@ User input ──▶ queen decomposes tasks ──▶ spawner hatches ants ─�
 
 ---
 
-## 2. Colony Biomimicry Mapping
+## 2. Crew Biomimicry Mapping
 
-### 2.1 Module → Colony Role Mapping
+### 2.1 Module → Crew Role Mapping
 
-| Module             | Colony Role        | Mapping Rationale                                                                |
+| Module             | Crew Role        | Mapping Rationale                                                                |
 | ------------------ | ------------------ | -------------------------------------------------------------------------------- |
 | **queen.ts**       | 🐜 Queen           | Task decomposition hub, sub-task injection into nest, triggers re-exploration    |
 | **nest.ts**        | 🏠 Nest            | Pheromone JSONL storage & decay (10-min half-life), ε-greedy weighted scheduling |
 | **spawner.ts**     | 🥚 Nursery         | Hatches scout/worker/soldier/drone per task type via pi SDK                      |
 | **concurrency.ts** | 🚦 Traffic Control | Exploration/steady-state dual-phase adaptive concurrency                         |
 | **deps.ts**        | 🗺️ Scout Map       | Import graph construction, file lock dependency awareness                        |
-| **types.ts**       | 📜 DNA             | Global interface definitions, defines colony behavior boundaries                 |
+| **types.ts**       | 📜 DNA             | Global interface definitions, defines crew behavior boundaries                 |
 
 ### 2.2 Ant Lifecycle Mapping
 
@@ -73,7 +73,7 @@ Lifecycle: task assignment → pheromone read → execute → pheromone write �
 
 | Mechanism                         | Location             | Simple Rule                                                       | Emergent Effect                                                     | Maturity |
 | --------------------------------- | -------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------- | -------- |
-| **Pheromone-weighted scheduling** | nest.ts              | Read JSONL → sort by weight → ε-greedy select                     | Colony auto-focuses on high-value areas; 10% random avoids crowding | ⭐⭐⭐⭐ |
+| **Pheromone-weighted scheduling** | nest.ts              | Read JSONL → sort by weight → ε-greedy select                     | Crew auto-focuses on high-value areas; 10% random avoids crowding | ⭐⭐⭐⭐ |
 | **Negative pheromone penalty**    | nest.ts              | warning ×2 / repellent ×3 penalty                                 | Failed paths auto-avoided by subsequent ants                        | ⭐⭐⭐   |
 | **Recursive sub-task spawning**   | spawner.ts, queen.ts | Ant output → parseSubTasks → inject into nest                     | Complex problems auto-decomposed                                    | ⭐⭐⭐⭐ |
 | **Adaptive concurrency**          | concurrency.ts       | Exploration high → steady-state converge → CPU/memory hard limits | Resource utilization auto-optimized                                 | ⭐⭐⭐   |
@@ -85,7 +85,7 @@ Lifecycle: task assignment → pheromone read → execute → pheromone write �
 **What's already in place (+):**
 
 1. **Pheromone mechanism is live** — JSONL append-write + 10-min half-life decay. This is the core
-   of ant colony optimization. Time decay prevents the system from being locked by stale info,
+   of ant crew optimization. Time decay prevents the system from being locked by stale info,
    mapping to the ACO evaporation coefficient ρ.
 
 2. **Negative pheromones implemented** — warning type penalty ×2, repellent type penalty ×3. Failed
@@ -101,7 +101,7 @@ Lifecycle: task assignment → pheromone read → execute → pheromone write �
 5. **Dependency-aware conflict prevention** — deps.ts import graph + file lock mechanism, equivalent
    to ant "territory marking," preventing multiple ants from modifying the same file.
 
-6. **Dual-phase concurrency** — Exploration/steady-state switching models real ant colony
+6. **Dual-phase concurrency** — Exploration/steady-state switching models real ant crew
    foraging/hauling behavior mode switching, with CPU/memory hard constraints.
 
 **What's missing (−):**
@@ -122,7 +122,7 @@ Lifecycle: task assignment → pheromone read → execute → pheromone write �
 ### 3.4 Gap Matrix vs Real Ant Colonies
 
 ```
-Real Colony Feature          Current Implementation             Gap
+Real Crew Feature          Current Implementation             Gap
 ────────────────────────────────────────────────────────────────────
 Pheromone deposit/evaporate  ✅ JSONL + 10-min half-life        Small
 Negative pheromone (danger)  ✅ warning×2 + repellent×3         Small
@@ -197,13 +197,13 @@ Proposed (decentralized):
 | Improvement             | Priority | Description                                                               |
 | ----------------------- | -------- | ------------------------------------------------------------------------- |
 | types.ts split          | P2       | 144 lines of all types — split into `task.ts` + `ant.ts` + `pheromone.ts` |
-| drone async             | P2       | execSync → spawn + Promise, maintain colony's async nature                |
+| drone async             | P2       | execSync → spawn + Promise, maintain crew's async nature                |
 | Pheromone visualization | P3       | TUI panel showing real-time pheromone concentration heatmap               |
 | Ant log standardization | P3       | Unified `[caste:id] action → result` format                               |
 
 ---
 
-## 5. Risk Points & Non-Colony Parts to Preserve
+## 5. Risk Points & Non-Crew Parts to Preserve
 
 ### 5.1 High Risk Points
 
@@ -218,7 +218,7 @@ escaping, optional Docker sandbox.
 No adapter layer. SDK version upgrades could cause widespread breakage. Recommendation: add
 pi-adapter.ts abstraction layer.
 
-### 5.2 Parts to Preserve (NOT Colony-ize)
+### 5.2 Parts to Preserve (NOT Crew-ize)
 
 | Module                     | Reason to Preserve                                                                                                         |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -229,7 +229,7 @@ pi-adapter.ts abstraction layer.
 | **pi-package/prompts/\***  | Predefined text templates — should stay human-curated, not auto-generated.                                                 |
 | **src/utils/detect.ts**    | Environment detection needs deterministic results.                                                                         |
 
-### 5.3 Colony Boundary Recommendation
+### 5.3 Crew Boundary Recommendation
 
 ```
                     ┌─────────────────────┐
@@ -242,7 +242,7 @@ pi-adapter.ts abstraction layer.
                              │ calls
                              ▼
                     ┌─────────────────────┐
-                    │  Colony Layer       │
+                    │  Crew Layer       │
                     │  (enhance)          │
                     │  queen nest spawner │
                     │  concurrency deps   │
@@ -265,7 +265,7 @@ pi-adapter.ts abstraction layer.
 
 | Metric                | Value                                          |
 | --------------------- | ---------------------------------------------- |
-| ant-colony total code | ~2,373 lines                                   |
+| ant-crew total code | ~2,373 lines                                   |
 | Largest single file   | index.ts (627 ln), queen.ts (617 ln)           |
 | Pheromone half-life   | 10 minutes                                     |
 | Ant castes            | scout, worker, soldier, drone                  |
@@ -277,5 +277,5 @@ pi-adapter.ts abstraction layer.
 
 ---
 
-_This report was auto-generated by colony worker ants, based on scout intelligence._ _To update,
+_This report was auto-generated by crew worker ants, based on scout intelligence._ _To update,
 dispatch new scouts for fresh reconnaissance._
