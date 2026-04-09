@@ -1,0 +1,59 @@
+{
+  "name": "@ifi/oh-pi-cli",
+  "version": "0.4.4",
+  "description": "Interactive TUI configurator for pi-coding-agent.",
+  "type": "module",
+  "bin": {
+    "oh-pi": "dist/bin/oh-pi.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "node -e \"import('node:fs').then(fs => fs.rmSync('dist',{ recursive: true, force: true }))\"",
+    "build": "pnpm clean && tsc -b",
+    "build:fast": "pnpm clean && tsgo --project tsconfig.json",
+    "typecheck": "tsgo --project tsconfig.json --noEmit",
+    "start": "node dist/bin/oh-pi.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^1.1.0",
+    "@ifi/oh-pi-agents": "workspace:*",
+    "@ifi/oh-pi-ant-colony": "workspace:*",
+    "@ifi/oh-pi-core": "workspace:*",
+    "@ifi/oh-pi-extensions": "workspace:*",
+    "@ifi/oh-pi-prompts": "workspace:*",
+    "@ifi/oh-pi-skills": "workspace:*",
+    "@ifi/oh-pi-themes": "workspace:*",
+    "@ifi/pi-extension-subagents": "workspace:*",
+    "@ifi/pi-plan": "workspace:*",
+    "@ifi/pi-shared-qna": "workspace:*",
+    "@ifi/pi-spec": "workspace:*",
+    "chalk": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "pi",
+    "pi-coding-agent",
+    "oh-pi",
+    "cli",
+    "tui",
+    "configuration",
+    "installer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/cli",
+  "bugs": {
+    "url": "https://github.com/ifiokjr/oh-pi/issues"
+  }
+}

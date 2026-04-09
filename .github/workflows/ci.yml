@@ -1,0 +1,337 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  commit-lint:
+    name: Conventional Commits
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Validate commit messages
+        run: |
+          # Conventional commit pattern: type(scope)?: description
+          PATTERN='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .+'
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE_SHA='${{ github.event.pull_request.base.sha }}'
+            HEAD_SHA='${{ github.event.pull_request.head.sha }}'
+            # Validate only real PR commits (exclude synthetic merge commits from refs/pull/*/merge).
+            COMMITS=$(git log --format='%s' --no-merges "${BASE_SHA}..${HEAD_SHA}")
+          else
+            # On push, check only the head commit
+            COMMITS=$(git log --format='%s' -1)
+          fi
+
+          FAILED=0
+          while IFS= read -r msg; do
+            [ -z "$msg" ] && continue
+            if ! echo "$msg" | grep -qE "$PATTERN"; then
+              echo "::error::Invalid commit message: '$msg'"
+              echo "  Must match: type(scope)?: description"
+              echo "  Types: feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
+              FAILED=1
+            fi
+          done <<< "$COMMITS"
+
+          if [ "$FAILED" -eq 1 ]; then
+            exit 1
+          fi
+          echo "✅ All commit messages follow conventional commits"
+
+  changeset:
+    name: Changeset Check
+    runs-on: ubuntu-latest
+    # Skip for release commits (knope deletes changesets during release)
+    if: "!startsWith(github.event.head_commit.message, 'chore: release')"
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Check for changeset
+        run: |
+          CHANGESETS=$(find .changeset -name '*.md' ! -name 'README.md' 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$CHANGESETS" -eq 0 ]; then
+            echo "::error::No changeset found. Every change must include a changeset."
+            echo ""
+            echo "Run 'knope document-change' locally to create one, then commit the file."
+            echo ""
+            echo "Choose the change type:"
+            echo "  major — Breaking changes"
+            echo "  minor — New features"
+            echo "  patch — Bug fixes, docs, refactors"
+            exit 1
+          fi
+          echo "✅ Found $CHANGESETS changeset(s)"
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+
+          allowed = {"major", "minor", "patch"}
+          failed = False
+
+          for path in sorted(Path(".changeset").glob("*.md")):
+              if path.name == "README.md":
+                  continue
+
+              text = path.read_text(encoding="utf-8")
+              if not text.startswith("---\n"):
+                  print(f"::error file={path}::Missing opening frontmatter delimiter '---'")
+                  failed = True
+                  continue
+
+              try:
+                  _, frontmatter, _ = text.split("---", 2)
+              except ValueError:
+                  print(f"::error file={path}::Invalid changeset frontmatter")
+                  failed = True
+                  continue
+
+              entries = []
+              invalid_lines = []
+              for raw_line in frontmatter.strip().splitlines():
+                  line = raw_line.strip()
+                  if not line:
+                      continue
+                  if ":" not in line:
+                      invalid_lines.append(raw_line)
+                      continue
+                  key, value = line.split(":", 1)
+                  key = key.strip().strip('"').strip("'")
+                  entries.append((key, value.strip()))
+
+              if invalid_lines:
+                  print(f"::error file={path}::Invalid frontmatter line(s): {' | '.join(invalid_lines)}")
+                  failed = True
+                  continue
+
+              if len(entries) != 1 or entries[0][0] != "default":
+                  found = ", ".join(key for key, _ in entries) or "(none)"
+                  print(
+                      f"::error file={path}::This repo uses lockstep knope versioning. "
+                      f"Changesets must use exactly one frontmatter key: default. Found: {found}"
+                  )
+                  failed = True
+                  continue
+
+              change_type = entries[0][1]
+              if change_type not in allowed:
+                  print(
+                      f"::error file={path}::Unsupported change type '{change_type}'. "
+                      "Use one of: major, minor, patch"
+                  )
+                  failed = True
+
+          if failed:
+              print("Changeset frontmatter must be:\n---\ndefault: patch|minor|major\n---")
+              sys.exit(1)
+
+          print("✅ All changesets use lockstep default frontmatter")
+          PY
+
+  dependency-review:
+    name: Dependency Review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Check dependency graph availability
+        id: dependency-graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          OWNER="${REPOSITORY%/*}"
+          REPO="${REPOSITORY#*/}"
+          TOTAL_COUNT="$(gh api graphql \
+            -f query='query($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { dependencyGraphManifests(first: 1) { totalCount } } }' \
+            -F owner="$OWNER" \
+            -F name="$REPO" \
+            --jq '.data.repository.dependencyGraphManifests.totalCount')"
+
+          echo "total-count=$TOTAL_COUNT" >> "$GITHUB_OUTPUT"
+
+          if [ "$TOTAL_COUNT" -gt 0 ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "✅ Dependency graph is available ($TOTAL_COUNT manifest(s) indexed)"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Skipping dependency review because GitHub dependency graph manifests are unavailable for this repository. Enable Dependency graph in repository settings to enforce this check."
+          fi
+
+      - name: Review dependency changes
+        if: steps.dependency-graph.outputs.available == 'true'
+        uses: actions/dependency-review-action@v4.9.0
+        with:
+          fail-on-severity: moderate
+
+  docs:
+    name: Documentation Reuse (MDT)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Check synchronized documentation blocks
+        run: pnpm mdt check
+
+  security:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Dependency allowlist + vulnerability audit
+        run: pnpm security:check
+
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Biome check (lint + format, warnings fail)
+        run: pnpm exec biome ci --error-on-warnings .
+
+  typecheck:
+    name: Type Check (tsgo)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build core (required for CLI type resolution)
+        run: pnpm --filter @ifi/oh-pi-core build
+
+      - name: Type check with tsgo
+        run: pnpm typecheck
+
+  test:
+    name: Test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build core (required for CLI test resolution)
+        run: pnpm --filter @ifi/oh-pi-core build
+
+      - name: Run tests
+        run: pnpm test
+
+  compat:
+    name: Compatibility (pi ${{ matrix.label }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - label: min-0.56.1
+            version: 0.56.1
+          - label: current-0.64.0
+            version: 0.64.0
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Verify compatibility smoke suite
+        run: pnpm verify:pi-compat -- --version ${{ matrix.version }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [commit-lint, changeset, docs, security, lint, typecheck, test, compat]
+    # Run build even if changeset was skipped (release commits)
+    if: "!failure() && !cancelled()"
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - uses: pnpm/action-setup@v4.4.0
+
+      - uses: actions/setup-node@v6.3.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm build
+
+      - name: Verify dist output
+        run: |
+          test -f packages/core/dist/index.js || (echo "core dist/index.js missing" && exit 1)
+          test -f packages/cli/dist/index.js || (echo "cli dist/index.js missing" && exit 1)
+          test -f packages/cli/dist/bin/oh-pi.js || (echo "cli dist/bin/oh-pi.js missing" && exit 1)
+          test -f packages/web-client/dist/index.js || (echo "web-client dist/index.js missing" && exit 1)
+          test -f packages/web-server/dist/index.js || (echo "web-server dist/index.js missing" && exit 1)
+
+      - name: Verify compiled tarballs exclude test artifacts
+        run: pnpm verify:compiled-tarballs
+
+      - name: Verify all published packages pack successfully
+        run: pnpm verify:published-packages
