@@ -7,3 +7,4 @@ dist/
 
 # npm lockfile (migrated to pnpm)
 package-lock.json
+.env
