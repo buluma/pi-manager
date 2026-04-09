@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
-import { type OhPConfig, resolvePiAgentDir } from "@ifi/pi-man-core";
+import { type OhPConfig, resolvePiAgentDir } from "@buluma/pi-man-core";
 import {
 	writeAgents,
 	writeExtensions,

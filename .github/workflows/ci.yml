@@ -249,7 +249,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build core (required for CLI type resolution)
-        run: pnpm --filter @ifi/pi-man-core build
+        run: pnpm --filter @buluma/pi-man-core build
 
       - name: Type check with tsgo
         run: pnpm typecheck
@@ -273,7 +273,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build core (required for CLI test resolution)
-        run: pnpm --filter @ifi/pi-man-core build
+        run: pnpm --filter @buluma/pi-man-core build
 
       - name: Run tests
         run: pnpm test

@@ -11,7 +11,7 @@ const require = createRequire(import.meta.url);
 
 /**
  * Resolve a subpath within an installed npm package.
- * @param pkg - Package name (e.g. "@ifi/pi-man-skills")
+ * @param pkg - Package name (e.g. "@buluma/pi-man-skills")
  * @param subpath - Relative path within the package (e.g. "skills")
  * @returns Absolute path to the resolved directory/file
  */
@@ -22,15 +22,15 @@ function resolvePackagePath(pkg: string, subpath: string): string {
 
 /** Resource path mapping — resolves paths into installed workspace packages. */
 export const resources = {
-	agent: (name: string) => join(resolvePackagePath("@ifi/pi-man-agents", "agents"), `${name}.md`),
-	extension: (name: string) => join(resolvePackagePath("@ifi/pi-man-extensions", "extensions"), name),
-	extensionFile: (name: string) => join(resolvePackagePath("@ifi/pi-man-extensions", "extensions"), `${name}.ts`),
-	crewsDir: () => resolvePackagePath("@ifi/pi-man-crews", "extensions/crews"),
+	agent: (name: string) => join(resolvePackagePath("@buluma/pi-man-agents", "agents"), `${name}.md`),
+	extension: (name: string) => join(resolvePackagePath("@buluma/pi-man-extensions", "extensions"), name),
+	extensionFile: (name: string) => join(resolvePackagePath("@buluma/pi-man-extensions", "extensions"), `${name}.ts`),
+	crewsDir: () => resolvePackagePath("@buluma/pi-man-crews", "extensions/crews"),
 	planDir: () => resolvePackagePath("@ifi/pi-plan", "."),
 	subagentsDir: () => resolvePackagePath("@ifi/pi-extension-subagents", "."),
 	sharedQnaDir: () => resolvePackagePath("@ifi/pi-shared-qna", "."),
 	specDir: () => resolvePackagePath("@ifi/pi-spec", "extension"),
-	prompt: (name: string) => join(resolvePackagePath("@ifi/pi-man-prompts", "prompts"), `${name}.md`),
-	skill: (name: string) => join(resolvePackagePath("@ifi/pi-man-skills", "skills"), name),
-	skillsDir: () => resolvePackagePath("@ifi/pi-man-skills", "skills"),
+	prompt: (name: string) => join(resolvePackagePath("@buluma/pi-man-prompts", "prompts"), `${name}.md`),
+	skill: (name: string) => join(resolvePackagePath("@buluma/pi-man-skills", "skills"), name),
+	skillsDir: () => resolvePackagePath("@buluma/pi-man-skills", "skills"),
 };

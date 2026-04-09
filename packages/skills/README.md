@@ -1,4 +1,4 @@
-# @ifi/pi-man-skills
+# @buluma/pi-man-skills
 
 On-demand skill packs for pi.
 
@@ -16,13 +16,13 @@ This package bundles reusable skills for common workflows, including areas like:
 ## Install
 
 ```bash
-pi install npm:@ifi/pi-man-skills
+pi install npm:@buluma/pi-man-skills
 ```
 
 Or install the full bundle:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 ## Package layout

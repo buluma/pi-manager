@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/pi-man-crews",
+  "name": "@buluma/pi-man-crews",
   "version": "0.4.4",
   "description": "Autonomous multi-agent crew extension for pi — adaptive concurrency, task dispatch.",
   "type": "module",
@@ -18,7 +18,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@ifi/pi-man-core": "workspace:*"
+    "@buluma/pi-man-core": "workspace:*"
   },
   "scripts": {
     "build": "pnpm run typecheck:worktree && pnpm run test:worktree",

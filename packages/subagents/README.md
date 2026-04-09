@@ -19,7 +19,7 @@ pi install npm:@ifi/pi-extension-subagents
 Or install it as part of the full pi-man bundle:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 Or use the package installer directly:

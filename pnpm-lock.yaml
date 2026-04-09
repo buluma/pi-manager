@@ -58,30 +58,30 @@ importers:
 
   packages/cli:
     dependencies:
+      '@buluma/pi-man-agents':
+        specifier: workspace:*
+        version: link:../agents
+      '@buluma/pi-man-core':
+        specifier: workspace:*
+        version: link:../core
+      '@buluma/pi-man-crews':
+        specifier: workspace:*
+        version: link:../crews
+      '@buluma/pi-man-extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@buluma/pi-man-prompts':
+        specifier: workspace:*
+        version: link:../prompts
+      '@buluma/pi-man-skills':
+        specifier: workspace:*
+        version: link:../skills
       '@clack/prompts':
         specifier: ^1.1.0
         version: 1.1.0
       '@ifi/pi-extension-subagents':
         specifier: workspace:*
         version: link:../subagents
-      '@ifi/pi-man-agents':
-        specifier: workspace:*
-        version: link:../agents
-      '@ifi/pi-man-core':
-        specifier: workspace:*
-        version: link:../core
-      '@ifi/pi-man-crews':
-        specifier: workspace:*
-        version: link:../crews
-      '@ifi/pi-man-extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@ifi/pi-man-prompts':
-        specifier: workspace:*
-        version: link:../prompts
-      '@ifi/pi-man-skills':
-        specifier: workspace:*
-        version: link:../skills
       '@ifi/pi-plan':
         specifier: workspace:*
         version: link:../plan
@@ -106,7 +106,7 @@ importers:
 
   packages/crews:
     dependencies:
-      '@ifi/pi-man-core':
+      '@buluma/pi-man-core':
         specifier: workspace:*
         version: link:../core
       '@mariozechner/pi-agent-core':
@@ -187,24 +187,24 @@ importers:
 
   packages/pi-man:
     dependencies:
+      '@buluma/pi-man-agents':
+        specifier: workspace:*
+        version: link:../agents
+      '@buluma/pi-man-crews':
+        specifier: workspace:*
+        version: link:../crews
+      '@buluma/pi-man-extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@buluma/pi-man-prompts':
+        specifier: workspace:*
+        version: link:../prompts
+      '@buluma/pi-man-skills':
+        specifier: workspace:*
+        version: link:../skills
       '@ifi/pi-extension-subagents':
         specifier: workspace:*
         version: link:../subagents
-      '@ifi/pi-man-agents':
-        specifier: workspace:*
-        version: link:../agents
-      '@ifi/pi-man-crews':
-        specifier: workspace:*
-        version: link:../crews
-      '@ifi/pi-man-extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@ifi/pi-man-prompts':
-        specifier: workspace:*
-        version: link:../prompts
-      '@ifi/pi-man-skills':
-        specifier: workspace:*
-        version: link:../skills
       '@ifi/pi-plan':
         specifier: workspace:*
         version: link:../plan
@@ -266,7 +266,7 @@ importers:
 
   packages/subagents:
     dependencies:
-      '@ifi/pi-man-core':
+      '@buluma/pi-man-core':
         specifier: workspace:*
         version: link:../core
       '@mariozechner/pi-agent-core':

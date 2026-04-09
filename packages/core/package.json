@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/pi-man-core",
+  "name": "@buluma/pi-man-core",
   "version": "0.4.4",
   "description": "Shared types, registries, and i18n for pi-man packages.",
   "type": "module",

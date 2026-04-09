@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/pi-man-agents",
+  "name": "@buluma/pi-man-agents",
   "version": "0.4.4",
   "description": "AGENTS.md templates for pi: general-developer, fullstack, security-researcher, and more.",
   "files": [

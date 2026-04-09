@@ -15,7 +15,7 @@ pi install npm:@ifi/pi-plan
 Or install it as part of the full oh-pi bundle:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 Or use the package installer directly:

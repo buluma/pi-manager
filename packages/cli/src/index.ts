@@ -1,5 +1,5 @@
-import type { OhPConfig } from "@ifi/pi-man-core";
-import { EXTENSIONS, getLocale, selectLanguage } from "@ifi/pi-man-core";
+import type { OhPConfig } from "@buluma/pi-man-core";
+import { EXTENSIONS, getLocale, selectLanguage } from "@buluma/pi-man-core";
 import { runConfigWizard, type WizardBaseConfig } from "./tui/config-wizard.js";
 import { confirmApply } from "./tui/confirm-apply.js";
 import { selectMode } from "./tui/mode-select.js";

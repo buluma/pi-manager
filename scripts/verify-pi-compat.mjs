@@ -86,7 +86,7 @@ try {
 	run("pnpm", ["install", "--no-frozen-lockfile"]);
 	console.log("\nInstalled pi package versions:");
 	readInstalledVersions();
-	run("pnpm", ["--filter", "@ifi/pi-man-core", "build"]);
+	run("pnpm", ["--filter", "@buluma/pi-man-core", "build"]);
 	run("pnpm", ["exec", "vitest", "run", "packages/extensions/extensions/smoke.test.ts", "packages/crews/tests/smoke.test.ts", "packages/subagents/tests/smoke.test.ts", "packages/spec/tests/smoke.test.ts", "packages/cursor/tests/smoke.test.ts", "packages/ollama/tests/smoke.test.ts"]);
 } finally {
 	if (restore) {

@@ -184,10 +184,10 @@ working without leaving runtime state in the repo.
 
 ```bash
 # Install just ant-colony
-pi install npm:@ifi/pi-man-ant-colony
+pi install npm:@buluma/pi-man-ant-colony
 
 # Or install the full oh-pi bundle (includes ant-colony)
-pi install npm:@ifi/pi-man
+pi install npm:@buluma/pi-man
 ```
 
 Then start pi:

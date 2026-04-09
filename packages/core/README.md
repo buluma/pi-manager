@@ -1,15 +1,15 @@
-# @ifi/pi-man-core
+# @buluma/pi-man-core
 
 Shared types, registries, icons, and i18n helpers for pi-man packages.
 
 ## What this package is for
 
-`@ifi/pi-man-core` is an internal library used by other packages in this monorepo. It provides
+`@buluma/pi-man-core` is an internal library used by other packages in this monorepo. It provides
 common building blocks for the CLI and other compiled packages.
 
 ## Typical consumers
 
-- `@ifi/pi-man-cli`
+- `@buluma/pi-man-cli`
 - other first-party pi-man packages that need shared registries or presentation helpers
 
 ## Install
@@ -20,8 +20,8 @@ installation.
 ## Development
 
 ```bash
-pnpm --filter @ifi/pi-man-core build
-pnpm --filter @ifi/pi-man-core typecheck
+pnpm --filter @buluma/pi-man-core build
+pnpm --filter @buluma/pi-man-core typecheck
 ```
 
 ## Exports
@@ -31,7 +31,7 @@ root export.
 
 ## Agent path helpers
 
-`@ifi/pi-man-core` exposes a small set of path helpers for packages that need to resolve the pi
+`@buluma/pi-man-core` exposes a small set of path helpers for packages that need to resolve the pi
 agent directory, extension config locations, and shared workspace-scoped storage paths without
 hardcoding `~/.pi/agent` throughout the codebase.
 

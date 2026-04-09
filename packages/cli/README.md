@@ -1,10 +1,10 @@
-# @ifi/pi-man-cli
+# @buluma/pi-man-cli
 
 Interactive TUI configurator for `pi-coding-agent`.
 
 ## What it does
 
-`@ifi/pi-man-cli` powers the interactive `oh-pi` setup experience. It helps configure:
+`@buluma/pi-man-cli` powers the interactive `oh-pi` setup experience. It helps configure:
 - providers and auth
 - models
 - extensions
@@ -19,13 +19,13 @@ Interactive TUI configurator for `pi-coding-agent`.
 Run the CLI with:
 
 ```bash
-npx @ifi/pi-man-cli
+npx @buluma/pi-man-cli
 ```
 
 Most users will want the meta-installer instead:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 ## Package role
@@ -36,11 +36,11 @@ workspace packages for content and installation targets.
 ## Development
 
 ```bash
-pnpm --filter @ifi/pi-man-cli build
-pnpm --filter @ifi/pi-man-cli typecheck
+pnpm --filter @buluma/pi-man-cli build
+pnpm --filter @buluma/pi-man-cli typecheck
 ```
 
 ## Related packages
 
-- `@ifi/pi-man` — one-command installer
-- `@ifi/pi-man-core` — shared registries and types
+- `@buluma/pi-man` — one-command installer
+- `@buluma/pi-man-core` — shared registries and types

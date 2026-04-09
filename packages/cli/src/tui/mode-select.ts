@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { t } from "@ifi/pi-man-core";
+import { t } from "@buluma/pi-man-core";
 import type { EnvInfo } from "../utils/detect.js";
 
 export type Mode = "quick" | "custom" | "preset";

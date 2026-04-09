@@ -1,7 +1,7 @@
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { OhPConfig } from "@ifi/pi-man-core";
+import type { OhPConfig } from "@buluma/pi-man-core";
 import { afterEach, describe, expect, it } from "vitest";
 import { writeAgents, writeExtensions, writeModelConfig, writeProviderEnv } from "./writers.js";
 

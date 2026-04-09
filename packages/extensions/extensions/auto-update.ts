@@ -111,7 +111,7 @@ export default function (pi: ExtensionAPI) {
 					return;
 				}
 
-				const msg = `pi-man ${latest} available (current: ${current}). Run: npx @ifi/pi-man@latest`;
+				const msg = `pi-man ${latest} available (current: ${current}). Run: npx @buluma/pi-man@latest`;
 				if (ctx.hasUI) {
 					ctx.ui.notify(msg, "info");
 				}

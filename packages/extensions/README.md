@@ -1,4 +1,4 @@
-# @ifi/pi-man-extensions
+# @buluma/pi-man-extensions
 
 Core first-party extensions for pi.
 
@@ -20,13 +20,13 @@ This package includes extensions such as:
 ## Install
 
 ```bash
-pi install npm:@ifi/pi-man-extensions
+pi install npm:@buluma/pi-man-extensions
 ```
 
 Or install the full bundle:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 ## What it provides

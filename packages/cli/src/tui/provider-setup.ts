@@ -1,6 +1,6 @@
 import * as p from "@clack/prompts";
-import type { DiscoveredModel, ProviderConfig, ProviderSetupStrategy } from "@ifi/pi-man-core";
-import { PROVIDERS, t } from "@ifi/pi-man-core";
+import type { DiscoveredModel, ProviderConfig, ProviderSetupStrategy } from "@buluma/pi-man-core";
+import { PROVIDERS, t } from "@buluma/pi-man-core";
 import chalk from "chalk";
 import type { EnvInfo } from "../utils/detect.js";
 

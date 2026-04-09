@@ -1,4 +1,4 @@
-# @ifi/pi-man-prompts
+# @buluma/pi-man-prompts
 
 Prompt templates for pi.
 
@@ -19,13 +19,13 @@ This package contains reusable prompt templates such as:
 ## Install
 
 ```bash
-pi install npm:@ifi/pi-man-prompts
+pi install npm:@buluma/pi-man-prompts
 ```
 
 Or install the full bundle:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
 ## Package layout

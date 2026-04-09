@@ -4,11 +4,11 @@
  * pi-man installer — registers all pi-man sub-packages with pi.
  *
  * Usage:
- *   npx @ifi/pi-man              # install latest from npm
- *   npx @ifi/pi-man --git        # install from git (main branch)
- *   npx @ifi/pi-man --git --ref v0.2.0  # install from git (specific tag/branch)
- *   npx @ifi/pi-man --local      # install to project .pi/settings.json
- *   npx @ifi/pi-man --remove     # uninstall all pi-man packages from pi
+ *   npx @buluma/pi-man              # install latest from npm
+ *   npx @buluma/pi-man --git        # install from git (main branch)
+ *   npx @buluma/pi-man --git --ref v0.2.0  # install from git (specific tag/branch)
+ *   npx @buluma/pi-man --local      # install to project .pi/settings.json
+ *   npx @buluma/pi-man --remove     # uninstall all pi-man packages from pi
  */
 
 import { execFileSync } from "node:child_process";
@@ -17,14 +17,14 @@ import process from "node:process";
 const IS_WINDOWS = process.platform === "win32";
 
 const PACKAGES = [
-	"@ifi/pi-man-extensions",
-	"@ifi/pi-man-crews",
+	"@buluma/pi-man-extensions",
+	"@buluma/pi-man-crews",
 	"@ifi/pi-extension-subagents",
 	"@ifi/pi-plan",
 	"@ifi/pi-spec",
-	"@ifi/pi-man-prompts",
-	"@ifi/pi-man-skills",
-	"@ifi/pi-man-agents",
+	"@buluma/pi-man-prompts",
+	"@buluma/pi-man-skills",
+	"@buluma/pi-man-agents",
 ];
 
 const GIT_BASE = "https://github.com/buluma/pi-man.git";
@@ -75,11 +75,11 @@ function printHelp() {
 pi-man — install all pi-man packages into pi
 
 Usage:
-  npx @ifi/pi-man                    Install latest versions from npm (global)
-  npx @ifi/pi-man --git              Install from git main branch (global)
-  npx @ifi/pi-man --git --ref v0.2.0 Install from git tag/branch (global)
-  npx @ifi/pi-man --local            Install to project (.pi/settings.json)
-  npx @ifi/pi-man --remove           Uninstall all pi-man packages from pi
+  npx @buluma/pi-man                    Install latest versions from npm (global)
+  npx @buluma/pi-man --git              Install from git main branch (global)
+  npx @buluma/pi-man --git --ref v0.2.0 Install from git tag/branch (global)
+  npx @buluma/pi-man --local            Install to project (.pi/settings.json)
+  npx @buluma/pi-man --remove           Uninstall all pi-man packages from pi
 
 Options:
   -g, --git          Install from git instead of npm

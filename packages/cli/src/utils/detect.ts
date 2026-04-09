@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { resolvePiAgentDir } from "@ifi/pi-man-core";
+import { resolvePiAgentDir } from "@buluma/pi-man-core";
 
 export interface EnvInfo {
 	piInstalled: boolean;

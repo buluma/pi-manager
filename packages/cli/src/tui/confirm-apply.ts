@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { type OhPConfig, resolvePiAgentDir, t } from "@ifi/pi-man-core";
+import { type OhPConfig, resolvePiAgentDir, t } from "@buluma/pi-man-core";
 import chalk from "chalk";
 import type { EnvInfo } from "../utils/detect.js";
 import { applyConfig, backupConfig, installPi } from "../utils/install.js";

@@ -18,7 +18,7 @@ Experimental Ollama provider package for pi with both local and cloud support.
 pi install npm:@ifi/pi-provider-ollama
 ```
 
-This package is intentionally separate from `@ifi/pi-man` for now.
+This package is intentionally separate from `@buluma/pi-man` for now.
 
 ## Use
 

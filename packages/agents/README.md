@@ -1,4 +1,4 @@
-# @ifi/pi-man-agents
+# @buluma/pi-man-agents
 
 AGENTS.md templates for pi.
 
@@ -11,7 +11,7 @@ This package contains reusable agent profile templates such as:
 
 ## What this package is for
 
-`@ifi/pi-man-agents` is a content package used by the oh-pi configurator and installer. It helps seed
+`@buluma/pi-man-agents` is a content package used by the oh-pi configurator and installer. It helps seed
 `AGENTS.md`-style instructions for pi projects and user setups.
 
 ## Install
@@ -19,10 +19,10 @@ This package contains reusable agent profile templates such as:
 Most users should install the full bundle instead:
 
 ```bash
-npx @ifi/pi-man
+npx @buluma/pi-man
 ```
 
-This package is typically consumed by `@ifi/pi-man-cli` and is not usually installed directly.
+This package is typically consumed by `@buluma/pi-man-cli` and is not usually installed directly.
 
 ## Contents
 
@@ -36,5 +36,5 @@ Each file is a markdown template intended to be copied into a pi environment or 
 
 ## Related packages
 
-- `@ifi/pi-man` — full installer bundle
-- `@ifi/pi-man-cli` — interactive configurator
+- `@buluma/pi-man` — full installer bundle
+- `@buluma/pi-man-cli` — interactive configurator

@@ -1,6 +1,6 @@
 import * as p from "@clack/prompts";
-import type { OhPConfig } from "@ifi/pi-man-core";
-import { EXTENSIONS, t } from "@ifi/pi-man-core";
+import type { OhPConfig } from "@buluma/pi-man-core";
+import { EXTENSIONS, t } from "@buluma/pi-man-core";
 import chalk from "chalk";
 import type { EnvInfo } from "../utils/detect.js";
 import { selectAgents } from "./agents-select.js";

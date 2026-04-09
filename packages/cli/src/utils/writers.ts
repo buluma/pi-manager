@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import type { OhPConfig } from "@ifi/pi-man-core";
-import { KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "@ifi/pi-man-core";
+import type { OhPConfig } from "@buluma/pi-man-core";
+import { KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "@buluma/pi-man-core";
 import { ensureDir, syncDir } from "./install.js";
 import { resources } from "./resources.js";
 

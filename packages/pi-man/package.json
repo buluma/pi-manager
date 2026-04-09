@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/pi-man",
+  "name": "@buluma/pi-man",
   "version": "0.4.4",
   "description": "One-click setup for pi-coding-agent — extensions, prompts, skills, and crews. Like oh-my-zsh for pi.",
   "keywords": [
@@ -18,14 +18,14 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@ifi/pi-man-extensions": "workspace:*",
-    "@ifi/pi-man-crews": "workspace:*",
+    "@buluma/pi-man-extensions": "workspace:*",
+    "@buluma/pi-man-crews": "workspace:*",
     "@ifi/pi-extension-subagents": "workspace:*",
     "@ifi/pi-plan": "workspace:*",
     "@ifi/pi-spec": "workspace:*",
-    "@ifi/pi-man-prompts": "workspace:*",
-    "@ifi/pi-man-skills": "workspace:*",
-    "@ifi/pi-man-agents": "workspace:*"
+    "@buluma/pi-man-prompts": "workspace:*",
+    "@buluma/pi-man-skills": "workspace:*",
+    "@buluma/pi-man-agents": "workspace:*"
   },
   "repository": {
     "type": "git",
