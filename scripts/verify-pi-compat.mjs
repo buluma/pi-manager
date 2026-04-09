@@ -10,15 +10,6 @@ const PI_PACKAGES = [
 	"@mariozechner/pi-coding-agent",
 	"@mariozechner/pi-tui",
 ];
-const SMOKE_TESTS = [
-	"packages/extensions/extensions/smoke.test.ts",
-	"packages/ant-colony/tests/smoke.test.ts",
-	"packages/subagents/tests/smoke.test.ts",
-	"packages/spec/tests/smoke.test.ts",
-	"packages/cursor/tests/smoke.test.ts",
-	"packages/ollama/tests/smoke.test.ts",
-];
-
 function parseArgs(argv) {
 	const parsed = { version: process.env.PI_COMPAT_VERSION, restore: false };
 	for (let i = 0; i < argv.length; i++) {
@@ -95,8 +86,8 @@ try {
 	run("pnpm", ["install", "--no-frozen-lockfile"]);
 	console.log("\nInstalled pi package versions:");
 	readInstalledVersions();
-	run("pnpm", ["--filter", "@ifi/oh-pi-core", "build"]);
-	run("pnpm", ["exec", "vitest", "run", ...SMOKE_TESTS]);
+	run("pnpm", ["--filter", "@ifi/pi-man-core", "build"]);
+	run("pnpm", ["exec", "vitest", "run", "packages/extensions/extensions/smoke.test.ts", "packages/crews/tests/smoke.test.ts", "packages/subagents/tests/smoke.test.ts", "packages/spec/tests/smoke.test.ts", "packages/cursor/tests/smoke.test.ts", "packages/ollama/tests/smoke.test.ts"]);
 } finally {
 	if (restore) {
 		console.log("\nRestoring package.json and pnpm-lock.yaml...");
