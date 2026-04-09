@@ -3,22 +3,11 @@
 ## Changesets
 
 - Every change must include a changeset.
-- The only exception is a generated `chore: release` commit from knope.
 - Create a changeset with:
 
 ```bash
 knope document-change
 ```
-
-This repo uses lockstep versioning and a single knope `[package]`, so every changeset frontmatter must use only `default` as the key.
-
-```md
----
-default: patch
----
-```
-
-Do not use package names like `@ifi/oh-pi` or `@ifi/oh-pi-extensions` in changeset frontmatter.
 
 ## Change types
 
@@ -28,7 +17,7 @@ Do not use package names like `@ifi/oh-pi` or `@ifi/oh-pi-extensions` in changes
 
 ## Packaging model
 
-`@ifi/oh-pi` is a bin installer, not a bundling meta-package.
+`@ifi/pi-man` is a bin installer, not a bundling meta-package.
 
 - Each sub-package is a standalone pi package with its own `pi` field in `package.json`.
 - Pi loads each package with its own module root.
@@ -37,31 +26,25 @@ Do not use package names like `@ifi/oh-pi` or `@ifi/oh-pi-extensions` in changes
 ## Installation commands
 
 ```bash
-npx @ifi/oh-pi
-npx @ifi/oh-pi --version 0.2.13
-npx @ifi/oh-pi --local
-npx @ifi/oh-pi --remove
+npx @ifi/pi-man
+npx @ifi/pi-man --version 0.2.13
+npx @ifi/pi-man --local
+npx @ifi/pi-man --remove
 ```
 
 Individual packages can also be installed directly:
 
 ```bash
-pi install npm:@ifi/oh-pi-extensions
-pi install npm:@ifi/oh-pi-ant-colony
-pi install npm:@ifi/oh-pi-themes
-pi install npm:@ifi/oh-pi-prompts
-pi install npm:@ifi/oh-pi-skills
+pi install npm:@ifi/pi-man-extensions
+pi install npm:@ifi/pi-man-crews
+pi install npm:@ifi/pi-man-prompts
+pi install npm:@ifi/pi-man-skills
 pi install npm:@ifi/pi-extension-subagents
 pi install npm:@ifi/pi-plan
 pi install npm:@ifi/pi-spec
 pi install npm:@ifi/pi-provider-cursor
 pi install npm:@ifi/pi-provider-ollama
 ```
-
-Do not use `bundledDependencies` in `@ifi/oh-pi`.
-
-Experimental packages can stay intentionally separate from the `@ifi/oh-pi` installer when they
-need an opt-in rollout or rely on unofficial upstream APIs.
 
 ## Release flow
 
@@ -70,5 +53,3 @@ need an opt-in rollout or rely on unofficial upstream APIs.
 ./scripts/release.sh --dry-run
 knope publish
 ```
-
-`./scripts/release.sh` runs lint, security checks, typecheck, test, build, version bump, changelog update, tag creation, and push. `knope publish` then publishes all workspace packages.

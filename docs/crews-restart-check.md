@@ -1,15 +1,15 @@
-# Ant Colony Restart Fault Tolerance
+# Ant Crew Restart Fault Tolerance
 
 ## Key Directories
 
 Restart fault tolerance depends on the following directories and files:
 
-- Runtime persistence directory: `.ant-colony/{colony-id}/`
+- Runtime persistence directory: `.crews/{crew-id}/`
   - `state.json`: Records phase state, current goal, concurrency history, etc.
   - `tasks/*.json`: Records task definitions, status, and results.
-- Documentation: `pi-package/extensions/ant-colony/README.md` describes the nest structure
+- Documentation: `pi-package/extensions/crews/README.md` describes the nest structure
   (`state.json / pheromone.jsonl / tasks/*.json`).
-- Persistence directory is gitignored: `index.ts` ensures `.ant-colony/` is added to `.gitignore` at
+- Persistence directory is gitignored: `index.ts` ensures `.crews/` is added to `.gitignore` at
   startup, preventing runtime files from polluting the repository.
 
 Runtime sample observations (real data):
@@ -45,7 +45,7 @@ Runtime sample observations (real data):
 
 ## Conclusion
 
-Based on code, README, and `.ant-colony` runtime samples, the extension has a complete restart
+Based on code, README, and `.crews` runtime samples, the extension has a complete restart
 fault-tolerance loop:
 
 1. **State is persisted**: `state.json + tasks/*.json` persist critical execution state and task

@@ -1,6 +1,6 @@
 <!-- {@ohPiCoreAgentPathsOverview} -->
 
-`@ifi/oh-pi-core` exposes a small set of path helpers for packages that need to resolve the pi
+`@ifi/pi-man-core` exposes a small set of path helpers for packages that need to resolve the pi
 agent directory, extension config locations, and shared workspace-scoped storage paths without
 hardcoding `~/.pi/agent` throughout the codebase.
 
@@ -102,53 +102,53 @@ Keep contributor-facing docs aligned with the same sequence.
 
 <!-- {/piSpecWorkflowStepsDocs} -->
 
-<!-- {@antColonySharedStorageOverview} -->
+<!-- {@CrewsSharedStorageOverview} -->
 
-Ant-colony stores runtime state outside the repository by default under the shared pi agent
+Ant-crew stores runtime state outside the repository by default under the shared pi agent
 directory, mirroring the workspace path so each repo gets its own isolated storage root.
-Project-local `.ant-colony/` storage remains available as an explicit opt-in for legacy workflows.
+Project-local `.crews/` storage remains available as an explicit opt-in for legacy workflows.
 
-<!-- {/antColonySharedStorageOverview} -->
+<!-- {/CrewsSharedStorageOverview} -->
 
-<!-- {@antColonyResolveStorageOptionsDocs} -->
+<!-- {@CrewsResolveStorageOptionsDocs} -->
 
-Resolve the effective ant-colony storage mode and shared root. Explicit options win, then
+Resolve the effective crews storage mode and shared root. Explicit options win, then
 environment variables, then extension config, and shared storage is the default when no override is
 provided.
 
-<!-- {/antColonyResolveStorageOptionsDocs} -->
+<!-- {/CrewsResolveStorageOptionsDocs} -->
 
-<!-- {@antColonyGetColonyStateParentDirDocs} -->
+<!-- {@CrewsGetCrewStateParentDirDocs} -->
 
-Resolve the parent directory for persisted colony state. Shared mode stores state under the
+Resolve the parent directory for persisted crew state. Shared mode stores state under the
 workspace-mirrored shared root in `colonies/`, while project mode keeps using the legacy local
-`.ant-colony/` directory.
+`.crews/` directory.
 
-<!-- {/antColonyGetColonyStateParentDirDocs} -->
+<!-- {/CrewsGetCrewStateParentDirDocs} -->
 
-<!-- {@antColonyGetColonyWorktreeParentDirDocs} -->
+<!-- {@CrewsGetCrewWorktreeParentDirDocs} -->
 
-Resolve the parent directory for isolated colony worktrees. Shared mode keeps them under the
+Resolve the parent directory for isolated crew worktrees. Shared mode keeps them under the
 workspace-mirrored shared root in `worktrees/`, while project mode places them under the legacy
-project-local `.ant-colony/worktrees/` path.
+project-local `.crews/worktrees/` path.
 
-<!-- {/antColonyGetColonyWorktreeParentDirDocs} -->
+<!-- {/CrewsGetCrewWorktreeParentDirDocs} -->
 
-<!-- {@antColonyMigrateLegacyProjectColoniesDocs} -->
+<!-- {@CrewsMigrateLegacyProjectColoniesDocs} -->
 
-Best-effort migration for legacy project-local colony state. When shared mode is active, existing
-`.ant-colony/{colony-id}/` directories are copied into the shared store so resumable colonies keep
+Best-effort migration for legacy project-local crew state. When shared mode is active, existing
+`.crews/{crew-id}/` directories are copied into the shared store so resumable colonies keep
 working without leaving runtime state in the repo.
 
-<!-- {/antColonyMigrateLegacyProjectColoniesDocs} -->
+<!-- {/CrewsMigrateLegacyProjectColoniesDocs} -->
 
-<!-- {@antColonyPrepareColonyWorkspaceDocs} -->
+<!-- {@CrewsPrepareCrewWorkspaceDocs} -->
 
-Prepare the execution workspace for a colony run. When worktree isolation is enabled and git
-supports it, the colony gets a fresh isolated worktree on an `ant-colony/...` branch; otherwise it
+Prepare the execution workspace for a crew run. When worktree isolation is enabled and git
+supports it, the crew gets a fresh isolated worktree on an `crews/...` branch; otherwise it
 falls back to the shared working directory and records the reason.
 
-<!-- {/antColonyPrepareColonyWorkspaceDocs} -->
+<!-- {/CrewsPrepareCrewWorkspaceDocs} -->
 
 <!-- {@subagentsProjectAgentStorageOverview} -->
 

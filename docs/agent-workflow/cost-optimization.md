@@ -75,6 +75,6 @@ else:
   finalize
 ```
 
-## Colony Handoff Notes
+## Crew Handoff Notes
 - Downstream higher-tier workers should consume `summary_schema` first and only inspect raw media for unresolved points.
 - Keep escalation reasons machine-readable for later routing-policy tuning.

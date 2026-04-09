@@ -70,7 +70,7 @@ Migration strategy:
 
 ### Step 1: Interface Introduction (no behavior change)
 
-- Create `pi-package/extensions/ant-colony/pheromone-store.ts` (types + factory only).
+- Create `pi-package/extensions/crews/pheromone-store.ts` (types + factory only).
 - Existing logic stays in `nest.ts` but calls through the adapter layer.
 
 ### Step 2: JSONL Default Implementation

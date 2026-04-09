@@ -1,4 +1,4 @@
-# Colony UI Contrast Audit (Round 1)
+# Crew UI Contrast Audit (Round 1)
 
 > Goal: Prevent critical information from using overly dark color tiers that become "hard to read,
 > hard to find."
@@ -15,7 +15,7 @@ Conclusion: **Critical status and progress no longer use `dim`.**
 
 ## 2) Changes in This Round
 
-File: `pi-package/extensions/ant-colony/index.ts`
+File: `pi-package/extensions/crews/index.ts`
 
 Adjusted:
 
@@ -43,7 +43,7 @@ Rationale: These are "nice to see but not critical" weak hints that don't affect
 
 ## 4) Follow-Up (Round 2)
 
-- Screenshot-based manual inspection across six themes (oh-pi Dark / Cyberpunk / Nord / Catppuccin /
+- Screenshot-based manual inspection across six themes (pi-man Dark / Cyberpunk / Nord / Catppuccin /
   Tokyo Night / Gruvbox).
 - If a theme's `muted` is still too dark, consider forcing `text` for critical lines within the
   extension.

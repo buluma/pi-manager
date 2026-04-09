@@ -1,19 +1,19 @@
-# Colony UI Improvement Plan (Phase A.5)
+# Crew UI Improvement Plan (Phase A.5)
 
-> Background: The colony functionality works, but the visualization layer lacks information
+> Background: The crew functionality works, but the visualization layer lacks information
 > hierarchy and readability, hurting "first-glance value perception."
 
 ## 1) Completed Quick Wins
 
 - Status bar: added phase label (`SCOUTING/WORKING/...`) and progress percentage.
 - Status bar: added active ant count (`⚡N`).
-- `/colony-status` text: added progress bar, phase details, and most recent event.
+- `/crew-status` text: added progress bar, phase details, and most recent event.
 - Details panel header: phase label + task progress + percentage + active ants + progress bar.
 - Details panel: "Active Ant Streams" list (role icon + antId + token count + latest output
   summary).
 - Details panel: "Recent Signals" section (last 6 signal log entries).
 - Details panel: "Warnings" section (quick focus on failed tasks).
-- `ant-colony-progress` messages: custom rendering to reduce text noise and unify phase labels.
+- `crews-progress` messages: custom rendering to reduce text noise and unify phase labels.
 
 ## 2) Next Optimizations (by priority)
 
@@ -38,10 +38,10 @@
 ## 3) Acceptance Criteria
 
 - New users can answer within 10 seconds:
-  1. What phase is the colony in?
+  1. What phase is the crew in?
   2. How many tasks are complete?
   3. Are there any failures?
-- `/colony-status` allows judging whether the colony is stuck without reading logs.
+- `/crew-status` allows judging whether the crew is stuck without reading logs.
 - Details panel shows "what active ants are currently outputting."
 
 ## 4) Non-Goals

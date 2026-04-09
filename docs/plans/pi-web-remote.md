@@ -815,7 +815,7 @@ pi
 ### Root `package.json` — Update build script
 
 ```json
-"build": "pnpm -r --filter @ifi/oh-pi-core --filter @ifi/oh-pi-cli --filter @ifi/pi-web-server --filter @ifi/pi-web-client --filter @ifi/pi-web-ui run build"
+"build": "pnpm -r --filter @ifi/pi-man-core --filter @ifi/pi-man-cli --filter @ifi/pi-web-server --filter @ifi/pi-web-client --filter @ifi/pi-web-ui run build"
 ```
 
 ### Root `vitest.config.ts` — Add test globs
@@ -836,7 +836,7 @@ pi
 "packages/web-ui/src/**/*.tsx"
 ```
 
-### `packages/oh-pi/bin/oh-pi.mjs` — Add to PACKAGES
+### `packages/pi-man/bin/pi-man.mjs` — Add to PACKAGES
 
 ```javascript
 "@ifi/pi-web-remote",   // /remote command extension

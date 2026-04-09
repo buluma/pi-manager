@@ -82,9 +82,9 @@ CLI flags > project .pi/settings.json > global ~/.pi/agent/settings.json
 --api-key > auth.json > environment variables > models.json
 ```
 
-## Value for oh-pi
+## Value for pi-man
 
-This documentation provides the knowledge base for oh-pi (one-click pi-coding-agent configuration):
+This documentation provides the knowledge base for pi-man (one-click pi-coding-agent configuration):
 
 1. **Full settings reference** — All settings.json fields, enabling interactive configuration
 2. **Directory structure** — Every file under `~/.pi/agent/` and `.pi/` explained

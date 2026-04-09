@@ -19,35 +19,6 @@
 - `pnpm typecheck` — run repo type-checking with `tsgo`
 - `pnpm build` — run every workspace package build script
 - `pnpm security:check` — run dependency allowlist and audit checks
-- `pnpm mdt ...` — run MDT documentation reuse commands with the repo-pinned version
-
-## Documentation reuse
-
-<!-- {=repoMdtUsageRuleDocs} -->
-
-Use MDT through `pnpm mdt ...`, not a globally installed `mdt` binary. This keeps documentation
-reuse commands pinned to the repo's declared `@ifi/mdt` version and makes local runs, CI, and agent
-instructions consistent.
-
-<!-- {/repoMdtUsageRuleDocs} -->
-
-<!-- {=repoMdtCommandsDocs} -->
-
-```bash
-pnpm mdt list
-pnpm mdt update
-pnpm mdt check
-```
-
-Convenience wrappers remain available too:
-
-```bash
-pnpm docs:list
-pnpm docs:update
-pnpm docs:check
-```
-
-<!-- {/repoMdtCommandsDocs} -->
 
 ## Testing conventions
 
@@ -60,29 +31,28 @@ All packages live under `packages/` and share the same version.
 
 ```text
 packages/
-  core/                   → @ifi/oh-pi-core (compiled library: types, registry, i18n)
-  cli/                    → @ifi/oh-pi-cli (compiled binary: TUI configurator)
-  extensions/             → @ifi/oh-pi-extensions (raw .ts extensions)
-  ant-colony/             → @ifi/oh-pi-ant-colony (raw .ts multi-agent swarm)
-  themes/                 → @ifi/oh-pi-themes (JSON theme files)
-  prompts/                → @ifi/oh-pi-prompts (markdown prompt templates)
-  skills/                 → @ifi/oh-pi-skills (skill directories)
-  agents/                 → @ifi/oh-pi-agents (AGENTS.md templates)
+  core/                   → @ifi/pi-man-core (compiled library: types, registry, i18n)
+  cli/                    → @ifi/pi-man-cli (compiled binary: TUI configurator)
+  extensions/             → @ifi/pi-man-extensions (raw .ts extensions)
+  crews/                  → @ifi/pi-man-crews (raw .ts multi-agent crew system)
+  prompts/                → @ifi/pi-man-prompts (markdown prompt templates)
+  skills/                 → @ifi/pi-man-skills (skill directories)
+  agents/                 → @ifi/pi-man-agents (AGENTS.md templates)
   subagents/              → @ifi/pi-extension-subagents (raw .ts subagent orchestration package)
   shared-qna/             → @ifi/pi-shared-qna (shared TUI helper library)
   plan/                   → @ifi/pi-plan (raw .ts planning mode extension)
   spec/                   → @ifi/pi-spec (raw .ts spec-driven workflow package)
   cursor/                 → @ifi/pi-provider-cursor (raw .ts experimental Cursor provider package)
   ollama/                 → @ifi/pi-provider-ollama (raw .ts experimental Ollama local + cloud provider package)
-  oh-pi/                  → @ifi/oh-pi (installer CLI: `npx @ifi/oh-pi`)
+  pi-man/                 → @ifi/pi-man (installer CLI: `npx @ifi/pi-man`)
 ```
 
 ## Package conventions
 
 - Pi extensions ship raw `.ts` files; pi loads them via `jiti`.
 - `core` and `cli` are compiled and emit `dist/` via `tsc`.
-- CLI code imports from `@ifi/oh-pi-core`, not via relative paths.
+- CLI code imports from `@ifi/pi-man-core`, not via relative paths.
 - Extensions import from pi SDK packages.
 - `@ifi/pi-spec` keeps state in `.specify/` and feature artifacts in `specs/###-feature-name/`.
 - `noDefaultExport: off` is intentional because extensions use default exports as their API pattern.
-- Ant colony runs use isolated git worktrees by default, with shared-cwd fallback when worktrees are unavailable.
+- Crews runs use isolated git worktrees by default, with shared-cwd fallback when worktrees are unavailable.
