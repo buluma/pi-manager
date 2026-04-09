@@ -1,6 +1,6 @@
 [github]
-owner = "ifiokjr"
-repo = "oh-pi"
+owner = "buluma"
+repo = "pi-man"
 
 # All packages share the same version (lockstep releases).
 # Knope bumps all versioned_files together.
@@ -10,8 +10,7 @@ versioned_files = [
   "packages/core/package.json",
   "packages/cli/package.json",
   "packages/extensions/package.json",
-  "packages/ant-colony/package.json",
-  "packages/themes/package.json",
+  "packages/crews/package.json",
   "packages/prompts/package.json",
   "packages/skills/package.json",
   "packages/agents/package.json",
@@ -21,7 +20,7 @@ versioned_files = [
   "packages/spec/package.json",
   "packages/cursor/package.json",
   "packages/ollama/package.json",
-  "packages/oh-pi/package.json",
+  "packages/pi-man/package.json",
   "packages/web-server/package.json",
   "packages/web-remote/package.json",
   "packages/web-client/package.json",
