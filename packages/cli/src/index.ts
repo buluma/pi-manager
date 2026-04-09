@@ -1,5 +1,5 @@
-import type { OhPConfig } from "@ifi/oh-pi-core";
-import { EXTENSIONS, getLocale, selectLanguage } from "@ifi/oh-pi-core";
+import type { OhPConfig } from "@ifi/pi-man-core";
+import { EXTENSIONS, getLocale, selectLanguage } from "@ifi/pi-man-core";
 import { runConfigWizard, type WizardBaseConfig } from "./tui/config-wizard.js";
 import { confirmApply } from "./tui/confirm-apply.js";
 import { selectMode } from "./tui/mode-select.js";
@@ -9,7 +9,7 @@ import { welcome } from "./tui/welcome.js";
 import { detectEnv, type EnvInfo } from "./utils/detect.js";
 
 /**
- * Main entry point — orchestrates the full oh-pi setup flow:
+ * Main entry point — orchestrates the full pi-man setup flow:
  * detect environment → select language → welcome → choose mode → configure → apply.
  */
 export async function run() {

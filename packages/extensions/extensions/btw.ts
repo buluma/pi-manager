@@ -1,5 +1,5 @@
 /**
- * oh-pi BTW / QQ Extension — parallel side conversations
+ * pi-man BTW / QQ Extension — parallel side conversations
  *
  * Adds /btw and /qq commands that open a side conversation without interrupting
  * the main agent run. Answers stream into a widget above the editor.

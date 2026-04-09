@@ -1,5 +1,5 @@
 /**
-oh-pi Scheduler Extension
+pi-man Scheduler Extension
 
 Based on pi-scheduler by @manojlds (MIT).
 

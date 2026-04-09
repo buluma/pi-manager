@@ -4,7 +4,7 @@ Planning mode extension for pi.
 
 Built on top of the planning workflow from
 [`sids/pi-extensions/plan-md`](https://github.com/sids/pi-extensions/tree/main/plan-md) and adapted for
-oh-pi.
+pi-man.
 
 ## Installation
 
@@ -15,7 +15,7 @@ pi install npm:@ifi/pi-plan
 Or install it as part of the full oh-pi bundle:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 Or use the package installer directly:

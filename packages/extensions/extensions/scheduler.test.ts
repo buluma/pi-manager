@@ -2331,7 +2331,7 @@ describe("safe mode", () => {
 
 	it("wires safe mode event from pi.events bus", () => {
 		schedulerExtension(pi as any);
-		const safeModeHandlers = pi._eventBusHandlers.get("oh-pi:safe-mode") ?? [];
+		const safeModeHandlers = pi._eventBusHandlers.get("pi-man:safe-mode") ?? [];
 		expect(safeModeHandlers.length).toBeGreaterThan(0);
 	});
 });

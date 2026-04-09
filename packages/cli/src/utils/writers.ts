@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import type { OhPConfig } from "@ifi/oh-pi-core";
-import { KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "@ifi/oh-pi-core";
+import type { OhPConfig } from "@ifi/pi-man-core";
+import { KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "@ifi/pi-man-core";
 import { ensureDir, syncDir } from "./install.js";
 import { resources } from "./resources.js";
 
@@ -212,7 +212,7 @@ export function writeAgents(agentDir: string, config: OhPConfig) {
 			const lang = langNames[config.locale] ?? config.locale;
 			content = `## Language\nAlways respond in ${lang}. Use the user's language for all conversations and explanations. Code, commands, and technical terms can remain in English.\n\n${content}`;
 		}
-		if (config.extensions.includes("ant-colony") && config.agents !== "colony-operator") {
+		if (config.extensions.includes("crews") && config.agents !== "crew-operator") {
 			content = `${content.trimEnd()}\n\n${ANT_COLONY_AUTOTRIGGER_GUIDE}`;
 		}
 		writeFileSync(join(agentDir, "AGENTS.md"), content);
@@ -257,8 +257,8 @@ export function writeExtensions(agentDir: string, config: OhPConfig) {
 	const extDir = join(agentDir, "extensions");
 	ensureDir(extDir);
 	for (const ext of config.extensions) {
-		if (ext === "ant-colony") {
-			copyDedicatedExtension(extDir, "ant-colony", resources.antColonyDir());
+		if (ext === "crews") {
+			copyDedicatedExtension(extDir, "crews", resources.crewsDir());
 			continue;
 		}
 		if (ext === "plan") {

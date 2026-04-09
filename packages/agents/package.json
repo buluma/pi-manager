@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/oh-pi-agents",
+  "name": "@ifi/pi-man-agents",
   "version": "0.4.4",
   "description": "AGENTS.md templates for pi: general-developer, fullstack, security-researcher, and more.",
   "files": [
@@ -17,11 +17,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/agents"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/agents",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/agents",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   }
 }

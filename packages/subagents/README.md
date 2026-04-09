@@ -16,10 +16,10 @@ https://github.com/user-attachments/assets/702554ec-faaf-4635-80aa-fb5d6e292fd1
 pi install npm:@ifi/pi-extension-subagents
 ```
 
-Or install it as part of the full oh-pi bundle:
+Or install it as part of the full pi-man bundle:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 Or use the package installer directly:

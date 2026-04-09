@@ -1,10 +1,10 @@
 {
-  "name": "@ifi/oh-pi-cli",
+  "name": "@ifi/pi-man-cli",
   "version": "0.4.4",
   "description": "Interactive TUI configurator for pi-coding-agent.",
   "type": "module",
   "bin": {
-    "oh-pi": "dist/bin/oh-pi.js"
+    "pi-man": "dist/bin/pi-man.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,18 +17,17 @@
     "build": "pnpm clean && tsc -b",
     "build:fast": "pnpm clean && tsgo --project tsconfig.json",
     "typecheck": "tsgo --project tsconfig.json --noEmit",
-    "start": "node dist/bin/oh-pi.js"
+    "start": "node dist/bin/pi-man.js"
   },
   "license": "MIT",
   "dependencies": {
     "@clack/prompts": "^1.1.0",
-    "@ifi/oh-pi-agents": "workspace:*",
-    "@ifi/oh-pi-ant-colony": "workspace:*",
-    "@ifi/oh-pi-core": "workspace:*",
-    "@ifi/oh-pi-extensions": "workspace:*",
-    "@ifi/oh-pi-prompts": "workspace:*",
-    "@ifi/oh-pi-skills": "workspace:*",
-    "@ifi/oh-pi-themes": "workspace:*",
+    "@ifi/pi-man-agents": "workspace:*",
+    "@ifi/pi-man-crews": "workspace:*",
+    "@ifi/pi-man-core": "workspace:*",
+    "@ifi/pi-man-extensions": "workspace:*",
+    "@ifi/pi-man-prompts": "workspace:*",
+    "@ifi/pi-man-skills": "workspace:*",
     "@ifi/pi-extension-subagents": "workspace:*",
     "@ifi/pi-plan": "workspace:*",
     "@ifi/pi-shared-qna": "workspace:*",
@@ -41,7 +40,7 @@
   "keywords": [
     "pi",
     "pi-coding-agent",
-    "oh-pi",
+    "pi-man",
     "cli",
     "tui",
     "configuration",
@@ -49,11 +48,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/cli",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/cli",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   }
 }

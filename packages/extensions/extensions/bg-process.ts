@@ -1,5 +1,5 @@
 /**
- * oh-pi Background Process Extension
+ * pi-man Background Process Extension
  *
  * Automatically backgrounds long-running bash commands (dev servers, builds, etc.).
  * When a command exceeds the timeout threshold, it's moved to the background and
@@ -108,7 +108,7 @@ export default function (pi: ExtensionAPI) {
 					backgrounded = true;
 					child.unref();
 
-					const logFile = `/tmp/oh-pi-bg-${Date.now()}.log`;
+					const logFile = `/tmp/pi-man-bg-${Date.now()}.log`;
 					writeFileSync(logFile, stdout + stderr);
 
 					const proc: BgProcess = {

@@ -1,7 +1,7 @@
 /**
- * oh-pi Auto Update Extension
+ * pi-man Auto Update Extension
  *
- * Checks for new oh-pi versions on session start (at most once every 24h).
+ * Checks for new pi-man versions on session start (at most once every 24h).
  * If a newer version is found, shows a toast notification with upgrade instructions.
  * The check runs in a `setTimeout` to avoid blocking session startup.
  */
@@ -36,17 +36,17 @@ function writeStamp(): void {
 	}
 }
 
-/** Query the npm registry for the latest published version of oh-pi. */
+/** Query the npm registry for the latest published version of pi-man. */
 function getLatestVersion(): string | null {
 	try {
-		return execSync("npm view oh-pi version", { encoding: "utf8", timeout: 8000 }).trim();
+		return execSync("npm view pi-man version", { encoding: "utf8", timeout: 8000 }).trim();
 	} catch {
 		return null;
 	}
 }
 
 /**
- * Determine the currently installed oh-pi version.
+ * Determine the currently installed pi-man version.
  * Tries reading the local package.json first, falls back to `npm list -g`.
  */
 function getCurrentVersion(): string | null {
@@ -60,8 +60,8 @@ function getCurrentVersion(): string | null {
 		// package.json not found at expected location
 	}
 	try {
-		const out = JSON.parse(execSync("npm list -g oh-pi --json --depth=0", { encoding: "utf8", timeout: 8000 }));
-		return out.dependencies?.["oh-pi"]?.version ?? null;
+		const out = JSON.parse(execSync("npm list -g pi-man --json --depth=0", { encoding: "utf8", timeout: 8000 }));
+		return out.dependencies?.["pi-man"]?.version ?? null;
 	} catch {
 		return null;
 	}
@@ -111,7 +111,7 @@ export default function (pi: ExtensionAPI) {
 					return;
 				}
 
-				const msg = `oh-pi ${latest} available (current: ${current}). Run: npx @ifi/oh-pi@latest`;
+				const msg = `pi-man ${latest} available (current: ${current}). Run: npx @ifi/pi-man@latest`;
 				if (ctx.hasUI) {
 					ctx.ui.notify(msg, "info");
 				}

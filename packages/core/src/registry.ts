@@ -47,27 +47,8 @@ export const PROVIDERS: Record<string, { env: string; label: string; models: str
 	mistral: { env: "MISTRAL_API_KEY", label: "Mistral", models: ["mistral-large-latest"] },
 };
 
-/** Available themes — each has a name, display label, and light/dark style. */
-export const THEMES = [
-	{ name: "dark", label: "Pi Default Dark", style: "dark" },
-	{ name: "oh-p-dark", label: "oh-pi Dark (Cyan+Purple)", style: "dark" },
-	{ name: "cyberpunk", label: "Cyberpunk (Neon)", style: "dark" },
-	{ name: "nord", label: "Nord (Arctic)", style: "dark" },
-	{ name: "catppuccin-mocha", label: "Catppuccin Mocha (Pastel)", style: "dark" },
-	{ name: "tokyo-night", label: "Tokyo Night (Blue+Purple)", style: "dark" },
-	{ name: "gruvbox-dark", label: "Gruvbox Dark (Warm)", style: "dark" },
-	{ name: "light", label: "Pi Default Light", style: "light" },
-];
-
 /** Available extensions — each has a name, label function, and whether it's enabled by default. */
 export const EXTENSIONS = [
-	{
-		name: "safe-guard",
-		get label() {
-			return `${icon("shield")}  Safe Guard — Dangerous command confirm + path protection`;
-		},
-		default: false,
-	},
 	{
 		name: "git-guard",
 		get label() {
@@ -97,9 +78,9 @@ export const EXTENSIONS = [
 		default: true,
 	},
 	{
-		name: "ant-colony",
+		name: "crews",
 		get label() {
-			return `${icon("ant")} Ant Colony — Autonomous multi-agent swarm with adaptive concurrency`;
+			return `${icon("ant")} Crews — Autonomous multi-agent crew with adaptive concurrency`;
 		},
 		default: false,
 	},
@@ -120,7 +101,7 @@ export const EXTENSIONS = [
 	{
 		name: "auto-update",
 		get label() {
-			return `${icon("update")} Auto Update — Check for oh-pi updates on startup and notify`;
+			return `${icon("update")} Auto Update — Check for pi-man updates on startup and notify`;
 		},
 		default: true,
 	},

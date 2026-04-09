@@ -293,7 +293,7 @@ export function applySafeMode(
 		reason: options.reason,
 		auto: options.auto,
 	});
-	pi.events.emit("oh-pi:safe-mode", state);
+	pi.events.emit("pi-man:safe-mode", state);
 	return state;
 }
 

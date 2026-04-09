@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/oh-pi-skills",
+  "name": "@ifi/pi-man-skills",
   "version": "0.4.4",
   "description": "On-demand skill packs for pi: web-search, debug-helper, git-workflow, and more.",
   "keywords": [
@@ -17,11 +17,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/skills"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/skills",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/skills",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   }
 }

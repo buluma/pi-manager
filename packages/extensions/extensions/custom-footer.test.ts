@@ -56,8 +56,8 @@ afterEach(() => {
 
 describe("custom-footer helpers", () => {
 	it("generates OSC 8 hyperlinks", () => {
-		const link = hyperlink("https://github.com/ifiokjr/oh-pi/pull/42", "PR #42");
-		expect(link).toContain("\x1b]8;;https://github.com/ifiokjr/oh-pi/pull/42\x07");
+		const link = hyperlink("https://github.com/ifiokjr/pi-man/pull/42", "PR #42");
+		expect(link).toContain("\x1b]8;;https://github.com/ifiokjr/pi-man/pull/42\x07");
 		expect(link).toContain("PR #42");
 		expect(link).toContain("\x1b]8;;\x07");
 	});
@@ -205,7 +205,7 @@ describe("custom-footer extension", () => {
 	it("shows a clickable PR link in the footer when a PR is open", async () => {
 		const pi = createMockPi();
 		pi.exec = vi.fn().mockResolvedValue({
-			stdout: JSON.stringify({ number: 77, url: "https://github.com/ifiokjr/oh-pi/pull/77" }),
+			stdout: JSON.stringify({ number: 77, url: "https://github.com/ifiokjr/pi-man/pull/77" }),
 			exitCode: 0,
 		});
 		customFooter(pi as any);
@@ -237,7 +237,7 @@ describe("custom-footer extension", () => {
 
 		const rendered = component.render(300)[0];
 		expect(rendered).toContain("PR #77");
-		expect(rendered).toContain("https://github.com/ifiokjr/oh-pi/pull/77");
+		expect(rendered).toContain("https://github.com/ifiokjr/pi-man/pull/77");
 	});
 
 	it("does not show PR link when no PR is open", async () => {

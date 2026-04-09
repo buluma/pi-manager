@@ -1,4 +1,4 @@
-/** Supported UI locales for the oh-pi configurator. */
+/** Supported UI locales for the pi-man configurator. */
 export type Locale = "en" | "fr";
 export type ProviderSetupStrategy = "keep" | "replace" | "add";
 
@@ -35,7 +35,7 @@ export interface ProviderConfig {
 	multimodal?: boolean;
 }
 
-/** Complete oh-pi configuration — produced by the TUI wizard and applied to ~/.pi/agent/. */
+/** Complete pi-man configuration — produced by the TUI wizard and applied to ~/.pi/agent/. */
 export interface OhPConfig {
 	/** Configured LLM providers. */
 	providers: ProviderConfig[];

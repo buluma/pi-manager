@@ -11,7 +11,7 @@ let previousUserProfile: string | undefined;
 function withTempHome() {
 	previousHome = process.env.HOME;
 	previousUserProfile = process.env.USERPROFILE;
-	const dir = fs.mkdtempSync(path.join(os.tmpdir(), "oh-pi-subagents-smoke-"));
+	const dir = fs.mkdtempSync(path.join(os.tmpdir(), "pi-man-subagents-smoke-"));
 	tempDirs.push(dir);
 	process.env.HOME = dir;
 	process.env.USERPROFILE = dir;

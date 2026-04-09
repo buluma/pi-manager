@@ -22,7 +22,7 @@ describe("pi package extension entrypoints", () => {
 		const extensionPackages = [
 			"packages/extensions/package.json",
 			"packages/spec/package.json",
-			"packages/ant-colony/package.json",
+			"packages/crews/package.json",
 			"packages/cursor/package.json",
 			"packages/ollama/package.json",
 		];

@@ -1217,7 +1217,7 @@ describe("usage-tracker extension", () => {
 			expect(pi.events.on).toHaveBeenCalledWith("usage:record", expect.any(Function));
 		});
 
-		it("ingests external usage records (e.g. ant-colony background inference)", async () => {
+		it("ingests external usage records (e.g. crews background inference)", async () => {
 			usageTracker(pi as any);
 			pi._emit("session_start", { type: "session_start" }, ctx);
 
@@ -1228,7 +1228,7 @@ describe("usage-tracker extension", () => {
 			expect(recordHandler).toBeDefined();
 
 			recordHandler?.({
-				source: "ant-colony",
+				source: "crews",
 				scope: "background",
 				provider: "anthropic",
 				model: "claude-sonnet-4-20250514",
@@ -1244,7 +1244,7 @@ describe("usage-tracker extension", () => {
 			const tool = pi._tools.get("usage_report");
 			const result = await runWithTimers(() => tool.execute("id", { format: "detailed" }, undefined, undefined, ctx));
 			expect(result.content[0].text).toContain("External inference:");
-			expect(result.content[0].text).toContain("ant-colony/background");
+			expect(result.content[0].text).toContain("crews/background");
 			expect(result.content[0].text).toContain("$0.020");
 		});
 

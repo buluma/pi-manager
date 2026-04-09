@@ -32,16 +32,16 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@ifi/oh-pi-core": "workspace:*"
+    "@ifi/pi-man-core": "workspace:*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/subagents"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/subagents",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/subagents",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   },
   "peerDependencies": {
     "@mariozechner/pi-agent-core": ">=0.56.1",

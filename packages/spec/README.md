@@ -24,7 +24,7 @@ pi install npm:@ifi/pi-spec
 Or install the full oh-pi bundle:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 ---

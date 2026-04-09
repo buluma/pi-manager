@@ -1040,7 +1040,7 @@ MANAGEMENT (use action field — omit agent/task/chain/tasks):
 		}
 	});
 
-	pi.events.on("oh-pi:safe-mode", (data) => {
+	pi.events.on("pi-man:safe-mode", (data) => {
 		safeModeEnabled = Boolean((data as { enabled?: boolean } | undefined)?.enabled);
 		if (lastUiContext?.hasUI) {
 			runtimeMonitor.refreshWidget();

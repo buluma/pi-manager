@@ -7,7 +7,7 @@ import { cleanupManagedConfig } from "./install.js";
 const tempDirs: string[] = [];
 
 function makeTempDir(): string {
-	const dir = mkdtempSync(join(tmpdir(), "oh-pi-install-"));
+	const dir = mkdtempSync(join(tmpdir(), "pi-man-install-"));
 	tempDirs.push(dir);
 	return dir;
 }

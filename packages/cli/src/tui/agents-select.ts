@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { t } from "@ifi/oh-pi-core";
+import { t } from "@ifi/pi-man-core";
 
 /**
  * Presents an interactive prompt for the user to select an agent template
@@ -17,7 +17,7 @@ export async function selectAgents(initialValue?: string): Promise<string> {
 			{ value: "fullstack-developer", label: t("agent.fullstack"), hint: t("agent.fullstackHint") },
 			{ value: "security-researcher", label: t("agent.security"), hint: t("agent.securityHint") },
 			{ value: "data-ai-engineer", label: t("agent.dataai"), hint: t("agent.dataaiHint") },
-			{ value: "colony-operator", label: t("agent.colony"), hint: t("agent.colonyHint") },
+			{ value: "crew-operator", label: t("agent.crew"), hint: t("agent.crewHint") },
 		],
 		initialValue,
 	});

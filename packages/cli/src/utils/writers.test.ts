@@ -1,14 +1,14 @@
 import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { OhPConfig } from "@ifi/oh-pi-core";
+import type { OhPConfig } from "@ifi/pi-man-core";
 import { afterEach, describe, expect, it } from "vitest";
 import { writeAgents, writeExtensions, writeModelConfig, writeProviderEnv } from "./writers.js";
 
 const tempDirs: string[] = [];
 
 function makeTempDir(): string {
-	const dir = mkdtempSync(join(tmpdir(), "oh-pi-writers-"));
+	const dir = mkdtempSync(join(tmpdir(), "pi-man-writers-"));
 	tempDirs.push(dir);
 	return dir;
 }
@@ -65,13 +65,13 @@ describe("writeExtensions", () => {
 });
 
 describe("writeAgents", () => {
-	it("appends ant-colony auto-trigger guidance for non-colony operator agents", () => {
+	it("appends crews auto-trigger guidance for non-colony operator agents", () => {
 		const dir = makeTempDir();
 		writeAgents(
 			dir,
 			makeConfig({
 				agents: "general-developer",
-				extensions: ["ant-colony"],
+				extensions: ["crews"],
 			}),
 		);
 
@@ -81,7 +81,7 @@ describe("writeAgents", () => {
 		expect(content).toContain("COLONY_SIGNAL");
 	});
 
-	it("does not append guidance when ant-colony extension is disabled", () => {
+	it("does not append guidance when crews extension is disabled", () => {
 		const dir = makeTempDir();
 		writeAgents(
 			dir,
@@ -95,13 +95,13 @@ describe("writeAgents", () => {
 		expect(content).not.toContain("## Ant Colony Auto-Trigger");
 	});
 
-	it("does not append duplicate guidance for colony-operator template", () => {
+	it("does not append duplicate guidance for crew-operator template", () => {
 		const dir = makeTempDir();
 		writeAgents(
 			dir,
 			makeConfig({
-				agents: "colony-operator",
-				extensions: ["ant-colony"],
+				agents: "crew-operator",
+				extensions: ["crews"],
 			}),
 		);
 

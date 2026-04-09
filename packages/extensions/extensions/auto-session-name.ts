@@ -1,5 +1,5 @@
 /**
- * oh-pi Auto Session Name Extension
+ * pi-man Auto Session Name Extension
  *
  * Automatically names sessions based on the first user message content.
  * If the session already has a name (e.g. from a previous run), no rename occurs.

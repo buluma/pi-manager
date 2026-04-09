@@ -227,7 +227,7 @@ describe("watchdog extension", () => {
 	it("applies safe mode and broadcasts an event", () => {
 		const pi = createMockPi();
 		const seen: any[] = [];
-		pi.events.on("oh-pi:safe-mode", (state) => seen.push(state));
+		pi.events.on("pi-man:safe-mode", (state) => seen.push(state));
 
 		const state = applySafeMode(pi as any, true, { source: "manual", reason: "test", auto: false });
 

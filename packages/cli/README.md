@@ -1,10 +1,10 @@
-# @ifi/oh-pi-cli
+# @ifi/pi-man-cli
 
 Interactive TUI configurator for `pi-coding-agent`.
 
 ## What it does
 
-`@ifi/oh-pi-cli` powers the interactive `oh-pi` setup experience. It helps configure:
+`@ifi/pi-man-cli` powers the interactive `oh-pi` setup experience. It helps configure:
 - providers and auth
 - models
 - extensions
@@ -19,13 +19,13 @@ Interactive TUI configurator for `pi-coding-agent`.
 Run the CLI with:
 
 ```bash
-npx @ifi/oh-pi-cli
+npx @ifi/pi-man-cli
 ```
 
 Most users will want the meta-installer instead:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 ## Package role
@@ -36,11 +36,11 @@ workspace packages for content and installation targets.
 ## Development
 
 ```bash
-pnpm --filter @ifi/oh-pi-cli build
-pnpm --filter @ifi/oh-pi-cli typecheck
+pnpm --filter @ifi/pi-man-cli build
+pnpm --filter @ifi/pi-man-cli typecheck
 ```
 
 ## Related packages
 
-- `@ifi/oh-pi` — one-command installer
-- `@ifi/oh-pi-core` — shared registries and types
+- `@ifi/pi-man` — one-command installer
+- `@ifi/pi-man-core` — shared registries and types

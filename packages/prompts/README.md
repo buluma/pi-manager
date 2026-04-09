@@ -1,4 +1,4 @@
-# @ifi/oh-pi-prompts
+# @ifi/pi-man-prompts
 
 Prompt templates for pi.
 
@@ -19,13 +19,13 @@ This package contains reusable prompt templates such as:
 ## Install
 
 ```bash
-pi install npm:@ifi/oh-pi-prompts
+pi install npm:@ifi/pi-man-prompts
 ```
 
 Or install the full bundle:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 ## Package layout

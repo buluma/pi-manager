@@ -7,7 +7,7 @@ describe("PRESETS", () => {
 		expect(full).toBeDefined();
 		expect(full?.extensions).not.toContain("safe-guard");
 		expect(full?.extensions).toContain("bg-process");
-		expect(full?.extensions).toContain("ant-colony");
+		expect(full?.extensions).toContain("crews");
 	});
 
 	it("keeps the clean preset extension-free", () => {
@@ -15,7 +15,7 @@ describe("PRESETS", () => {
 	});
 
 	it("keeps the colony preset focused on colony-related defaults", () => {
-		expect(PRESETS.colony?.config.extensions).toEqual(["ant-colony", "auto-session-name", "compact-header"]);
+		expect(PRESETS.colony?.config.extensions).toEqual(["crews", "auto-session-name", "compact-header"]);
 		expect(PRESETS.colony?.config.extensions).not.toContain("safe-guard");
 	});
 });

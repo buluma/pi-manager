@@ -1,7 +1,7 @@
 {
-  "name": "@ifi/oh-pi-core",
+  "name": "@ifi/pi-man-core",
   "version": "0.4.4",
-  "description": "Shared types, registries, and i18n for oh-pi packages.",
+  "description": "Shared types, registries, and i18n for pi-man packages.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -32,7 +32,7 @@
   "keywords": [
     "pi",
     "pi-coding-agent",
-    "oh-pi",
+    "pi-man",
     "core",
     "types",
     "registry",
@@ -40,11 +40,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/core",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/core",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   }
 }

@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { t } from "@ifi/oh-pi-core";
+import { t } from "@ifi/pi-man-core";
 
 /**
  * Prompts the user to select a keybinding scheme (default, Vim, or Emacs).

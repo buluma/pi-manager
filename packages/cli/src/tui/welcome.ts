@@ -1,5 +1,5 @@
 import * as p from "@clack/prompts";
-import { t } from "@ifi/oh-pi-core";
+import { t } from "@ifi/pi-man-core";
 import chalk from "chalk";
 import type { EnvInfo } from "../utils/detect.js";
 
@@ -10,7 +10,7 @@ import type { EnvInfo } from "../utils/detect.js";
 export function welcome(env: EnvInfo) {
 	// Clear terminal without using console APIs (lint-safe).
 	process.stdout.write("\x1Bc");
-	p.intro(chalk.cyan.bold(" oh-pi ") + chalk.dim(t("welcome.title")));
+	p.intro(chalk.cyan.bold(" pi-man ") + chalk.dim(t("welcome.title")));
 
 	if (env.piInstalled) {
 		p.log.success(t("welcome.piDetected", { version: env.piVersion ?? "" }));

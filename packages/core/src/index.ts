@@ -9,7 +9,7 @@ export {
 export { getLocale, selectLanguage, setLocale, t } from "./i18n.js";
 export type { IconMode, IconName } from "./icons.js";
 export { icon, isPlainIcons, setPlainIcons } from "./icons.js";
-export { EXTENSIONS, KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS, THEMES } from "./registry.js";
+export { EXTENSIONS, KEYBINDING_SCHEMES, MODEL_CAPABILITIES, PROVIDERS } from "./registry.js";
 export type {
 	DiscoveredModel,
 	Locale,

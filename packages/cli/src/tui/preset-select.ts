@@ -1,6 +1,6 @@
 import * as p from "@clack/prompts";
-import type { OhPConfig } from "@ifi/oh-pi-core";
-import { t } from "@ifi/oh-pi-core";
+import type { OhPConfig } from "@ifi/pi-man-core";
+import { t } from "@ifi/pi-man-core";
 
 interface Preset extends Omit<OhPConfig, "providers"> {}
 
@@ -21,12 +21,12 @@ export const PRESETS: Record<string, { labelKey: string; hintKey: string; config
 				"auto-session-name",
 				"custom-footer",
 				"compact-header",
-				"ant-colony",
+				"crews",
 				"auto-update",
 				"bg-process",
 			],
 			prompts: ["review", "fix", "explain", "commit", "test", "refactor", "optimize", "security", "document", "pr"],
-			agents: "colony-operator",
+			agents: "crew-operator",
 		},
 	},
 	clean: {
@@ -41,16 +41,16 @@ export const PRESETS: Record<string, { labelKey: string; hintKey: string; config
 			agents: "general-developer",
 		},
 	},
-	colony: {
-		labelKey: "preset.colony",
-		hintKey: "preset.colonyHint",
+	crew: {
+		labelKey: "preset.crew",
+		hintKey: "preset.crewHint",
 		config: {
 			theme: "dark",
 			keybindings: "default",
 			thinking: "medium",
-			extensions: ["ant-colony", "auto-session-name", "compact-header"],
+			extensions: ["crews", "auto-session-name", "compact-header"],
 			prompts: ["review", "fix", "explain", "commit"],
-			agents: "colony-operator",
+			agents: "crew-operator",
 		},
 	},
 };

@@ -1,0 +1,45 @@
+{
+  "name": "@ifi/pi-man-crews",
+  "version": "0.4.4",
+  "description": "Autonomous multi-agent crew extension for pi — adaptive concurrency, task dispatch.",
+  "type": "module",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/crews/index.ts"
+    ]
+  },
+  "files": [
+    "extensions",
+    "README.md",
+    "!**/*.test.ts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@ifi/pi-man-core": "workspace:*"
+  },
+  "scripts": {
+    "build": "pnpm run typecheck:worktree && pnpm run test:worktree",
+    "typecheck": "pnpm run typecheck:worktree",
+    "typecheck:worktree": "tsgo --project ./tsconfig.json --noEmit",
+    "test:worktree": "vitest run --config ./vitest.worktree.config.ts"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-ai": ">=0.56.1",
+    "@mariozechner/pi-agent-core": ">=0.56.1",
+    "@mariozechner/pi-coding-agent": ">=0.56.1",
+    "@mariozechner/pi-tui": ">=0.56.1",
+    "@sinclair/typebox": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
+    "directory": "packages/crews"
+  },
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/crews",
+  "bugs": {
+    "url": "https://github.com/ifiokjr/pi-man/issues"
+  }
+}

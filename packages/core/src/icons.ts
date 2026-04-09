@@ -6,7 +6,7 @@
  * ASCII-safe equivalents that render correctly in any terminal regardless
  * of font or Unicode support.
  *
- * @see https://github.com/ifiokjr/oh-pi/issues/24
+ * @see https://github.com/ifiokjr/pi-man/issues/24
  */
 
 /** The two icon rendering modes. */
@@ -26,7 +26,7 @@ export function setPlainIcons(enabled: boolean): void {
 	}
 }
 
-/** All known icon names used across oh-pi packages. */
+/** All known icon names used across pi-man packages. */
 export type IconName =
 	| "ant"
 	| "bolt"

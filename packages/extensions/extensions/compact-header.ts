@@ -1,9 +1,9 @@
 /**
- * oh-pi Compact Header — table-style startup info with dynamic column widths
+ * pi-man Compact Header — table-style startup info with dynamic column widths
  *
  * Also bootstraps the plain-icons setting: reads `plainIcons` from
  * settings.json and/or the `--plain-icons` CLI flag, and bridges it
- * to the `OH_PI_PLAIN_ICONS` env var so all oh-pi packages pick it up.
+ * to the `OH_PI_PLAIN_ICONS` env var so all pi-man packages pick it up.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";

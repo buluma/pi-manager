@@ -5,7 +5,7 @@ import {
 	getExtensionConfigPath,
 	getMirroredWorkspacePathSegments,
 	resolvePiAgentDir,
-} from "@ifi/oh-pi-core";
+} from "@ifi/pi-man-core";
 
 export type ProjectAgentStorageMode = "shared" | "project";
 

@@ -3,7 +3,7 @@ import type { Locale } from "./types.js";
 export const messages: Record<Locale, Record<string, string>> = {
 	en: {
 		// welcome
-		"welcome.title": "oh-pi — one-click setup for pi agent",
+		"welcome.title": "pi-man — dev-tool setup for pi agent",
 		"welcome.piDetected": "pi {version} detected",
 		"welcome.piNotFound": "pi not found — will install",
 		"welcome.envInfo": "{terminal} │ {os} │ Node {node}",
@@ -98,11 +98,11 @@ export const messages: Record<Locale, Record<string, string>> = {
 		// preset
 		"preset.select": "Choose a preset:",
 		"preset.full": "⚫ Full Power",
-		"preset.fullHint": "Recommended extensions, bg-process, and ant-colony (safe-guard stays opt-in)",
+		"preset.fullHint": "Recommended extensions, bg-process, and crews (safe-guard stays opt-in)",
 		"preset.clean": "✨ Clean",
 		"preset.cleanHint": "Minimal setup, just the essentials",
-		"preset.colony": "🐜 Colony",
-		"preset.colonyHint": "Ant swarm multi-agent system",
+		"preset.crew": "🐜 Crews",
+		"preset.crewHint": "Crew-based multi-agent system",
 
 		// theme
 		"theme.select": "Choose a theme:",
@@ -129,8 +129,8 @@ export const messages: Record<Locale, Record<string, string>> = {
 		"agent.securityHint": "Pentesting & audit",
 		"agent.dataai": "🤖 Data & AI Engineer",
 		"agent.dataaiHint": "MLOps & pipelines",
-		"agent.colony": "🐜 Colony Operator",
-		"agent.colonyHint": "Ant swarm multi-agent",
+		"agent.crew": "🐜 Crew Operator",
+		"agent.crewHint": "Crew-based multi-agent",
 
 		// advanced
 		"advanced.configure": "Configure advanced settings? (compaction threshold, etc.)",
@@ -185,7 +185,7 @@ export const messages: Record<Locale, Record<string, string>> = {
 	},
 
 	fr: {
-		"welcome.title": "oh-pi — configuration en un clic pour pi agent",
+		"welcome.title": "pi-man — configuration dev-tool pour pi agent",
 		"welcome.piDetected": "pi {version} détecté",
 		"welcome.piNotFound": "pi non trouvé — installation en cours",
 		"welcome.envInfo": "{terminal} │ {os} │ Node {node}",
@@ -280,8 +280,8 @@ export const messages: Record<Locale, Record<string, string>> = {
 		"preset.fullHint": "Extensions recommandées, bg-process et colonie (safe-guard reste optionnel)",
 		"preset.clean": "🟢 Propre",
 		"preset.cleanHint": "Configuration minimale, aucune extension",
-		"preset.colony": "🐜 Colonie",
-		"preset.colonyHint": "Mode essaim multi-agent de fourmis",
+		"preset.crew": "🐜 Équipes",
+		"preset.crewHint": "Système multi-agent par équipes",
 
 		"theme.select": "Choisir un thème :",
 
@@ -304,8 +304,8 @@ export const messages: Record<Locale, Record<string, string>> = {
 		"agent.securityHint": "Pentest & audit",
 		"agent.dataai": "🤖 Ingénieur Data & IA",
 		"agent.dataaiHint": "MLOps & pipelines",
-		"agent.colony": "🐜 Opérateur de colonie",
-		"agent.colonyHint": "Essaim multi-agent",
+		"agent.crew": "🐜 Opérateur d'équipe",
+		"agent.crewHint": "Multi-agent par équipes",
 
 		"advanced.configure": "Configurer les paramètres avancés ? (seuil de compaction, etc.)",
 		"advanced.compactThreshold": "Compacter automatiquement quand le contexte atteint % de la fenêtre (10-100) :",

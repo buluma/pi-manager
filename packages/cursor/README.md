@@ -16,7 +16,7 @@ Experimental Cursor model provider for pi.
 pi install npm:@ifi/pi-provider-cursor
 ```
 
-This package is intentionally separate from `@ifi/oh-pi` for now.
+This package is intentionally separate from `@ifi/pi-man` for now.
 
 ## Use
 

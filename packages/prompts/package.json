@@ -1,5 +1,5 @@
 {
-  "name": "@ifi/oh-pi-prompts",
+  "name": "@ifi/pi-man-prompts",
   "version": "0.4.4",
   "description": "Prompt templates for pi: review, fix, explain, refactor, test, commit, and more.",
   "keywords": [
@@ -17,11 +17,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ifiokjr/oh-pi.git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
     "directory": "packages/prompts"
   },
-  "homepage": "https://github.com/ifiokjr/oh-pi/tree/main/packages/prompts",
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/prompts",
   "bugs": {
-    "url": "https://github.com/ifiokjr/oh-pi/issues"
+    "url": "https://github.com/ifiokjr/pi-man/issues"
   }
 }

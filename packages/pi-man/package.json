@@ -1,0 +1,39 @@
+{
+  "name": "@ifi/pi-man",
+  "version": "0.4.4",
+  "description": "One-click setup for pi-coding-agent — extensions, prompts, skills, and crews. Like oh-my-zsh for pi.",
+  "keywords": [
+    "pi-package",
+    "pi-coding-agent",
+    "configuration",
+    "setup",
+    "tui"
+  ],
+  "bin": {
+    "pi-man": "bin/pi-man.mjs"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@ifi/pi-man-extensions": "workspace:*",
+    "@ifi/pi-man-crews": "workspace:*",
+    "@ifi/pi-extension-subagents": "workspace:*",
+    "@ifi/pi-plan": "workspace:*",
+    "@ifi/pi-spec": "workspace:*",
+    "@ifi/pi-man-prompts": "workspace:*",
+    "@ifi/pi-man-skills": "workspace:*",
+    "@ifi/pi-man-agents": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifiokjr/pi-man.git",
+    "directory": "packages/pi-man"
+  },
+  "homepage": "https://github.com/ifiokjr/pi-man/tree/main/packages/pi-man",
+  "bugs": {
+    "url": "https://github.com/ifiokjr/pi-man/issues"
+  }
+}

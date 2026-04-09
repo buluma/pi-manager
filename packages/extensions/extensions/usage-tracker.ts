@@ -148,7 +148,7 @@ export default function usageTracker(pi: ExtensionAPI) {
 
 	/** Per-model accumulated usage. Key = model ID. */
 	const models = new Map<string, ModelUsage>();
-	/** Per-source accumulated usage (session, ant-colony background, etc.). */
+	/** Per-source accumulated usage (session, crews background, etc.). */
 	const sources = new Map<string, SourceUsage>();
 	/** Recent turn snapshots for pace calc. */
 	const turnHistory: TurnSnapshot[] = [];
@@ -737,7 +737,7 @@ export default function usageTracker(pi: ExtensionAPI) {
 	/**
 	 * Broadcast current usage/rate-limit data to other extensions via `pi.events`.
 	 *
-	 * The ant-colony budget-planner listens on `"usage:limits"` to receive:
+	 * The crews budget-planner listens on `"usage:limits"` to receive:
 	 * - Provider rate limit windows (Anthropic, OpenAI, Google rate limits)
 	 * - Aggregate session cost
 	 * - Per-model usage snapshots
@@ -1205,7 +1205,7 @@ export default function usageTracker(pi: ExtensionAPI) {
 			recordUsage(event.message as unknown as AssistantMessage);
 			checkThresholds(ctx);
 			triggerProbe(ctx); // Refresh rate limits after each turn
-			broadcastUsageData(); // Notify other extensions (ant-colony budget planner)
+			broadcastUsageData(); // Notify other extensions (crews budget planner)
 		}
 	});
 

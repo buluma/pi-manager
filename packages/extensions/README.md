@@ -1,4 +1,4 @@
-# @ifi/oh-pi-extensions
+# @ifi/pi-man-extensions
 
 Core first-party extensions for pi.
 
@@ -20,13 +20,13 @@ This package includes extensions such as:
 ## Install
 
 ```bash
-pi install npm:@ifi/oh-pi-extensions
+pi install npm:@ifi/pi-man-extensions
 ```
 
 Or install the full bundle:
 
 ```bash
-npx @ifi/oh-pi
+npx @ifi/pi-man
 ```
 
 ## What it provides

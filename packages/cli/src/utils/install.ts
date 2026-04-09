@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
-import { type OhPConfig, resolvePiAgentDir } from "@ifi/oh-pi-core";
+import { type OhPConfig, resolvePiAgentDir } from "@ifi/pi-man-core";
 import {
 	writeAgents,
 	writeExtensions,
@@ -103,7 +103,7 @@ export function applyConfig(config: OhPConfig) {
 }
 
 /**
- * Remove all files/dirs managed by oh-pi before strict replace apply.
+ * Remove all files/dirs managed by pi-man before strict replace apply.
  */
 export function cleanupManagedConfig(agentDir: string) {
 	for (const entry of MANAGED_CONFIG_ENTRIES) {

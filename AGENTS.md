@@ -1,38 +1,21 @@
-# Agent Rules — oh-pi
+# Agent Rules — pi-man
 
-oh-pi is a lockstep-versioned pnpm monorepo of pi extensions, themes, prompts, skills, agents, and TUI tooling.
+pi-man is a dev-tool focused pnpm monorepo of pi extensions, prompts, skills, agents, and TUI tooling.
 
 ## Essentials
 
 - Use `pnpm` for all workspace commands.
-<!-- {=repoMdtUsageRuleDocs} -->
 
-Use MDT through `pnpm mdt ...`, not a globally installed `mdt` binary. This keeps documentation
-reuse commands pinned to the repo's declared `@ifi/mdt` version and makes local runs, CI, and agent
-instructions consistent.
-
-<!-- {/repoMdtUsageRuleDocs} -->
-- Non-standard repo commands:
-  - `pnpm typecheck` — type-checks the repo with `tsgo` (`@typescript/native-preview`)
-  - `pnpm build` — runs every workspace package build script
-- Every non-release change must include a changeset created with `knope document-change`; changeset frontmatter must use only `default`.
-<!-- {=repoMdtCommandsDocs} -->
+## Commands
 
 ```bash
-pnpm mdt list
-pnpm mdt update
-pnpm mdt check
+pnpm build          # build all packages
+pnpm typecheck      # type-check with tsgo
+pnpm test           # run tests
 ```
 
-Convenience wrappers remain available too:
+## Guidelines
 
-```bash
-pnpm docs:list
-pnpm docs:update
-pnpm docs:check
-```
-
-<!-- {/repoMdtCommandsDocs} -->
 - Read only the detailed file that matches the current task:
   - [Engineering rules](docs/agent-rules/engineering.md)
   - [Packaging and release rules](docs/agent-rules/packaging-and-release.md)

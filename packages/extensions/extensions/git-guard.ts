@@ -1,5 +1,5 @@
 /**
- * oh-pi Git Checkpoint Extension
+ * pi-man Git Checkpoint Extension
  *
  * Provides three safety features for git-managed repositories:
  * 1. **Dirty repo warning** — notifies at session start if there are uncommitted changes
@@ -48,7 +48,7 @@ export default function (pi: ExtensionAPI) {
 	pi.on("turn_start", async () => {
 		turnCount++;
 		try {
-			await pi.exec("git", ["stash", "create", "-m", `oh-pi-turn-${turnCount}`]);
+			await pi.exec("git", ["stash", "create", "-m", `pi-man-turn-${turnCount}`]);
 		} catch {
 			// Not a git repo — skip silently
 		}
@@ -56,7 +56,7 @@ export default function (pi: ExtensionAPI) {
 
 	// Notify when agent is done
 	pi.on("agent_end", () => {
-		terminalNotify("oh-pi", `Done after ${turnCount} turn(s). Ready for input.`);
+		terminalNotify("pi-man", `Done after ${turnCount} turn(s). Ready for input.`);
 		turnCount = 0;
 	});
 }

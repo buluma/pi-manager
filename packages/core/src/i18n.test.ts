@@ -5,7 +5,7 @@ afterEach(() => setLocale("en"));
 
 describe("t", () => {
 	it("returns known en key", () => {
-		expect(t("welcome.title")).toContain("oh-pi");
+		expect(t("welcome.title")).toContain("pi-man");
 	});
 
 	it("interpolates vars", () => {
@@ -38,12 +38,12 @@ describe("t", () => {
 	});
 
 	it("does not crash with empty vars", () => {
-		expect(t("welcome.title", {})).toContain("oh-pi");
+		expect(t("welcome.title", {})).toContain("pi-man");
 	});
 
 	it("fr locale returns fr translation", () => {
 		setLocale("fr");
 		const result = t("welcome.title");
-		expect(result).toContain("oh-pi");
+		expect(result).toContain("pi-man");
 	});
 });
