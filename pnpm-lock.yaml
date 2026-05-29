@@ -31,13 +31,13 @@ importers:
         version: 0.7.0
       '@mariozechner/pi-agent-core':
         specifier: 0.56.1
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: 0.56.1
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: 0.56.1
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: 0.56.1
         version: 0.56.1
@@ -111,13 +111,13 @@ importers:
         version: link:../core
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -132,13 +132,13 @@ importers:
         version: 2.11.0
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -150,13 +150,13 @@ importers:
     dependencies:
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -171,13 +171,13 @@ importers:
     dependencies:
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -222,13 +222,13 @@ importers:
         version: link:../shared-qna
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -250,13 +250,13 @@ importers:
     dependencies:
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -271,13 +271,13 @@ importers:
         version: link:../core
       '@mariozechner/pi-agent-core':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-ai':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui':
         specifier: '>=0.56.1'
         version: 0.56.1
@@ -294,7 +294,7 @@ importers:
         version: link:../web-server
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@sinclair/typebox':
         specifier: '*'
         version: 0.34.48
@@ -306,13 +306,13 @@ importers:
         version: 1.19.13(hono@4.12.18)
       '@mariozechner/pi-coding-agent':
         specifier: '>=0.56.1'
-        version: 0.56.1(ws@8.19.0)(zod@3.25.76)
+        version: 0.56.1(ws@8.21.0)(zod@3.25.76)
       hono:
         specifier: '>=4.12.12'
         version: 4.12.18
       ws:
-        specifier: ^8.18.0
-        version: 8.19.0
+        specifier: ^8.20.1
+        version: 8.21.0
     devDependencies:
       '@types/ws':
         specifier: ^8.5.0
@@ -2118,8 +2118,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  ws@8.19.0:
-    resolution: {integrity: sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -2678,7 +2678,7 @@ snapshots:
       google-auth-library: 10.6.1
       p-retry: 4.6.2
       protobufjs: 7.5.4
-      ws: 8.19.0
+      ws: 8.21.0
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -2783,9 +2783,9 @@ snapshots:
       std-env: 3.10.0
       yoctocolors: 2.1.2
 
-  '@mariozechner/pi-agent-core@0.56.1(ws@8.19.0)(zod@3.25.76)':
+  '@mariozechner/pi-agent-core@0.56.1(ws@8.21.0)(zod@3.25.76)':
     dependencies:
-      '@mariozechner/pi-ai': 0.56.1(ws@8.19.0)(zod@3.25.76)
+      '@mariozechner/pi-ai': 0.56.1(ws@8.21.0)(zod@3.25.76)
     transitivePeerDependencies:
       - '@modelcontextprotocol/sdk'
       - aws-crt
@@ -2795,7 +2795,7 @@ snapshots:
       - ws
       - zod
 
-  '@mariozechner/pi-ai@0.56.1(ws@8.19.0)(zod@3.25.76)':
+  '@mariozechner/pi-ai@0.56.1(ws@8.21.0)(zod@3.25.76)':
     dependencies:
       '@anthropic-ai/sdk': 0.73.0(zod@3.25.76)
       '@aws-sdk/client-bedrock-runtime': 3.1002.0
@@ -2805,7 +2805,7 @@ snapshots:
       ajv: 8.18.0
       ajv-formats: 3.0.1(ajv@8.18.0)
       chalk: 5.6.2
-      openai: 6.10.0(ws@8.19.0)(zod@3.25.76)
+      openai: 6.10.0(ws@8.21.0)(zod@3.25.76)
       partial-json: 0.1.7
       proxy-agent: 6.5.0
       undici: 7.24.0
@@ -2819,11 +2819,11 @@ snapshots:
       - ws
       - zod
 
-  '@mariozechner/pi-coding-agent@0.56.1(ws@8.19.0)(zod@3.25.76)':
+  '@mariozechner/pi-coding-agent@0.56.1(ws@8.21.0)(zod@3.25.76)':
     dependencies:
       '@mariozechner/jiti': 2.6.5
-      '@mariozechner/pi-agent-core': 0.56.1(ws@8.19.0)(zod@3.25.76)
-      '@mariozechner/pi-ai': 0.56.1(ws@8.19.0)(zod@3.25.76)
+      '@mariozechner/pi-agent-core': 0.56.1(ws@8.21.0)(zod@3.25.76)
+      '@mariozechner/pi-ai': 0.56.1(ws@8.21.0)(zod@3.25.76)
       '@mariozechner/pi-tui': 0.56.1
       '@silvia-odwyer/photon-node': 0.3.4
       chalk: 5.6.2
@@ -3817,9 +3817,9 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  openai@6.10.0(ws@8.19.0)(zod@3.25.76):
+  openai@6.10.0(ws@8.21.0)(zod@3.25.76):
     optionalDependencies:
-      ws: 8.19.0
+      ws: 8.21.0
       zod: 3.25.76
 
   p-retry@4.6.2:
@@ -4186,7 +4186,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.19.0: {}
+  ws@8.21.0: {}
 
   y18n@5.0.8: {}
 
