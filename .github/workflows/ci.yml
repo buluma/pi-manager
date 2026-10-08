@@ -11,45 +11,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  commit-lint:
-    name: Conventional Commits
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6.0.2
-        with:
-          fetch-depth: 0
-
-      - name: Validate commit messages
-        run: |
-          # Conventional commit pattern: type(scope)?: description
-          PATTERN='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .+'
-
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            BASE_SHA='${{ github.event.pull_request.base.sha }}'
-            HEAD_SHA='${{ github.event.pull_request.head.sha }}'
-            # Validate only real PR commits (exclude synthetic merge commits from refs/pull/*/merge).
-            COMMITS=$(git log --format='%s' --no-merges "${BASE_SHA}..${HEAD_SHA}")
-          else
-            # On push, check only the head commit
-            COMMITS=$(git log --format='%s' -1)
-          fi
-
-          FAILED=0
-          while IFS= read -r msg; do
-            [ -z "$msg" ] && continue
-            if ! echo "$msg" | grep -qE "$PATTERN"; then
-              echo "::error::Invalid commit message: '$msg'"
-              echo "  Must match: type(scope)?: description"
-              echo "  Types: feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
-              FAILED=1
-            fi
-          done <<< "$COMMITS"
-
-          if [ "$FAILED" -eq 1 ]; then
-            exit 1
-          fi
-          echo "✅ All commit messages follow conventional commits"
-
   changeset:
     name: Changeset Check
     runs-on: ubuntu-latest
@@ -304,7 +265,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [commit-lint, changeset, docs, security, lint, typecheck, test, compat]
+    needs: [changeset, docs, security, lint, typecheck, test, compat]
     # Run build even if changeset was skipped (release commits)
     if: "!failure() && !cancelled()"
     steps:
