@@ -70,6 +70,6 @@ describe("requirePiTuiModule", () => {
 					throw error;
 				},
 			}),
-		).toThrow(/Unable to load @mariozechner\/pi-tui/);
+		).toThrow(/Unable to load @earendil-works\/pi-tui/);
 	});
 });

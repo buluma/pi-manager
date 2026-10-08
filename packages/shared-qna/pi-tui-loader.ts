@@ -39,7 +39,7 @@ export function getPiTuiFallbackPaths(options: Omit<PiTuiLoaderOptions, "require
 	}
 	roots.add(path.join(homeDir, ".bun"));
 	return [...roots].map((root) =>
-		path.join(root, "install", "global", "node_modules", "@mariozechner", "pi-tui"),
+		path.join(root, "install", "global", "node_modules", "@earendil-works", "pi-tui"),
 	);
 }
 
