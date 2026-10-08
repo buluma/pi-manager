@@ -27,8 +27,8 @@
     "@ifi/pi-web-server": "workspace:*"
   },
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": ">=1.1.0",
-    "@sinclair/typebox": "*"
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
   },
   "repository": {
     "type": "git",

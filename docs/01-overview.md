@@ -28,9 +28,9 @@ need to fork or modify internals.
 ### Package Architecture
 
 ```
-@mariozechner/pi-ai          → LLM provider abstraction layer
-@mariozechner/pi-agent-core  → Agent loop and message types
-@mariozechner/pi-tui         → Terminal UI component library
+@earendil-works/pi-ai          → LLM provider abstraction layer
+@earendil-works/pi-agent-core  → Agent loop and message types
+@earendil-works/pi-tui         → Terminal UI component library
 @earendil-works/pi-coding-agent → CLI and interactive mode (main package)
 ```
 

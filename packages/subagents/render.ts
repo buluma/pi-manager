@@ -2,9 +2,9 @@
  * Rendering functions for subagent results
  */
 
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
+import type { AgentToolResult } from "@earendil-works/pi-agent-core";
 import { getMarkdownTheme, type ExtensionContext } from "@earendil-works/pi-coding-agent";
-import { Container, Markdown, Spacer, Text, truncateToWidth, visibleWidth, type Widget } from "@mariozechner/pi-tui";
+import { Container, Markdown, Spacer, Text, truncateToWidth, visibleWidth, type Widget } from "@earendil-works/pi-tui";
 import { type AsyncJobState, type Details, MAX_WIDGET_JOBS, WIDGET_KEY } from "./types.js";
 import { formatTokens, formatUsage, formatDuration, formatToolCall, shortenPath } from "./formatters.js";
 import { getFinalOutput, getDisplayItems, getOutputTail, getLastActivity } from "./utils.js";

@@ -28,7 +28,7 @@ Extensions are TypeScript modules loaded via jiti (no compilation needed). They 
 
 ```typescript
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
-import { Type } from "@sinclair/typebox";
+import { Type } from "typebox";
 
 export default function (pi: ExtensionAPI) {
   // Subscribe to events
@@ -50,9 +50,9 @@ export default function (pi: ExtensionAPI) {
 | Package                         | Use                                                    |
 | ------------------------------- | ------------------------------------------------------ |
 | `@earendil-works/pi-coding-agent` | Extension types                                        |
-| `@sinclair/typebox`             | Tool parameter schemas                                 |
-| `@mariozechner/pi-ai`           | AI utilities (StringEnum, etc.)                        |
-| `@mariozechner/pi-tui`          | TUI components                                         |
+| `typebox`             | Tool parameter schemas                                 |
+| `@earendil-works/pi-ai`           | AI utilities (StringEnum, etc.)                        |
+| `@earendil-works/pi-tui`          | TUI components                                         |
 | Node.js built-ins               | `node:fs`, `node:path`, etc.                           |
 | npm dependencies                | Requires package.json + install in extension directory |
 
@@ -165,8 +165,8 @@ Each event handler receives `ctx`:
 ## 7. Custom Tools
 
 ```typescript
-import { Type } from "@sinclair/typebox";
-import { StringEnum } from "@mariozechner/pi-ai";
+import { Type } from "typebox";
+import { StringEnum } from "@earendil-works/pi-ai";
 
 pi.registerTool({
   name: "my_tool",

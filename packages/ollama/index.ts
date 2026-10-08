@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { readStoredCredential, type ExtensionAPI, type ExtensionCommandContext } from "@earendil-works/pi-coding-agent";
 import {
 	createOllamaCloudOAuthProvider,
 	loginOllamaCloud,
@@ -58,6 +58,23 @@ function registerOllamaCloudProvider(pi: ExtensionAPI): void {
 		baseUrl: getOllamaCloudRuntimeConfig().apiUrl,
 		oauth: createOllamaCloudOAuthProvider(),
 		models: toProviderModels(cloudEnvDiscoveryState.models),
+		async refreshModels({ credential, allowNetwork, signal }) {
+			const apiKey = credential?.type === "oauth"
+				? (credential as OllamaCloudCredentials).access
+				: process.env[OLLAMA_CLOUD_API_KEY_ENV]?.trim();
+			if (!allowNetwork || !apiKey) {
+				return toProviderModels(cloudEnvDiscoveryState.models);
+			}
+			try {
+				cloudEnvDiscoveryState.models = (await discoverOllamaCloudModels(apiKey, { signal })) ?? getFallbackOllamaCloudModels();
+				cloudEnvDiscoveryState.lastError = null;
+			} catch (error) {
+				cloudEnvDiscoveryState.models = getFallbackOllamaCloudModels();
+				cloudEnvDiscoveryState.lastError = error instanceof Error ? error.message : String(error);
+			}
+			cloudEnvDiscoveryState.lastRefresh = Date.now();
+			return toProviderModels(cloudEnvDiscoveryState.models);
+		},
 	});
 }
 
@@ -103,13 +120,12 @@ function registerOllamaCommands(pi: ExtensionAPI): void {
 			const trimmed = args.trim();
 			const [rawAction = "status", ...rest] = trimmed ? trimmed.split(/\s+/) : ["status"];
 			const action = rawAction.toLowerCase();
-			const credential = getStoredCloudCredential(ctx);
+			const credential = getStoredCloudCredential();
 
 			if (action === "refresh-models") {
 				const localModels = await refreshRegisteredLocalModels(pi);
-						const cloudModels = await refreshCloudModels(pi, ctx, credential);
-				ctx.modelRegistry.refresh();
-				const cloudStatus = credential || process.env[OLLAMA_CLOUD_API_KEY_ENV]?.trim()
+				const cloudModels = await refreshCloudModels(ctx);
+				const cloudStatus = ctx.modelRegistry.getProviderAuthStatus(OLLAMA_CLOUD_PROVIDER).configured || process.env[OLLAMA_CLOUD_API_KEY_ENV]?.trim()
 					? `${cloudModels.length} cloud available`
 					: "cloud not configured";
 				ctx.ui.notify(`Refreshed Ollama models (${localModels.length} local, ${cloudStatus}).`, "info");
@@ -144,12 +160,11 @@ function registerOllamaCommands(pi: ExtensionAPI): void {
 		description: "Backward-compatible alias for cloud-only Ollama status and refresh: /ollama-cloud [status|refresh-models]",
 		async handler(args, ctx) {
 			const action = args.trim().toLowerCase() || "status";
-			const credential = getStoredCloudCredential(ctx);
+			const credential = getStoredCloudCredential();
 
 			if (action === "refresh-models") {
-				const cloudModels = await refreshCloudModels(pi, ctx, credential);
-				ctx.modelRegistry.refresh();
-				if (!credential && !process.env[OLLAMA_CLOUD_API_KEY_ENV]?.trim()) {
+				const cloudModels = await refreshCloudModels(ctx);
+				if (!ctx.modelRegistry.getProviderAuthStatus(OLLAMA_CLOUD_PROVIDER).configured && !process.env[OLLAMA_CLOUD_API_KEY_ENV]?.trim()) {
 					ctx.ui.notify("Ollama Cloud is not configured. Run /login ollama-cloud or set OLLAMA_API_KEY.", "warning");
 					return;
 				}
@@ -162,19 +177,9 @@ function registerOllamaCommands(pi: ExtensionAPI): void {
 	});
 }
 
-async function refreshCloudModels(
-	pi: ExtensionAPI,
-	ctx: { modelRegistry: { authStorage: { set: (provider: string, credential: any) => void } } },
-	credential: OllamaCloudCredentials | null,
-): Promise<OllamaProviderModel[]> {
-	if (credential) {
-		const refreshed = credential.expires <= Date.now()
-			? await refreshOllamaCloudCredential(credential)
-			: await refreshOllamaCloudCredentialModels(credential);
-		ctx.modelRegistry.authStorage.set(OLLAMA_CLOUD_PROVIDER, { type: "oauth", ...refreshed });
-		return getCredentialModels(refreshed);
-	}
-	return refreshRegisteredCloudEnvModels(pi);
+async function refreshCloudModels(ctx: ExtensionCommandContext): Promise<OllamaProviderModel[]> {
+	await ctx.modelRegistry.refresh({ providers: [OLLAMA_CLOUD_PROVIDER], force: true });
+	return cloudEnvDiscoveryState.models;
 }
 
 function renderUnifiedStatus(credential: OllamaCloudCredentials | null): string {
@@ -214,7 +219,11 @@ function renderCloudStatus(credential: OllamaCloudCredentials | null): string {
 function collectOllamaModels(credential: OllamaCloudCredentials | null): Array<OllamaProviderModel & { provider: string; baseUrl: string }> {
 	const localConfig = getOllamaLocalRuntimeConfig();
 	const cloudConfig = getOllamaCloudRuntimeConfig();
-	const cloudModels = credential ? getCredentialModels(credential) : cloudEnvDiscoveryState.models;
+	const cloudModels = cloudEnvDiscoveryState.models.length > 0
+		? cloudEnvDiscoveryState.models
+		: credential
+			? getCredentialModels(credential)
+			: cloudEnvDiscoveryState.models;
 	return [
 		...localDiscoveryState.models.map((model) => ({ ...model, provider: OLLAMA_LOCAL_PROVIDER, baseUrl: localConfig.apiUrl })),
 		...cloudModels.map((model) => ({ ...model, provider: OLLAMA_CLOUD_PROVIDER, baseUrl: cloudConfig.apiUrl })),
@@ -345,8 +354,8 @@ function formatRefreshAge(timestamp: number | null | undefined): string {
 	return ` (${hours}h ago)`;
 }
 
-function getStoredCloudCredential(ctx: { modelRegistry: { authStorage: { get: (provider: string) => unknown } } }): OllamaCloudCredentials | null {
-	const credential = ctx.modelRegistry.authStorage.get(OLLAMA_CLOUD_PROVIDER);
+function getStoredCloudCredential(): OllamaCloudCredentials | null {
+	const credential = readStoredCredential(OLLAMA_CLOUD_PROVIDER);
 	return credential && typeof credential === "object" && (credential as { type?: string }).type === "oauth"
 		? (credential as OllamaCloudCredentials)
 		: null;

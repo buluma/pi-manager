@@ -4,7 +4,7 @@ vi.mock("@earendil-works/pi-coding-agent", () => ({
 	getMarkdownTheme: () => ({}),
 }));
 
-vi.mock("@mariozechner/pi-tui", () => ({
+vi.mock("@earendil-works/pi-tui", () => ({
 	Container: class {},
 	Markdown: class {},
 	Spacer: class {},

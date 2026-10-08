@@ -30,7 +30,7 @@ vi.mock("@earendil-works/pi-coding-agent", () => ({
 	getAgentDir: () => "/tmp/pi-agent",
 	VERSION: "test",
 }));
-vi.mock("@mariozechner/pi-tui", () => ({
+vi.mock("@earendil-works/pi-tui", () => ({
 	Text: class {},
 }));
 

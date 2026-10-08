@@ -6,8 +6,8 @@
  */
 
 import type { Theme } from "@earendil-works/pi-coding-agent";
-import type { Component, TUI } from "@mariozechner/pi-tui";
-import { matchesKey, visibleWidth, truncateToWidth } from "@mariozechner/pi-tui";
+import type { Component, TUI } from "@earendil-works/pi-tui";
+import { matchesKey, visibleWidth, truncateToWidth } from "@earendil-works/pi-tui";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { AgentConfig, ChainConfig, ChainStepConfig } from "./agents.js";

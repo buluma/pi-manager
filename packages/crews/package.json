@@ -1,7 +1,7 @@
 {
   "name": "@buluma/pi-man-crews",
   "version": "0.4.5",
-  "description": "Autonomous multi-agent crew extension for pi — adaptive concurrency, task dispatch.",
+  "description": "Autonomous multi-agent crew extension for pi \u2014 adaptive concurrency, task dispatch.",
   "type": "module",
   "keywords": [
     "pi-package"
@@ -27,11 +27,11 @@
     "test:worktree": "vitest run --config ./vitest.worktree.config.ts"
   },
   "peerDependencies": {
-    "@mariozechner/pi-ai": ">=0.56.1",
-    "@mariozechner/pi-agent-core": ">=0.56.1",
-    "@earendil-works/pi-coding-agent": ">=1.1.0",
-    "@mariozechner/pi-tui": ">=0.56.1",
-    "@sinclair/typebox": "*"
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-agent-core": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
   },
   "repository": {
     "type": "git",

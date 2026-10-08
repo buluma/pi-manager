@@ -1,4 +1,4 @@
-import type { Api, Model, OAuthCredentials } from "@mariozechner/pi-ai";
+import type { Api, Model, OAuthCredentials } from "@earendil-works/pi-ai";
 import { getOllamaCloudRuntimeConfig, getOllamaLocalRuntimeConfig, type OllamaRuntimeConfig } from "./config.js";
 
 export type OllamaModelSource = "local" | "cloud";
@@ -17,6 +17,7 @@ export type OllamaProviderModel = {
 	contextWindow: number;
 	maxTokens: number;
 	compat?: Model<Api>["compat"];
+	thinkingLevelMap?: Model<Api>["thinkingLevelMap"];
 	source?: OllamaModelSource;
 	family?: string;
 	parameterSize?: string;
@@ -49,14 +50,15 @@ const MAX_DISCOVERY_CONCURRENCY = 6;
 const OLLAMA_OPENAI_COMPAT: NonNullable<OllamaProviderModel["compat"]> = {
 	supportsDeveloperRole: false,
 	supportsReasoningEffort: true,
-	reasoningEffortMap: {
-		minimal: "low",
-		low: "low",
-		medium: "medium",
-		high: "high",
-		xhigh: "high",
-	},
 	maxTokensField: "max_tokens",
+};
+
+const OLLAMA_THINKING_LEVEL_MAP: NonNullable<OllamaProviderModel["thinkingLevelMap"]> = {
+	minimal: "low",
+	low: "low",
+	medium: "medium",
+	high: "high",
+	xhigh: "high",
 };
 
 const FALLBACK_OLLAMA_CLOUD_MODELS: OllamaProviderModel[] = [
@@ -160,6 +162,7 @@ export function toOllamaModel(model: Partial<OllamaProviderModel> & Pick<OllamaP
 		contextWindow,
 		maxTokens,
 		compat: { ...OLLAMA_OPENAI_COMPAT, ...(model.compat ?? {}) },
+		thinkingLevelMap: model.thinkingLevelMap ?? (model.reasoning ? { ...OLLAMA_THINKING_LEVEL_MAP } : undefined),
 		source: model.source,
 		family: sanitizeOptionalString(model.family),
 		parameterSize: sanitizeOptionalString(model.parameterSize),

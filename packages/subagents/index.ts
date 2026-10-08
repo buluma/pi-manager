@@ -16,7 +16,7 @@ import { randomUUID } from "node:crypto";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { type ExtensionAPI, type ExtensionContext, type ToolDefinition } from "@earendil-works/pi-coding-agent";
-import { Text } from "@mariozechner/pi-tui";
+import { Text } from "@earendil-works/pi-tui";
 import { type AgentConfig, type AgentScope, discoverAgents, discoverAgentsAll } from "./agents.js";
 import { resolveExecutionAgentScope } from "./agent-scope.js";
 import {

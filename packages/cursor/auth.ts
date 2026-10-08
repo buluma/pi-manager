@@ -1,4 +1,5 @@
-import type { OAuthCredentials, OAuthLoginCallbacks, OAuthProviderInterface } from "@mariozechner/pi-ai";
+import type { OAuthCredentials, OAuthLoginCallbacks } from "@earendil-works/pi-ai";
+import type { ProviderConfig } from "@earendil-works/pi-coding-agent";
 import { CURSOR_PROVIDER, getCursorRuntimeConfig } from "./config.js";
 import { enrichCursorCredentials, getCredentialModels, type CursorCredentials } from "./models.js";
 
@@ -49,10 +50,11 @@ export async function loginCursor(callbacks: OAuthLoginCallbacks): Promise<Curso
 
 export async function refreshCursorToken(
 	credentials: OAuthCredentials,
-	options: { preserveModels?: boolean } = {},
+	options: { preserveModels?: boolean; signal?: AbortSignal } = {},
 ): Promise<CursorCredentials> {
 	const response = await fetch(getCursorRuntimeConfig().refreshUrl, {
 		method: "POST",
+		signal: options.signal,
 		headers: {
 			Authorization: `Bearer ${credentials.refresh}`,
 			"Content-Type": "application/json",
@@ -102,14 +104,14 @@ export function getTokenExpiry(token: string): number {
 	return Date.now() + 3600 * 1000;
 }
 
-export function createCursorOAuthProvider(): Omit<OAuthProviderInterface, "id"> {
+export function createCursorOAuthProvider(): NonNullable<ProviderConfig["oauth"]> {
 	return {
 		name: "Cursor (experimental)",
 		async login(callbacks) {
 			return loginCursor(callbacks);
 		},
-		async refreshToken(credentials) {
-			return refreshCursorToken(credentials);
+		async refreshToken(credentials, signal) {
+			return refreshCursorToken(credentials, { signal });
 		},
 		getApiKey(credentials) {
 			return credentials.access;

@@ -1,7 +1,7 @@
 import { create, fromBinary, toBinary } from "@bufbuild/protobuf";
 import { ValueSchema } from "@bufbuild/protobuf/wkt";
 import { describe, expect, it } from "vitest";
-import type { Context, ToolCall, ToolResultMessage } from "@mariozechner/pi-ai";
+import type { Context, ToolCall, ToolResultMessage } from "@earendil-works/pi-ai";
 import {
 	buildCursorRequestPayload,
 	decodeMcpArgsMap,

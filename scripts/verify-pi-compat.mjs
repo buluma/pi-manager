@@ -2,14 +2,15 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
-const MIN_VERSION = "0.56.1";
-const CURRENT_VERSION = "0.64.0";
+const MIN_VERSION = "0.74.2";
+const CURRENT_VERSION = "1.1.0";
 const PI_COMPAT_PACKAGES = [
-	"@mariozechner/pi-agent-core",
-	"@mariozechner/pi-ai",
-	"@mariozechner/pi-tui",
+	"@earendil-works/pi-agent-core",
+	"@earendil-works/pi-ai",
+	"@earendil-works/pi-coding-agent",
+	"@earendil-works/pi-tui",
 ];
-const PI_PACKAGES = [...PI_COMPAT_PACKAGES, "@earendil-works/pi-coding-agent"];
+const PI_PACKAGES = PI_COMPAT_PACKAGES;
 function parseArgs(argv) {
 	const parsed = { version: process.env.PI_COMPAT_VERSION, restore: false };
 	for (let i = 0; i < argv.length; i++) {

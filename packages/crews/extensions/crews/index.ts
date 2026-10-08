@@ -12,8 +12,8 @@
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { ExtensionAPI, ModelRegistry } from "@earendil-works/pi-coding-agent";
-import { Container, matchesKey, Text } from "@mariozechner/pi-tui";
-import { Type } from "@sinclair/typebox";
+import { Container, matchesKey, Text } from "@earendil-works/pi-tui";
+import { Type } from "typebox";
 import { Nest } from "./nest.js";
 import { createUsageLimitsTracker, type QueenCallbacks, resumeColony, runColony } from "./queen.js";
 import { resolveColonyStorageOptions, shouldManageProjectGitignore } from "./storage.js";

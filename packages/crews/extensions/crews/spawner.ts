@@ -7,6 +7,7 @@
  * - Shared auth & model registry
  */
 
+import { getModel } from "@earendil-works/pi-ai";
 import {
 	type AgentSessionEvent,
 	AuthStorage,
@@ -24,7 +25,6 @@ import {
 	SessionManager,
 	SettingsManager,
 } from "@earendil-works/pi-coding-agent";
-import { getModel } from "@mariozechner/pi-ai";
 import type { Nest } from "./nest.js";
 import { extractPheromones, type ParsedSubTask, parseSubTasks } from "./parser.js";
 import { buildPrompt, CASTE_PROMPTS } from "./prompts.js";

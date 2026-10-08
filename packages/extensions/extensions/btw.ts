@@ -15,19 +15,19 @@
  */
 
 import {
-	buildSessionContext,
-	type ExtensionAPI,
-	type ExtensionCommandContext,
-	type ExtensionContext,
-} from "@earendil-works/pi-coding-agent";
-import {
 	type ThinkingLevel as AiThinkingLevel,
 	type AssistantMessage,
 	completeSimple,
 	type Message,
 	streamSimple,
-} from "@mariozechner/pi-ai";
-import { Text } from "@mariozechner/pi-tui";
+} from "@earendil-works/pi-ai";
+import {
+	buildSessionContext,
+	type ExtensionAPI,
+	type ExtensionCommandContext,
+	type ExtensionContext,
+} from "@earendil-works/pi-coding-agent";
+import { Text } from "@earendil-works/pi-tui";
 
 const BTW_MESSAGE_TYPE = "btw-note";
 const BTW_ENTRY_TYPE = "btw-thread-entry";
@@ -142,7 +142,7 @@ export async function resolveBtwApiKey(
 	}
 
 	try {
-		const aiModule = (await import("@mariozechner/pi-ai")) as {
+		const aiModule = (await import("@earendil-works/pi-ai")) as {
 			getEnvApiKey?: (provider: string) => string | undefined;
 		};
 		return aiModule.getEnvApiKey?.(model.provider);

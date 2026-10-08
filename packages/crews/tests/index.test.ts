@@ -120,7 +120,7 @@ vi.mock("../extensions/crews/worktree.js", async (importActual) => {
 	};
 });
 
-vi.mock("@sinclair/typebox", () => ({
+vi.mock("typebox", () => ({
 	Type: {
 		Object: (schema: any) => schema,
 		String: (opts?: any) => ({ type: "string", ...opts }),
@@ -129,7 +129,7 @@ vi.mock("@sinclair/typebox", () => ({
 	},
 }));
 
-vi.mock("@mariozechner/pi-tui", () => ({
+vi.mock("@earendil-works/pi-tui", () => ({
 	Container: class {
 		children: unknown[] = [];
 		addChild(child: unknown) {

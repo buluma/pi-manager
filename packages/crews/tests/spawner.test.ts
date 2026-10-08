@@ -16,7 +16,7 @@ vi.mock("@earendil-works/pi-coding-agent", () => ({
 	createExtensionRuntime: vi.fn(),
 	getAgentDir: () => "/mock-home/.pi/agent",
 }));
-vi.mock("@mariozechner/pi-ai", () => ({ getModel: vi.fn() }));
+vi.mock("@earendil-works/pi-ai", () => ({ getModel: vi.fn() }));
 
 import * as fs from "node:fs";
 import * as os from "node:os";
