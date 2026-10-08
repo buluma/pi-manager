@@ -113,7 +113,7 @@ import {
   createAgentSession,
   ModelRegistry,
   SessionManager,
-} from "@mariozechner/pi-coding-agent";
+} from "@earendil-works/pi-coding-agent";
 
 const authStorage = new AuthStorage();
 const modelRegistry = new ModelRegistry(authStorage);

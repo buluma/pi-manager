@@ -12,7 +12,7 @@
  * The scheduling loop models real ant colonies: ants leave nest → forage → return → leave again.
  */
 
-import type { AuthStorage, ModelRegistry } from "@mariozechner/pi-coding-agent";
+import type { AuthStorage, ModelRegistry } from "@earendil-works/pi-coding-agent";
 import {
 	applyConcurrencyCap,
 	type BudgetPlan,

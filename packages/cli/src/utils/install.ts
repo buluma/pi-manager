@@ -114,7 +114,7 @@ export function cleanupManagedConfig(agentDir: string) {
  */
 export function installPi() {
 	try {
-		execSync("npm install -g @mariozechner/pi-coding-agent", { stdio: "pipe", timeout: 120000 });
+		execSync("npm install -g @earendil-works/pi-coding-agent", { stdio: "pipe", timeout: 120000 });
 	} catch {
 		throw new Error("Failed to install pi-coding-agent");
 	}

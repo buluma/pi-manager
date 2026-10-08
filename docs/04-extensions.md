@@ -27,7 +27,7 @@ Extensions are TypeScript modules loaded via jiti (no compilation needed). They 
 ## 3. Basic Structure
 
 ```typescript
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
 
 export default function (pi: ExtensionAPI) {
@@ -49,7 +49,7 @@ export default function (pi: ExtensionAPI) {
 
 | Package                         | Use                                                    |
 | ------------------------------- | ------------------------------------------------------ |
-| `@mariozechner/pi-coding-agent` | Extension types                                        |
+| `@earendil-works/pi-coding-agent` | Extension types                                        |
 | `@sinclair/typebox`             | Tool parameter schemas                                 |
 | `@mariozechner/pi-ai`           | AI utilities (StringEnum, etc.)                        |
 | `@mariozechner/pi-tui`          | TUI components                                         |

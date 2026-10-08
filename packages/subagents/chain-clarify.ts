@@ -5,7 +5,7 @@
  * Supports editing templates, output paths, reads lists, and progress toggle.
  */
 
-import type { Theme } from "@mariozechner/pi-coding-agent";
+import type { Theme } from "@earendil-works/pi-coding-agent";
 import type { Component, TUI } from "@mariozechner/pi-tui";
 import { matchesKey, visibleWidth, truncateToWidth } from "@mariozechner/pi-tui";
 import * as fs from "node:fs";

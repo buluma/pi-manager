@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-- **Name**: `@mariozechner/pi-coding-agent`
+- **Name**: `@earendil-works/pi-coding-agent`
 - **Version**: 0.52.12
 - **Author**: Mario Zechner
 - **License**: MIT
@@ -31,13 +31,13 @@ need to fork or modify internals.
 @mariozechner/pi-ai          → LLM provider abstraction layer
 @mariozechner/pi-agent-core  → Agent loop and message types
 @mariozechner/pi-tui         → Terminal UI component library
-@mariozechner/pi-coding-agent → CLI and interactive mode (main package)
+@earendil-works/pi-coding-agent → CLI and interactive mode (main package)
 ```
 
 ## 2. Installation & Setup
 
 ```bash
-npm install -g @mariozechner/pi-coding-agent
+npm install -g @earendil-works/pi-coding-agent
 ```
 
 ### Authentication

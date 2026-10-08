@@ -6,7 +6,7 @@ import { execSync } from "node:child_process";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { expandHomeDir } from "@buluma/pi-man-core";
-import { loadSkills, type Skill } from "@mariozechner/pi-coding-agent";
+import { loadSkills, type Skill } from "@earendil-works/pi-coding-agent";
 import { resolveAgentDir } from "./paths.js";
 
 export type SkillSource =

@@ -33,8 +33,8 @@ Key usage-tracker surfaces:
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { type ExtensionAPI, type ExtensionContext, getAgentDir } from "@earendil-works/pi-coding-agent";
 import type { AssistantMessage } from "@mariozechner/pi-ai";
-import { type ExtensionAPI, type ExtensionContext, getAgentDir } from "@mariozechner/pi-coding-agent";
 import { Type } from "@sinclair/typebox";
 import { getSafeModeState, subscribeSafeMode } from "./runtime-mode.js";
 import {

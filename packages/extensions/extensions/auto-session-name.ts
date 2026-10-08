@@ -5,7 +5,7 @@
  * If the session already has a name (e.g. from a previous run), no rename occurs.
  * The name is derived from the first 60 characters of the user's initial message.
  */
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 /**
  * Extension entry point — hooks into `session_start` to check for existing names

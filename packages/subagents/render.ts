@@ -3,7 +3,7 @@
  */
 
 import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-import { getMarkdownTheme, type ExtensionContext } from "@mariozechner/pi-coding-agent";
+import { getMarkdownTheme, type ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Container, Markdown, Spacer, Text, truncateToWidth, visibleWidth, type Widget } from "@mariozechner/pi-tui";
 import { type AsyncJobState, type Details, MAX_WIDGET_JOBS, WIDGET_KEY } from "./types.js";
 import { formatTokens, formatUsage, formatDuration, formatToolCall, shortenPath } from "./formatters.js";

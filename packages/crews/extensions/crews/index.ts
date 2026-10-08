@@ -11,7 +11,7 @@
 
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { ExtensionAPI, ModelRegistry } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI, ModelRegistry } from "@earendil-works/pi-coding-agent";
 import { Container, matchesKey, Text } from "@mariozechner/pi-tui";
 import { Type } from "@sinclair/typebox";
 import { Nest } from "./nest.js";

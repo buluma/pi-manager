@@ -12,8 +12,8 @@
  * The footer auto-refreshes every 30 seconds and on git branch changes.
  */
 
+import type { ExtensionAPI, ExtensionContext, ReadonlyFooterDataProvider } from "@earendil-works/pi-coding-agent";
 import type { AssistantMessage } from "@mariozechner/pi-ai";
-import type { ExtensionAPI, ExtensionContext, ReadonlyFooterDataProvider } from "@mariozechner/pi-coding-agent";
 import { truncateToWidth } from "@mariozechner/pi-tui";
 import { getSafeModeState, subscribeSafeMode } from "./runtime-mode";
 

@@ -10,7 +10,7 @@ vi.mock("@mariozechner/pi-tui", () => ({
 	Text: class Text {},
 }));
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({
+vi.mock("@earendil-works/pi-coding-agent", () => ({
 	buildSessionContext: vi.fn(() => ({ messages: [] })),
 	AuthStorage: {
 		create: vi.fn(() => ({ source: "auth-storage" })),

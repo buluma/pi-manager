@@ -221,7 +221,7 @@ crews/parser.ts
        │                                          │   sendMessage, ...)
        ▼                                          ▼
   ┌─────────────────────────────────────────────────────┐
-  │          @mariozechner/pi-coding-agent               │
+  │          @earendil-works/pi-coding-agent               │
   │                (runtime host)                         │
   └─────────────────────────────────────────────────────┘
 ```

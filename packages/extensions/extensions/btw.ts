@@ -15,18 +15,18 @@
  */
 
 import {
+	buildSessionContext,
+	type ExtensionAPI,
+	type ExtensionCommandContext,
+	type ExtensionContext,
+} from "@earendil-works/pi-coding-agent";
+import {
 	type ThinkingLevel as AiThinkingLevel,
 	type AssistantMessage,
 	completeSimple,
 	type Message,
 	streamSimple,
 } from "@mariozechner/pi-ai";
-import {
-	buildSessionContext,
-	type ExtensionAPI,
-	type ExtensionCommandContext,
-	type ExtensionContext,
-} from "@mariozechner/pi-coding-agent";
 import { Text } from "@mariozechner/pi-tui";
 
 const BTW_MESSAGE_TYPE = "btw-note";
@@ -123,7 +123,7 @@ export async function resolveBtwApiKey(
 	}
 
 	try {
-		const piModule = (await import("@mariozechner/pi-coding-agent")) as Record<string, unknown>;
+		const piModule = (await import("@earendil-works/pi-coding-agent")) as Record<string, unknown>;
 		const authStorageModule = Reflect.get(piModule, "AuthStorage") as { create?: () => unknown } | undefined;
 		const modelRegistryModule = Reflect.get(piModule, "ModelRegistry") as
 			| (new (

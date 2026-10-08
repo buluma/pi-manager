@@ -9,7 +9,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { type ExtensionAPI, getAgentDir } from "@mariozechner/pi-coding-agent";
+import { type ExtensionAPI, getAgentDir } from "@earendil-works/pi-coding-agent";
 
 /** Minimum interval between version checks (24 hours). */
 const CHECK_INTERVAL = 24 * 60 * 60 * 1000;
