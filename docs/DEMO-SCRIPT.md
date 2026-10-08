@@ -10,7 +10,7 @@
 
 - A clean terminal window
 - A medium-complexity repository (at least 3 related files)
-- Node 20+ installed
+- Node 22.19+ installed
 
 ## Timeline
 

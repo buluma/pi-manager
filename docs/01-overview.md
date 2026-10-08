@@ -8,7 +8,7 @@
 - **License**: MIT
 - **Repository**: https://github.com/badlogic/pi-mono (packages/coding-agent)
 - **Website**: https://shittycodingagent.ai / https://pi.dev
-- **Node requirement**: >= 20.0.0
+- **Node requirement**: >= 22.19.0
 
 ### Positioning
 

@@ -222,4 +222,4 @@ my-pi-package/
 | Compaction keep tokens    | 20000 (default)                             |
 | Compaction reserve tokens | 16384 (default)                             |
 | Retry count               | 3 (default)                                 |
-| Node.js requirement       | >= 20.0.0                                   |
+| Node.js requirement       | >= 22.19.0                                  |
