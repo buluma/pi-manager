@@ -3,7 +3,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({
+vi.mock("@earendil-works/pi-coding-agent", () => ({
 	AuthStorage: class {},
 	createAgentSession: vi.fn(),
 	createReadTool: vi.fn(),
@@ -19,7 +19,7 @@ vi.mock("@mariozechner/pi-coding-agent", () => ({
 	createExtensionRuntime: vi.fn(),
 	getAgentDir: () => "/mock-home/.pi/agent",
 }));
-vi.mock("@mariozechner/pi-ai", () => ({ getModel: vi.fn() }));
+vi.mock("@earendil-works/pi-ai", () => ({ getModel: vi.fn() }));
 
 import { Nest } from "../extensions/crews/nest.js";
 import {

@@ -20,14 +20,14 @@ import {
 	completeSimple,
 	type Message,
 	streamSimple,
-} from "@mariozechner/pi-ai";
+} from "@earendil-works/pi-ai";
 import {
 	buildSessionContext,
 	type ExtensionAPI,
 	type ExtensionCommandContext,
 	type ExtensionContext,
-} from "@mariozechner/pi-coding-agent";
-import { Text } from "@mariozechner/pi-tui";
+} from "@earendil-works/pi-coding-agent";
+import { Text } from "@earendil-works/pi-tui";
 
 const BTW_MESSAGE_TYPE = "btw-note";
 const BTW_ENTRY_TYPE = "btw-thread-entry";
@@ -123,7 +123,7 @@ export async function resolveBtwApiKey(
 	}
 
 	try {
-		const piModule = (await import("@mariozechner/pi-coding-agent")) as Record<string, unknown>;
+		const piModule = (await import("@earendil-works/pi-coding-agent")) as Record<string, unknown>;
 		const authStorageModule = Reflect.get(piModule, "AuthStorage") as { create?: () => unknown } | undefined;
 		const modelRegistryModule = Reflect.get(piModule, "ModelRegistry") as
 			| (new (
@@ -142,7 +142,7 @@ export async function resolveBtwApiKey(
 	}
 
 	try {
-		const aiModule = (await import("@mariozechner/pi-ai")) as {
+		const aiModule = (await import("@earendil-works/pi-ai")) as {
 			getEnvApiKey?: (provider: string) => string | undefined;
 		};
 		return aiModule.getEnvApiKey?.(model.provider);

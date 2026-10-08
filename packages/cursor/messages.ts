@@ -1,7 +1,7 @@
 import { createHash, randomUUID } from "node:crypto";
 import { create, fromBinary, fromJson, toBinary, toJson, type JsonValue } from "@bufbuild/protobuf";
 import { ValueSchema } from "@bufbuild/protobuf/wkt";
-import type { Context, Message, ToolResultMessage } from "@mariozechner/pi-ai";
+import type { Context, Message, ToolResultMessage } from "@earendil-works/pi-ai";
 import {
 	AgentClientMessageSchema,
 	AgentConversationTurnStructureSchema,

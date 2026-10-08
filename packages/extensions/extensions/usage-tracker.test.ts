@@ -26,14 +26,14 @@ vi.mock("node:os", async (importOriginal) => {
 	return { ...actual, homedir: () => "/mock-home" };
 });
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({
+vi.mock("@earendil-works/pi-coding-agent", () => ({
 	CustomEditor: class {},
 	getAgentDir: () => "/mock-home/.pi/agent",
 }));
 
-vi.mock("@mariozechner/pi-ai", () => ({}));
+vi.mock("@earendil-works/pi-ai", () => ({}));
 
-vi.mock("@sinclair/typebox", () => ({
+vi.mock("typebox", () => ({
 	Type: {
 		Object: (schema: any) => schema,
 		String: (opts?: any) => ({ type: "string", ...opts }),

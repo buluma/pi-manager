@@ -2,13 +2,13 @@
 
 ## 1. Project Overview
 
-- **Name**: `@mariozechner/pi-coding-agent`
+- **Name**: `@earendil-works/pi-coding-agent`
 - **Version**: 0.52.12
 - **Author**: Mario Zechner
 - **License**: MIT
 - **Repository**: https://github.com/badlogic/pi-mono (packages/coding-agent)
 - **Website**: https://shittycodingagent.ai / https://pi.dev
-- **Node requirement**: >= 20.0.0
+- **Node requirement**: >= 22.19.0
 
 ### Positioning
 
@@ -28,16 +28,16 @@ need to fork or modify internals.
 ### Package Architecture
 
 ```
-@mariozechner/pi-ai          → LLM provider abstraction layer
-@mariozechner/pi-agent-core  → Agent loop and message types
-@mariozechner/pi-tui         → Terminal UI component library
-@mariozechner/pi-coding-agent → CLI and interactive mode (main package)
+@earendil-works/pi-ai          → LLM provider abstraction layer
+@earendil-works/pi-agent-core  → Agent loop and message types
+@earendil-works/pi-tui         → Terminal UI component library
+@earendil-works/pi-coding-agent → CLI and interactive mode (main package)
 ```
 
 ## 2. Installation & Setup
 
 ```bash
-npm install -g @mariozechner/pi-coding-agent
+npm install -g @earendil-works/pi-coding-agent
 ```
 
 ### Authentication

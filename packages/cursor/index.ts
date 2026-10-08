@@ -1,7 +1,7 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { createCursorOAuthProvider, refreshCursorCredentialModels, refreshCursorToken } from "./auth.js";
+import { readStoredCredential, type ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { createCursorOAuthProvider, refreshCursorCredentialModels } from "./auth.js";
 import { CURSOR_API, CURSOR_PROVIDER, getCursorRuntimeConfig } from "./config.js";
-import { getCredentialModels, getFallbackCursorModels, toProviderModels, type CursorCredentials } from "./models.js";
+import { getFallbackCursorModels, toProviderModels, type CursorCredentials } from "./models.js";
 import { streamSimpleCursor } from "./provider.js";
 import { clearCursorRuntimeState, getCursorRuntimeStateSummary } from "./runtime.js";
 
@@ -12,6 +12,13 @@ function registerCursorProvider(pi: ExtensionAPI): void {
 		oauth: createCursorOAuthProvider(),
 		streamSimple: streamSimpleCursor,
 		models: toProviderModels(getFallbackCursorModels()),
+		async refreshModels({ credential, allowNetwork }) {
+			if (!allowNetwork || credential?.type !== "oauth") {
+				return toProviderModels(getFallbackCursorModels());
+			}
+			const refreshed = await refreshCursorCredentialModels(credential as CursorCredentials);
+			return toProviderModels(refreshed.models ?? getFallbackCursorModels());
+		},
 	});
 }
 
@@ -26,30 +33,28 @@ function registerCursorCommand(pi: ExtensionAPI): void {
 				return;
 			}
 
-			const authStorage = ctx.modelRegistry.authStorage;
-			const credential = authStorage.get(CURSOR_PROVIDER);
-			if (!credential || credential.type !== "oauth") {
+			const authStatus = ctx.modelRegistry.getProviderAuthStatus(CURSOR_PROVIDER);
+			if (!authStatus.configured) {
 				ctx.ui.notify("Not logged in to Cursor. Run /login cursor first.", "warning");
 				return;
 			}
 
 			if (action === "refresh-models") {
-				const refreshed = credential.expires <= Date.now()
-					? await refreshCursorToken(credential)
-					: await refreshCursorCredentialModels(credential as CursorCredentials);
-				authStorage.set(CURSOR_PROVIDER, { type: "oauth", ...refreshed });
-				ctx.modelRegistry.refresh();
-				ctx.ui.notify(`Refreshed Cursor models (${getCredentialModels(refreshed).length} available).`, "info");
+				await ctx.modelRegistry.refresh({ providers: [CURSOR_PROVIDER], force: true });
+				const modelCount = ctx.modelRegistry.getAvailable().filter((model) => model.provider === CURSOR_PROVIDER).length;
+				ctx.ui.notify(`Refreshed Cursor models (${modelCount} available).`, "info");
 				return;
 			}
 
+			const credential = readStoredCredential(CURSOR_PROVIDER);
 			const runtime = getCursorRuntimeStateSummary();
-			const models = getCredentialModels(credential as CursorCredentials);
-			const expiresInMinutes = Math.max(0, Math.round((credential.expires - Date.now()) / 60_000));
+			const modelCount = ctx.modelRegistry.getAvailable().filter((model) => model.provider === CURSOR_PROVIDER).length;
+			const expires = credential?.type === "oauth" ? (credential as CursorCredentials).expires : Date.now();
+			const expiresInMinutes = Math.max(0, Math.round((expires - Date.now()) / 60_000));
 			ctx.ui.notify(
 				[
 					`Cursor auth: configured`,
-					`Models: ${models.length}`,
+					`Models: ${modelCount}`,
 					`Token expiry: ${expiresInMinutes}m`,
 					`Runtime: ${runtime.activeRuns} active run(s), ${runtime.checkpoints} checkpoint(s)`,
 				].join("\n"),

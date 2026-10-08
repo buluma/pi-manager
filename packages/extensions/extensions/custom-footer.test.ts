@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({}));
-vi.mock("@mariozechner/pi-ai", () => ({}));
-vi.mock("@mariozechner/pi-tui", () => ({
+vi.mock("@earendil-works/pi-coding-agent", () => ({}));
+vi.mock("@earendil-works/pi-ai", () => ({}));
+vi.mock("@earendil-works/pi-tui", () => ({
 	truncateToWidth: (text: string, width: number) => text.slice(0, width),
 }));
 

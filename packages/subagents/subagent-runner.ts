@@ -138,18 +138,18 @@ function runPiStreaming(
 
 function resolvePiPackageRootFallback(): string {
 	// Try to resolve the main entry point and walk up to find the package root
-	const entryPoint = require.resolve("@mariozechner/pi-coding-agent");
+	const entryPoint = require.resolve("@earendil-works/pi-coding-agent");
 	// Entry point is typically /path/to/dist/index.js, so go up to find package root
 	let dir = path.dirname(entryPoint);
 	while (dir !== path.dirname(dir)) {
 		const pkgJsonPath = path.join(dir, "package.json");
 		try {
 			const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, "utf-8"));
-			if (pkg.name === "@mariozechner/pi-coding-agent") return dir;
+			if (pkg.name === "@earendil-works/pi-coding-agent") return dir;
 		} catch {}
 		dir = path.dirname(dir);
 	}
-	throw new Error("Could not resolve @mariozechner/pi-coding-agent package root");
+	throw new Error("Could not resolve @earendil-works/pi-coding-agent package root");
 }
 
 async function exportSessionHtml(sessionFile: string, outputDir: string, piPackageRoot?: string): Promise<string> {

@@ -4,7 +4,7 @@
 
 import * as os from "node:os";
 import * as path from "node:path";
-import type { Message } from "@mariozechner/pi-ai";
+import type { Message } from "@earendil-works/pi-ai";
 
 // ============================================================================
 // Basic Types
@@ -205,7 +205,7 @@ export interface ErrorInfo {
 export interface RunSyncOptions {
 	cwd?: string;
 	signal?: AbortSignal;
-	onUpdate?: (r: import("@mariozechner/pi-agent-core").AgentToolResult<Details>) => void;
+	onUpdate?: (r: import("@earendil-works/pi-agent-core").AgentToolResult<Details>) => void;
 	maxOutput?: MaxOutputConfig;
 	artifactsDir?: string;
 	artifactConfig?: ArtifactConfig;

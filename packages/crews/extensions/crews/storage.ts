@@ -10,7 +10,7 @@ Project-local `.crews/` storage remains available as an explicit opt-in for lega
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { expandHomeDir } from "@buluma/pi-man-core";
-import { getAgentDir } from "@mariozechner/pi-coding-agent";
+import { getAgentDir } from "@earendil-works/pi-coding-agent";
 
 export type ColonyStorageMode = "shared" | "project";
 

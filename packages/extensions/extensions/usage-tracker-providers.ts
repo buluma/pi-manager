@@ -1,6 +1,6 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { getAgentDir } from "@mariozechner/pi-coding-agent";
+import { getAgentDir } from "@earendil-works/pi-coding-agent";
 import { clampPercent, fmtDuration, fmtTokens, upsertWindow } from "./usage-tracker-formatting.js";
 import {
 	type PiAuthEntry,
@@ -30,17 +30,17 @@ const PROVIDER_API_BASE: Record<ProviderKey, string> = {
 
 /**
  * Lazy-loaded reference to pi's OAuth refresh machinery.
- * We import `@mariozechner/pi-ai/oauth` at runtime (the extension runs
+ * We import `@earendil-works/pi-ai/oauth` at runtime (the extension runs
  * inside pi, so the module is always available). This avoids hardcoding
  * OAuth client IDs/secrets and stays in sync with pi's auth system.
  */
-let oauthModule: typeof import("@mariozechner/pi-ai/oauth") | null = null;
-async function getOAuthModule(): Promise<typeof import("@mariozechner/pi-ai/oauth") | null> {
+let oauthModule: typeof import("@earendil-works/pi-ai/oauth") | null = null;
+async function getOAuthModule(): Promise<typeof import("@earendil-works/pi-ai/oauth") | null> {
 	if (oauthModule) {
 		return oauthModule;
 	}
 	try {
-		oauthModule = await import("@mariozechner/pi-ai/oauth");
+		oauthModule = await import("@earendil-works/pi-ai/oauth");
 		return oauthModule;
 	} catch {
 		return null;
@@ -72,7 +72,7 @@ export function readPiAuth(): Record<string, PiAuthEntry> {
 
 /**
  * Refresh an expired OAuth token using pi's built-in OAuth module.
- * Delegates to `getOAuthApiKey()` from `@mariozechner/pi-ai/oauth` which
+ * Delegates to `getOAuthApiKey()` from `@earendil-works/pi-ai/oauth` which
  * handles token refresh, client credentials, and endpoint selection for
  * all supported providers.
  *

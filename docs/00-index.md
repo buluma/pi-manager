@@ -1,6 +1,6 @@
 # Pi Coding Agent Documentation Index
 
-> Based on `@mariozechner/pi-coding-agent` v0.52.12 official documentation Last updated: 2026-02-14
+> Based on official Pi coding-agent documentation (legacy source: `@mariozechner/pi-coding-agent` v0.52.12). Last updated: 2026-02-14
 
 ## Table of Contents
 
@@ -99,7 +99,7 @@ This documentation provides the knowledge base for pi-man (one-click pi-coding-a
 ## Original Documentation Location
 
 ```
-~/.local/share/fnm/node-versions/v24.9.0/installation/lib/node_modules/@mariozechner/pi-coding-agent/
+~/.local/share/fnm/node-versions/v24.9.0/installation/lib/node_modules/@earendil-works/pi-coding-agent/
 ├── README.md                    # Main docs
 ├── docs/
 │   ├── compaction.md            # Compaction mechanism

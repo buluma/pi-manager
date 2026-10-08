@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({
+vi.mock("@earendil-works/pi-coding-agent", () => ({
 	AuthStorage: class {},
 	createAgentSession: vi.fn(),
 	createReadTool: vi.fn(),
@@ -15,7 +15,7 @@ vi.mock("@mariozechner/pi-coding-agent", () => ({
 	SettingsManager: { inMemory: vi.fn() },
 	createExtensionRuntime: vi.fn(),
 }));
-vi.mock("@mariozechner/pi-ai", () => ({ getModel: vi.fn() }));
+vi.mock("@earendil-works/pi-ai", () => ({ getModel: vi.fn() }));
 vi.mock("./spawner.js", async () => {
 	const actual = await vi.importActual<any>("./spawner.js");
 	return { ...actual, makePheromoneId: () => "p-test" };

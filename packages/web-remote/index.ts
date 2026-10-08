@@ -1,5 +1,5 @@
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { createPiWebServer, detectTunnelProvider, getLanIp, type PiWebServer, startTunnel } from "@ifi/pi-web-server";
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
 
 const HOSTED_UI_URL = "https://pi-remote.dev";
 

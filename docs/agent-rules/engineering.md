@@ -8,7 +8,7 @@
   - `tsgo` (`@typescript/native-preview`) for fast repo type-checking
   - `tsc` for emitted builds
 - Tests: Vitest
-- Node: `>=20`
+- Node: `>=22.19`
 
 ## Common commands
 

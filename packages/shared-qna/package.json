@@ -33,6 +33,6 @@
     "url": "https://github.com/ifiokjr/oh-pi/issues"
   },
   "peerDependencies": {
-    "@mariozechner/pi-tui": "*"
+    "@earendil-works/pi-tui": "*"
   }
 }

@@ -1,4 +1,5 @@
-import type { OAuthCredentials, OAuthLoginCallbacks, OAuthProviderInterface } from "@mariozechner/pi-ai";
+import type { OAuthCredentials, OAuthLoginCallbacks } from "@earendil-works/pi-ai";
+import type { ProviderConfig } from "@earendil-works/pi-coding-agent";
 import {
 	OLLAMA_API,
 	OLLAMA_CLOUD_API_KEY_ENV,
@@ -33,10 +34,11 @@ export async function loginOllamaCloud(callbacks: OAuthLoginCallbacks): Promise<
 
 export async function refreshOllamaCloudCredential(
 	credentials: OAuthCredentials,
-	options: { preserveModels?: boolean } = {},
+	options: { preserveModels?: boolean; signal?: AbortSignal } = {},
 ): Promise<OllamaCloudCredentials> {
 	return enrichOllamaCloudCredentials(createStaticCredential(credentials.access), {
 		previous: options.preserveModels === false ? undefined : (credentials as OllamaCloudCredentials),
+		signal: options.signal,
 	});
 }
 
@@ -44,14 +46,14 @@ export async function refreshOllamaCloudCredentialModels(credentials: OllamaClou
 	return enrichOllamaCloudCredentials(createStaticCredential(credentials.access), { previous: credentials });
 }
 
-export function createOllamaCloudOAuthProvider(): Omit<OAuthProviderInterface, "id"> {
+export function createOllamaCloudOAuthProvider(): NonNullable<ProviderConfig["oauth"]> {
 	return {
 		name: "Ollama Cloud",
 		async login(callbacks) {
 			return loginOllamaCloud(callbacks);
 		},
-		async refreshToken(credentials) {
-			return refreshOllamaCloudCredential(credentials);
+		async refreshToken(credentials, signal) {
+			return refreshOllamaCloudCredential(credentials, { signal });
 		},
 		getApiKey(credentials) {
 			return credentials.access;

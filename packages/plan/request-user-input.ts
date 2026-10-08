@@ -1,5 +1,5 @@
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-agent";
+import type { AgentToolResult } from "@earendil-works/pi-agent-core";
+import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { QnATuiComponent, requirePiTuiModule, type QnAResponse, type QnAResult } from "@ifi/pi-shared-qna";
 import type {
 	NormalizedRequestUserInputQuestion,

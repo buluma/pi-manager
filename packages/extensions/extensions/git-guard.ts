@@ -8,7 +8,7 @@
  *
  * Supports Kitty (OSC 99) and generic terminal (OSC 777) notification protocols.
  */
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
 /**
  * Send a terminal notification using the appropriate escape sequence.

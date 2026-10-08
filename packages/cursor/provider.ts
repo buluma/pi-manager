@@ -3,14 +3,14 @@ import { create, fromBinary, toBinary } from "@bufbuild/protobuf";
 import {
 	calculateCost,
 	createAssistantMessageEventStream,
-	getEnvApiKey,
+	type Api,
 	type AssistantMessage,
 	type AssistantMessageEventStream,
 	type Context,
 	type Model,
 	type SimpleStreamOptions,
 	type ToolCall,
-} from "@mariozechner/pi-ai";
+} from "@earendil-works/pi-ai";
 import {
 	AgentServerMessageSchema,
 	BackgroundShellSpawnResultSchema,
@@ -80,14 +80,14 @@ type StreamState = {
 type RuntimeOptions = {
 	bridgeKey: string;
 	conversationKey: string;
-	model: Model<string>;
+	model: Model<Api>;
 	output: AssistantMessage;
 	stream: AssistantMessageEventStream;
 	signal?: AbortSignal;
 };
 
-export const streamSimpleCursor = (model: Model<string>, context: Context, options?: SimpleStreamOptions): AssistantMessageEventStream => {
-	const apiKey = options?.apiKey || getEnvApiKey(model.provider);
+export const streamSimpleCursor = (model: Model<Api>, context: Context, options?: SimpleStreamOptions): AssistantMessageEventStream => {
+	const apiKey = options?.apiKey;
 	if (!apiKey) {
 		throw new Error(`No API key for provider: ${model.provider}`);
 	}
@@ -127,7 +127,7 @@ export const streamSimpleCursor = (model: Model<string>, context: Context, optio
 				tools: context.tools,
 				conversationState: stateRecord,
 			});
-			options?.onPayload?.({ model: model.id, conversationId, toolCount: payload.mcpTools.length });
+			await options?.onPayload?.({ model: model.id, conversationId, toolCount: payload.mcpTools.length }, model);
 			const connection = new CursorStreamingConnection({ accessToken: apiKey, rpcPath: CURSOR_RUN_PATH, url: model.baseUrl });
 			connection.startHeartbeat(makeHeartbeatFrame);
 			connection.write(toFrame(payload.requestBytes));
@@ -242,7 +242,7 @@ async function streamConnection(runtime: RuntimeOptions, run: ActiveCursorRun): 
 									type: "toolCall",
 									id: pendingExec.toolCallId,
 									name: pendingExec.toolName,
-									arguments: parseToolArguments(pendingExec.decodedArgs),
+					arguments: parseToolArguments(pendingExec.decodedArgs) as ToolCall["arguments"],
 								},
 								pendingExec.decodedArgs,
 							);

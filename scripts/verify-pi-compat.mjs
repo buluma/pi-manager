@@ -2,14 +2,15 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
-const MIN_VERSION = "0.56.1";
-const CURRENT_VERSION = "0.64.0";
-const PI_PACKAGES = [
-	"@mariozechner/pi-agent-core",
-	"@mariozechner/pi-ai",
-	"@mariozechner/pi-coding-agent",
-	"@mariozechner/pi-tui",
+const MIN_VERSION = "0.74.2";
+const CURRENT_VERSION = "1.1.0";
+const PI_COMPAT_PACKAGES = [
+	"@earendil-works/pi-agent-core",
+	"@earendil-works/pi-ai",
+	"@earendil-works/pi-coding-agent",
+	"@earendil-works/pi-tui",
 ];
+const PI_PACKAGES = PI_COMPAT_PACKAGES;
 function parseArgs(argv) {
 	const parsed = { version: process.env.PI_COMPAT_VERSION, restore: false };
 	for (let i = 0; i < argv.length; i++) {
@@ -41,7 +42,7 @@ function patchRootManifest(version) {
 	const manifestPath = "package.json";
 	const pkg = JSON.parse(readFileSync(manifestPath, "utf8"));
 	pkg.devDependencies ??= {};
-	for (const dependency of PI_PACKAGES) {
+	for (const dependency of PI_COMPAT_PACKAGES) {
 		pkg.devDependencies[dependency] = version;
 	}
 	writeFileSync(manifestPath, `${JSON.stringify(pkg, null, "\t")}\n`);

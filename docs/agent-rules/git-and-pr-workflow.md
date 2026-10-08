@@ -70,6 +70,6 @@ The CI pipeline runs these checks in parallel before `build`:
 - security checks
 - lint
 - typecheck
-- tests on Node 20 and Node 22
+- tests on Node 22.19+
 
 `build` runs after the required upstream checks pass.
