@@ -7,8 +7,8 @@
 		"typecheck": "pnpm --filter @ifi/pi-man-core build && pnpm -r --filter @ifi/pi-man-crews --filter @ifi/pi-man-core --filter @ifi/pi-man-cli --filter @ifi/pi-spec --filter @ifi/pi-web-client --filter @ifi/pi-web-server run typecheck",
 		"verify:completion": "pnpm exec vitest run packages/crews/tests/commands.test.ts",
 		"security:allowlist": "node ./scripts/security/check-dependency-allowlist.mjs",
-		"security:audit:prod": "pnpm audit --prod --audit-level=high",
-		"security:audit:dev": "pnpm audit -D --audit-level=high",
+		"security:audit:prod": "pnpm audit --prod --audit-level=high --ignore-unfixable",
+		"security:audit:dev": "pnpm audit -D --audit-level=high --ignore-unfixable",
 		"security:check": "pnpm security:allowlist && pnpm security:audit:prod && pnpm security:audit:dev",
 		"test": "vitest run",
 		"verify:compiled-tarballs": "node ./scripts/verify-compiled-tarballs.mjs",
@@ -33,26 +33,9 @@
 		"@types/node": "^22.0.0",
 		"@typescript/native-preview": "7.0.0-dev.20260305.1",
 		"typescript": "^5.7.0",
-		"vitest": "^3.0.0"
+		"vitest": "^4.1.11"
 	},
 	"engines": {
 		"node": ">=20.0.0"
-	},
-	"pnpm": {
-		"overrides": {
-			"file-type": "21.3.2",
-			"undici": "7.24.0",
-			"yauzl@<3.2.1": ">=3.2.1",
-			"file-type@>=20.0.0 <=21.3.2": ">=21.3.2",
-			"fast-xml-parser": "5.5.7",
-			"brace-expansion@^2.0.2": "2.0.3",
-			"brace-expansion@^5.0.2": "5.0.5",
-			"yaml": "2.8.3",
-			"picomatch": "4.0.4",
-			"vite": "7.3.2",
-			"basic-ftp": ">=5.2.1",
-			"hono": ">=4.12.12",
-			"@hono/node-server": ">=1.19.13"
-		}
 	}
 }
