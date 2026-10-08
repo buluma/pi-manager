@@ -2,4 +2,4 @@
 default: patch
 ---
 
-Update Vitest and patch vulnerable production dependency resolutions.
+Update Vitest and patch vulnerable dependency resolutions.
